@@ -16,6 +16,12 @@ export default function AdminLogin() {
     setLoading(true);
 
     try {
+      if (!supabase) {
+        setError('Supabase is not configured. Check your NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY environment variables.');
+        setLoading(false);
+        return;
+      }
+
       const { error: authError } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -29,7 +35,7 @@ export default function AdminLogin() {
 
       router.push('/admin/dashboard');
     } catch (err) {
-      setError('An unexpected error occurred. Please try again.');
+      setError(err.message || 'An unexpected error occurred. Please try again.');
       setLoading(false);
     }
   };
