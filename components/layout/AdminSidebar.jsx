@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { supabase } from '@/lib/supabase';
 import {
   LayoutDashboard,
   Users,
@@ -10,7 +11,7 @@ import {
 } from 'lucide-react';
 
 const links = [
-  { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+  { label: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { label: 'Leads', href: '/admin/leads', icon: Users },
   { label: 'Projects', href: '/admin/projects', icon: FolderKanban },
   { label: 'Blog', href: '/admin/blog', icon: FileText },
@@ -21,12 +22,14 @@ export default function AdminSidebar() {
   const router = useRouter();
 
   const isActive = (href) => {
-    if (href === '/admin') return router.asPath === '/admin';
+    if (href === '/admin/dashboard') return router.asPath === '/admin' || router.asPath === '/admin/dashboard';
     return router.asPath.startsWith(href);
   };
 
   const handleSignOut = async () => {
-    // Clear auth state and redirect to login
+    document.cookie = 'sb-access-token=; path=/; max-age=0';
+    document.cookie = 'sb-refresh-token=; path=/; max-age=0';
+    if (supabase) await supabase.auth.signOut();
     router.push('/admin/login');
   };
 
