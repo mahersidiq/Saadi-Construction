@@ -9,7 +9,7 @@ function generateSitemap({ projects, blogPosts }) {
   const allServices = serviceCategories.flatMap((cat) => cat.services);
 
   const staticPages = [
-    { loc: '/', priority: '1.0', changefreq: 'weekly' },
+    { loc: '/', priority: '1.0', changefreq: 'monthly' },
     { loc: '/services', priority: '0.7', changefreq: 'monthly' },
     { loc: '/service-areas', priority: '0.7', changefreq: 'monthly' },
     { loc: '/projects', priority: '0.7', changefreq: 'weekly' },

@@ -12,7 +12,15 @@ export async function getServerSideProps(ctx) {
     return { redirect: { destination: '/admin/login', permanent: false } };
   }
 
-  // Fetch counts in parallel
+  if (!supabaseAdmin) {
+    return {
+      props: {
+        stats: { totalLeads: 0, newLeads: 0, projects: 0, posts: 0 },
+        recentLeads: [],
+      },
+    };
+  }
+
   const [leadsRes, newLeadsRes, projectsRes, postsRes, recentLeadsRes] =
     await Promise.all([
       supabaseAdmin.from('leads').select('id', { count: 'exact', head: true }),
@@ -21,7 +29,7 @@ export async function getServerSideProps(ctx) {
         .select('id', { count: 'exact', head: true })
         .eq('status', 'new'),
       supabaseAdmin.from('projects').select('id', { count: 'exact', head: true }),
-      supabaseAdmin.from('posts').select('id', { count: 'exact', head: true }),
+      supabaseAdmin.from('blog_posts').select('id', { count: 'exact', head: true }),
       supabaseAdmin
         .from('leads')
         .select('id, name, email, phone, project_type, status, created_at')

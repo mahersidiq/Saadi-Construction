@@ -63,7 +63,9 @@ const placeholderProjects = [
   },
 ];
 
-export default function ProjectsIndexPage({ projects, categories }) {
+const projectCategories = ['Gut Rehab', 'Interior', 'Common Areas', 'Exterior'];
+
+export default function ProjectsIndexPage({ projects }) {
   const [activeFilter, setActiveFilter] = useState(null);
 
   const filtered = activeFilter
@@ -89,7 +91,7 @@ export default function ProjectsIndexPage({ projects, categories }) {
             transition={{ duration: 0.7 }}
             className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight"
           >
-            Our Projects
+            Apartment Renovation Projects — Houston and Surrounding Areas
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -106,7 +108,7 @@ export default function ProjectsIndexPage({ projects, categories }) {
       <section className="section-padding bg-white">
         <div className="container-main">
           <ProjectFilter
-            categories={categories}
+            categories={projectCategories}
             activeFilter={activeFilter}
             onFilterChange={setActiveFilter}
           />
@@ -180,7 +182,7 @@ export async function getServerSideProps() {
       const { data } = await supabase
         .from('projects')
         .select('slug, title, location, unit_count, scope_type, image_url')
-        .order('created_at', { ascending: false });
+        .order('sort_order', { ascending: true });
 
       if (data && data.length > 0) {
         projects = data;
@@ -195,15 +197,9 @@ export async function getServerSideProps() {
     projects = placeholderProjects;
   }
 
-  // Extract unique scope_type values for filter categories
-  const categories = [
-    ...new Set(projects.map((p) => p.scope_type).filter(Boolean)),
-  ];
-
   return {
     props: {
       projects,
-      categories,
     },
   };
 }

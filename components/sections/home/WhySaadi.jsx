@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Building2, BarChart3, UserCheck, Handshake } from 'lucide-react';
+import { Building2, BarChart3, UserCheck, Users } from 'lucide-react';
 
 const values = [
   {
@@ -18,7 +18,7 @@ const values = [
     text: 'You work directly with decision-making leadership from bid to punchlist. No handoffs.',
   },
   {
-    icon: Handshake,
+    icon: Users,
     title: 'Houston Subcontractor Network',
     text: "Deep relationships with Houston\u2019s best trade contractors across every discipline \u2014 built over years of multifamily work.",
   },
