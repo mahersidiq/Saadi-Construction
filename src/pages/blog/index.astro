@@ -1,0 +1,45 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import BlogFilter from '@/islands/BlogFilter.jsx';
+import { supabase } from '@/lib/supabase';
+
+export const prerender = false;
+
+let posts = [];
+try {
+  if (supabase) {
+    const { data } = await supabase
+      .from('blog_posts')
+      .select('slug, title, excerpt, cover_image_url, category, published_at')
+      .eq('status', 'published')
+      .order('published_at', { ascending: false });
+    if (data) posts = data;
+  }
+} catch (e) {
+  console.error('Error fetching blog posts:', e);
+}
+---
+
+<Layout
+  title="Apartment Renovation Blog | Saadi Construction Group | Houston, TX"
+  description="Insights on apartment renovation in Houston. Industry trends, project updates, renovation tips, cost guides, and market news for multifamily owners and operators."
+  keywords="apartment renovation blog, multifamily renovation insights, Houston apartment renovation tips"
+  canonicalUrl="https://saadiconstructiongroup.com/blog"
+>
+  <!-- Hero -->
+  <section class="relative min-h-[40vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
+    <div class="relative z-10 container-main px-4 py-20 md:py-28 text-center">
+      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+        Apartment Renovation Insights — Houston, TX
+      </h1>
+    </div>
+  </section>
+
+  <!-- Category Filter + Posts -->
+  <section class="section-padding bg-white">
+    <div class="container-main px-4">
+      <BlogFilter client:load posts={posts} />
+    </div>
+  </section>
+</Layout>

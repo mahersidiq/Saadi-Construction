@@ -1,0 +1,66 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ServiceHero from '@/components/sections/services/ServiceHero.astro';
+import ServiceIncludes from '@/components/sections/services/ServiceIncludes.astro';
+import RelatedServices from '@/components/sections/services/RelatedServices.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+import { serviceCategories, allServices } from '@/data/services';
+import { serviceDetails } from '@/data/serviceDetails';
+
+export function getStaticPaths() {
+  return allServices.map((service) => ({
+    params: { slug: service.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const service = allServices.find((s) => s.slug === slug);
+if (!service) return Astro.redirect('/404');
+
+const detail = serviceDetails[slug] || {};
+
+// Find related services
+let relatedServices = [];
+for (const category of serviceCategories) {
+  const inCategory = category.services.find((s) => s.slug === slug);
+  if (inCategory) {
+    relatedServices = category.services.filter((s) => s.slug !== slug).slice(0, 3);
+    break;
+  }
+}
+if (relatedServices.length < 3) {
+  const remaining = allServices
+    .filter((s) => s.slug !== slug && !relatedServices.find((r) => r.slug === s.slug))
+    .slice(0, 3 - relatedServices.length);
+  relatedServices = [...relatedServices, ...remaining];
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: detail.title || service.name,
+  description: detail.metaDescription || `${service.name} services for apartments in Houston, TX.`,
+  provider: {
+    '@type': 'GeneralContractor',
+    name: 'Saadi Construction Group',
+    url: 'https://saadiconstructiongroup.com',
+    telephone: '(512) 962-9856',
+    address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
+  },
+  areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  serviceType: detail.title || service.name,
+};
+---
+
+<Layout
+  title={detail.metaTitle || `${service.name} | Houston TX | Saadi Construction Group`}
+  description={detail.metaDescription || `Professional ${service.name.toLowerCase()} services for multifamily apartment properties in Houston, TX.`}
+  keywords={`${service.name} Houston, apartment ${service.name.toLowerCase()}, multifamily ${service.name.toLowerCase()} Houston TX`}
+  canonicalUrl={`https://saadiconstructiongroup.com/services/${slug}`}
+  jsonLd={jsonLd}
+>
+  <ServiceHero title={detail.title || service.name} subheadline={detail.subheadline} category={detail.category} />
+  <ServiceIncludes includes={detail.includes} whatIsIt={detail.whatIsIt} bestFor={detail.bestFor} />
+  <RelatedServices relatedServices={relatedServices} />
+  <CTABanner />
+</Layout>
