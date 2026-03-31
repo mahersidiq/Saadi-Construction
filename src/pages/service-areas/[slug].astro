@@ -1,0 +1,52 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import AreaHero from '@/components/sections/service-areas/AreaHero.astro';
+import AreaServices from '@/components/sections/service-areas/AreaServices.astro';
+import NearbyAreas from '@/components/sections/service-areas/NearbyAreas.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+import { serviceAreas } from '@/data/serviceAreas';
+
+export function getStaticPaths() {
+  return serviceAreas.map((area) => ({
+    params: { slug: area.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const area = serviceAreas.find((a) => a.slug === slug);
+if (!area) return Astro.redirect('/404');
+
+let nearbyAreas = [];
+if (area.nearbyAreas && area.nearbyAreas.length > 0) {
+  nearbyAreas = area.nearbyAreas
+    .map((s) => serviceAreas.find((a) => a.slug === s))
+    .filter(Boolean);
+} else {
+  nearbyAreas = serviceAreas.filter((a) => a.slug !== slug).slice(0, 5);
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Saadi Construction Group',
+  description: area.metaDescription || `Apartment renovation services in ${area.name}, TX.`,
+  url: `https://saadiconstructiongroup.com/service-areas/${area.slug}`,
+  telephone: '(512) 962-9856',
+  email: 'Maher@saadi-construction.com',
+  address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
+  areaServed: { '@type': 'City', name: area.name, containedInPlace: { '@type': 'State', name: 'Texas' } },
+};
+---
+
+<Layout
+  title={area.metaTitle || `Apartment Renovation in ${area.name}, TX | Saadi Construction Group`}
+  description={area.metaDescription || `Professional apartment renovation services in ${area.name}, Texas. Unit rehabs, kitchen and bathroom remodels, and property-wide renovations.`}
+  keywords={`apartment renovation ${area.name}, multifamily renovation ${area.name} TX, apartment rehab ${area.name}`}
+  canonicalUrl={`https://saadiconstructiongroup.com/service-areas/${area.slug}`}
+  jsonLd={jsonLd}
+>
+  <AreaHero name={area.name} county={area.county} headline={`Apartment Renovation in ${area.name}`} />
+  <AreaServices name={area.name} />
+  <NearbyAreas nearbyAreas={nearbyAreas} />
+  <CTABanner />
+</Layout>

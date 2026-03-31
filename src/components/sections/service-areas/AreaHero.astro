@@ -1,0 +1,20 @@
+---
+const { name, county, headline } = Astro.props;
+---
+
+<section class="relative min-h-[55vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(201,149,42,0.08),transparent_60%)]"></div>
+  <div class="relative z-10 container-main px-4 py-20 md:py-28">
+    {county && (
+      <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-white/10 text-gray-300 border border-white/20">
+        {county} County
+      </span>
+    )}
+    <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-3xl">
+      {headline || `Apartment Renovation in ${name}`}
+    </h1>
+    <div class="animate-fade-in-up-delay mt-10">
+      <a href="/contact" class="btn-primary inline-block text-lg px-8 py-4">Request a Bid</a>
+    </div>
+  </div>
+</section>

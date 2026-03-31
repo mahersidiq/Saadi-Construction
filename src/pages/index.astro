@@ -1,0 +1,63 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/sections/home/Hero.astro';
+import StatsBar from '@/islands/StatsBar.jsx';
+import ServicesGrid from '@/components/sections/home/ServicesGrid.astro';
+import WhySaadi from '@/components/sections/home/WhySaadi.astro';
+import ServiceAreas from '@/components/sections/home/ServiceAreas.astro';
+import Process from '@/components/sections/home/Process.astro';
+import FeaturedProjects from '@/components/sections/home/FeaturedProjects.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+import { supabase } from '@/lib/supabase';
+
+let featuredProjects = [];
+try {
+  if (supabase) {
+    const { data } = await supabase
+      .from('projects')
+      .select('slug, title, location, unit_count, scope_type, image_url')
+      .eq('featured', true)
+      .order('sort_order', { ascending: true })
+      .limit(3);
+    if (data) featuredProjects = data;
+  }
+} catch (e) {
+  console.error('Error fetching featured projects:', e);
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  name: 'Saadi Construction Group',
+  url: 'https://saadiconstructiongroup.com',
+  telephone: '(512) 962-9856',
+  email: 'Maher@saadi-construction.com',
+  description: 'Houston apartment renovation contractor specializing in multifamily renovation, full gut rehabs, unit remodels, and property-wide renovation programs.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '801 Travis St Suite 2101',
+    addressLocality: 'Houston',
+    addressRegion: 'TX',
+    postalCode: '77002',
+    addressCountry: 'US',
+  },
+  areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
+};
+---
+
+<Layout
+  title="Saadi Construction Group | Houston Apartment Renovation & Rehab Specialists"
+  description="Houston apartment renovation contractor. Full gut rehabs, unit remodels, and complete multifamily renovation services for apartment owners and operators."
+  keywords="apartment renovation Houston, multifamily renovation Houston, apartment rehab Houston TX, gut rehab apartments"
+  canonicalUrl="https://saadiconstructiongroup.com"
+  jsonLd={jsonLd}
+>
+  <Hero />
+  <StatsBar client:visible />
+  <ServicesGrid />
+  <WhySaadi />
+  <ServiceAreas />
+  <Process />
+  <FeaturedProjects projects={featuredProjects} />
+  <CTABanner />
+</Layout>

@@ -1,0 +1,27 @@
+---
+import { serviceCategories } from '@/data/services';
+const { name } = Astro.props;
+---
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="container-main px-4">
+    <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-charcoal mb-12 text-center">
+      Services Available in {name}
+    </h2>
+    <div class="space-y-12 max-w-5xl mx-auto">
+      {serviceCategories.map((category) => (
+        <div class="animate-on-scroll">
+          <h3 class="font-heading text-xl font-bold text-navy mb-4">{category.name}</h3>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {category.services.map((service) => (
+              <a href={`/services/${service.slug}`} class="flex items-center gap-3 rounded-lg bg-light-gray p-4 border border-gray-200 hover:border-gold/50 hover:shadow-md transition-all duration-300 group">
+                <svg class="h-5 w-5 flex-shrink-0 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                <span class="text-charcoal font-medium group-hover:text-navy transition-colors">{service.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
