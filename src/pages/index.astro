@@ -5,6 +5,7 @@ import Hero from '@/components/sections/home/Hero.astro';
 import StatsBar from '@/islands/StatsBar.jsx';
 import ServicesGrid from '@/components/sections/home/ServicesGrid.astro';
 import WhySaadi from '@/components/sections/home/WhySaadi.astro';
+import PhotoGallery from '@/components/sections/home/PhotoGallery.astro';
 import ServiceAreas from '@/components/sections/home/ServiceAreas.astro';
 import Process from '@/components/sections/home/Process.astro';
 import FeaturedProjects from '@/components/sections/home/FeaturedProjects.astro';
@@ -57,6 +58,7 @@ const jsonLd = {
   <StatsBar client:visible />
   <ServicesGrid />
   <WhySaadi />
+  <PhotoGallery />
   <ServiceAreas />
   <Process />
   <FeaturedProjects projects={featuredProjects} />
