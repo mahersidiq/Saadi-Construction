@@ -2,9 +2,9 @@
 const { projects = [] } = Astro.props;
 
 const placeholders = [
-  { title: 'Coming Soon', location: 'Houston, TX', units: '--' },
-  { title: 'Coming Soon', location: 'Houston, TX', units: '--' },
-  { title: 'Coming Soon', location: 'Houston, TX', units: '--' },
+  { title: 'Garden-Style Community Renovation', location: 'Houston, TX', units: '150+', scope: 'Full Gut Rehab', image: '/images/saadi-kitchen-renovation-houston-1.jpg' },
+  { title: 'Multifamily Unit Renovation Program', location: 'Houston, TX', units: '200+', scope: 'Unit Interior Renovation', image: '/images/saadi-kitchen-renovation-houston-2.jpg' },
+  { title: 'Amenity & Common Area Renovation', location: 'Houston, TX', units: '100+', scope: 'Amenity Renovation', image: '/images/saadi-amenity-renovation-houston-1.jpg' },
 ];
 
 const items = projects.length > 0 ? projects.slice(0, 3) : placeholders;
@@ -21,9 +21,9 @@ const hasReal = projects.length > 0;
       {items.map((project, i) => {
         const inner = (
           <div class="animate-on-scroll rounded-2xl bg-white shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <div class="h-48 bg-gradient-to-br from-navy to-charcoal flex items-center justify-center">
-              {project.image_url ? (
-                <img src={project.image_url} alt={project.title} class="w-full h-full object-cover" loading="lazy" />
+            <div class="h-48 bg-gradient-to-br from-navy to-charcoal flex items-center justify-center overflow-hidden">
+              {(project.image_url || project.image) ? (
+                <img src={project.image_url || project.image} alt={project.title} class="w-full h-full object-cover" loading="lazy" />
               ) : (
                 <svg class="w-12 h-12 text-gold/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008V7.5z" /></svg>
               )}
@@ -33,6 +33,9 @@ const hasReal = projects.length > 0;
               <p class="text-sm text-gray-500 mt-1">{project.location || project.city || 'Houston, TX'}</p>
               {(project.unit_count || project.units) && (
                 <p class="text-sm text-gold font-semibold mt-2">{project.unit_count || project.units} Units</p>
+              )}
+              {(project.scope_type || project.scope) && (
+                <p class="text-sm text-gray-500 mt-1">{project.scope_type || project.scope}</p>
               )}
             </div>
           </div>

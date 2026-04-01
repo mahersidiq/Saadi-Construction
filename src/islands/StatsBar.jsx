@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 
 const stats = [
   { value: 1000, suffix: '+', label: 'Units Delivered' },
-  { value: 20, suffix: '+', label: 'Services' },
+  { value: null, display: '5+', label: 'Years in Houston' },
   { value: null, display: 'Greater Houston', label: 'Area Coverage' },
   { value: null, display: 'Licensed', label: '& Insured' },
 ];
@@ -14,9 +14,18 @@ function AnimatedNumber({ value, suffix = '' }) {
 
   useEffect(() => {
     if (!ref.current || value === null) return;
+
+    const fallback = setTimeout(() => {
+      if (!hasAnimated) {
+        setHasAnimated(true);
+        setCount(value);
+      }
+    }, 2000);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
+          clearTimeout(fallback);
           setHasAnimated(true);
           let start = 0;
           const step = Math.ceil(value / 40);
@@ -34,7 +43,10 @@ function AnimatedNumber({ value, suffix = '' }) {
       { threshold: 0.3 }
     );
     observer.observe(ref.current);
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(fallback);
+      observer.disconnect();
+    };
   }, [value, hasAnimated]);
 
   return (
