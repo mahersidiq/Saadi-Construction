@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'info@saadiconstructiongroup.com';
+const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'maher@saadi-construction.com';
 const FROM_EMAIL = import.meta.env.FROM_EMAIL || 'Saadi Construction Group <noreply@saadiconstructiongroup.com>';
 
 let resend;
