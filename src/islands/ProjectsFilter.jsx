@@ -43,10 +43,11 @@ const PLACEHOLDER_PROJECTS = [
 
 export default function ProjectsFilter({ projects = [] }) {
   const [activeFilter, setActiveFilter] = useState(null);
-  const hasRealProjects = projects.length > 0;
-  const filtered = hasRealProjects
-    ? (activeFilter ? projects.filter((p) => p.scope_type === activeFilter) : projects)
-    : PLACEHOLDER_PROJECTS;
+  const hasRealProjects = projects.some((p) => !p.is_placeholder);
+  const displayProjects = hasRealProjects ? projects : projects.length > 0 ? projects : PLACEHOLDER_PROJECTS;
+  const filtered = hasRealProjects && activeFilter
+    ? displayProjects.filter((p) => p.scope_type === activeFilter)
+    : displayProjects;
   const allFilters = ['All', ...projectCategories];
 
   return (
@@ -72,7 +73,7 @@ export default function ProjectsFilter({ projects = [] }) {
         {filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}
       </div>
 
-      {!hasRealProjects && (
+      {!hasRealProjects && displayProjects.length > 0 && (
         <p className="mt-8 text-center text-sm text-gray-400 italic">Project portfolio actively being updated.</p>
       )}
     </>
