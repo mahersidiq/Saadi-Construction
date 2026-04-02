@@ -1,11 +1,9 @@
 import { useState } from 'react';
 
 function ProjectCard({ project }) {
-  const { slug, title, apt_name, location, unit_count, scope_type, image_url, is_placeholder } = project;
-  const Tag = is_placeholder ? 'div' : 'a';
-  const linkProps = is_placeholder ? {} : { href: `/projects/${slug}` };
+  const { title, apt_name, location, unit_count, scope_type, image_url } = project;
   return (
-    <Tag {...linkProps} className="group block rounded-xl overflow-hidden bg-white border border-gray-200 hover:border-gold/50 shadow-sm hover:shadow-xl transition-all duration-300">
+    <div className="group block rounded-xl overflow-hidden bg-white border border-gray-200 hover:border-gold/50 shadow-sm hover:shadow-xl transition-all duration-300">
       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-navy to-charcoal">
         {image_url ? (
           <img src={image_url} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
@@ -29,24 +27,15 @@ function ProjectCard({ project }) {
           {unit_count && <span className="px-2 py-0.5 rounded bg-light-gray text-xs font-medium text-charcoal">{unit_count} Units</span>}
         </div>
       </div>
-    </Tag>
+    </div>
   );
 }
 
 const projectCategories = ['Gut Rehab', 'Interior', 'Common Areas', 'Exterior'];
 
-const PLACEHOLDER_PROJECTS = [
-  { title: 'Garden-Style Community Renovation', location: 'Houston, TX', unit_count: '150+', scope_type: 'Full Gut Rehab', image_url: '/images/saadi-kitchen-renovation-houston-1.jpg', is_placeholder: true, slug: 'placeholder-1' },
-  { title: 'Multifamily Unit Renovation Program', location: 'Houston, TX', unit_count: '200+', scope_type: 'Unit Interior Renovation', image_url: '/images/saadi-kitchen-renovation-houston-2.jpg', is_placeholder: true, slug: 'placeholder-2' },
-  { title: 'Amenity & Common Area Renovation', location: 'Houston, TX', unit_count: '100+', scope_type: 'Amenity Renovation', image_url: '/images/saadi-clubhouse-renovation-houston-1.jpg', is_placeholder: true, slug: 'placeholder-3' },
-];
-
 export default function ProjectsFilter({ projects = [] }) {
   const [activeFilter, setActiveFilter] = useState(null);
-  const hasRealProjects = projects.length > 0;
-  const filtered = hasRealProjects
-    ? (activeFilter ? projects.filter((p) => p.scope_type === activeFilter) : projects)
-    : PLACEHOLDER_PROJECTS;
+  const filtered = activeFilter ? projects.filter((p) => p.scope_type === activeFilter) : projects;
   const allFilters = ['All', ...projectCategories];
 
   return (
@@ -71,10 +60,6 @@ export default function ProjectsFilter({ projects = [] }) {
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-4">
         {filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}
       </div>
-
-      {!hasRealProjects && (
-        <p className="mt-8 text-center text-sm text-gray-400 italic">Project portfolio actively being updated.</p>
-      )}
     </>
   );
 }
