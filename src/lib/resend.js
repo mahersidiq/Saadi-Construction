@@ -16,6 +16,10 @@ function getResendClient() {
 }
 
 export async function sendContactEmail(lead) {
+  const apiKey = import.meta.env.RESEND_API_KEY;
+  if (!apiKey) throw new Error('RESEND_API_KEY is not configured.');
+
+  const resend = new Resend(apiKey);
   const {
     name, email, phone, company, propertyName,
     unitCount, service, timeline, budget, message, source,
