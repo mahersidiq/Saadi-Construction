@@ -2,15 +2,16 @@
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/sections/home/Hero.astro';
+import TrustBar from '@/components/sections/home/TrustBar.astro';
 import StatsBar from '@/islands/StatsBar.jsx';
 import ServicesGrid from '@/components/sections/home/ServicesGrid.astro';
 import WhySaadi from '@/components/sections/home/WhySaadi.astro';
-import PhotoGallery from '@/components/sections/home/PhotoGallery.astro';
-import ServiceAreas from '@/components/sections/home/ServiceAreas.astro';
 import Process from '@/components/sections/home/Process.astro';
+import PhotoGallery from '@/components/sections/home/PhotoGallery.astro';
 import FeaturedProjects from '@/components/sections/home/FeaturedProjects.astro';
-import CTABanner from '@/components/sections/home/CTABanner.astro';
 import Testimonials from '@/components/sections/home/Testimonials.astro';
+import ServiceAreas from '@/components/sections/home/ServiceAreas.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -40,13 +41,14 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <Hero />
+  <TrustBar />
   <StatsBar client:visible />
-  <Process />
   <ServicesGrid />
   <WhySaadi />
+  <Process />
   <PhotoGallery />
-  <ServiceAreas />
   <FeaturedProjects projects={[]} />
   <Testimonials />
+  <ServiceAreas />
   <CTABanner />
 </Layout>
