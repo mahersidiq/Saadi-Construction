@@ -47,6 +47,13 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <AreaHero name={area.name} county={area.county} headline={`Apartment Renovation in ${area.name}`} />
+  {area.localContent && (
+    <section class="bg-white py-12">
+      <div class="container-main px-4">
+        <p class="text-lg text-gray-700 leading-relaxed">{area.localContent}</p>
+      </div>
+    </section>
+  )}
   <AreaServices name={area.name} />
   <NearbyAreas nearbyAreas={nearbyAreas} />
   <CTABanner />
