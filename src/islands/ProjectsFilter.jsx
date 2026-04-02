@@ -34,9 +34,18 @@ function ProjectCard({ project }) {
 
 const projectCategories = ['Gut Rehab', 'Interior', 'Common Areas', 'Exterior'];
 
+const PLACEHOLDER_PROJECTS = [
+  { title: 'Garden-Style Community Renovation', location: 'Houston, TX', unit_count: '150+', scope_type: 'Full Gut Rehab', image_url: '/images/saadi-kitchen-renovation-houston-1.jpg', is_placeholder: true, slug: 'placeholder-1' },
+  { title: 'Multifamily Unit Renovation Program', location: 'Houston, TX', unit_count: '200+', scope_type: 'Unit Interior Renovation', image_url: '/images/saadi-kitchen-renovation-houston-2.jpg', is_placeholder: true, slug: 'placeholder-2' },
+  { title: 'Amenity & Common Area Renovation', location: 'Houston, TX', unit_count: '100+', scope_type: 'Amenity Renovation', image_url: '/images/saadi-clubhouse-renovation-houston-1.jpg', is_placeholder: true, slug: 'placeholder-3' },
+];
+
 export default function ProjectsFilter({ projects = [] }) {
   const [activeFilter, setActiveFilter] = useState(null);
-  const filtered = activeFilter ? projects.filter((p) => p.scope_type === activeFilter) : projects;
+  const hasRealProjects = projects.length > 0;
+  const filtered = hasRealProjects
+    ? (activeFilter ? projects.filter((p) => p.scope_type === activeFilter) : projects)
+    : PLACEHOLDER_PROJECTS;
   const allFilters = ['All', ...projectCategories];
 
   return (
@@ -58,15 +67,12 @@ export default function ProjectsFilter({ projects = [] }) {
         })}
       </div>
 
-      {filtered.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-4">
-          {filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}
-        </div>
-      ) : (
-        <div className="text-center py-16">
-          <p className="text-lg text-gray-500">No projects found for the selected filter.</p>
-          <button onClick={() => setActiveFilter(null)} className="mt-4 text-gold font-semibold hover:underline">View all projects</button>
-        </div>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-4">
+        {filtered.map((project) => <ProjectCard key={project.slug} project={project} />)}
+      </div>
+
+      {!hasRealProjects && (
+        <p className="mt-8 text-center text-sm text-gray-400 italic">Project portfolio actively being updated.</p>
       )}
     </>
   );
