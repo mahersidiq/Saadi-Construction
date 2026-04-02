@@ -1,12 +1,12 @@
 import { Resend } from 'resend';
 
-const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'maher@saadi-construction.com';
-const FROM_EMAIL = import.meta.env.FROM_EMAIL || 'Saadi Construction Group <noreply@saadiconstructiongroup.com>';
+const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'maher@saadi-construction.com';
+const FROM_EMAIL = import.meta.env.FROM_EMAIL || process.env.FROM_EMAIL || 'Saadi Construction Group <noreply@saadiconstructiongroup.com>';
 
 let resend;
 function getResendClient() {
   if (!resend) {
-    const apiKey = import.meta.env.RESEND_API_KEY;
+    const apiKey = import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
     if (!apiKey) {
       throw new Error('RESEND_API_KEY is not configured');
     }
@@ -16,8 +16,9 @@ function getResendClient() {
 }
 
 export async function sendContactEmail(lead) {
-  const apiKey = import.meta.env.RESEND_API_KEY;
+  const apiKey = import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
   if (!apiKey) throw new Error('RESEND_API_KEY is not configured.');
+  console.log('[resend] Sending to:', CONTACT_EMAIL, '| From:', FROM_EMAIL);
 
   const resend = new Resend(apiKey);
   const {
