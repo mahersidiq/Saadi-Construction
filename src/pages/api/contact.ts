@@ -1,5 +1,4 @@
 import type { APIRoute } from 'astro';
-import { sendContactEmail } from '@/lib/resend';
 
 export const prerender = false;
 
@@ -23,6 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     if (import.meta.env.RESEND_API_KEY) {
+      const { sendContactEmail } = await import('@/lib/resend');
       await sendContactEmail({
         name: name.trim(),
         email: email.trim(),
@@ -35,6 +35,8 @@ export const POST: APIRoute = async ({ request }) => {
         message: message?.trim() || '',
         source: source || '',
       });
+    } else {
+      console.log('Contact form submission (no email configured):', { name: name.trim(), email: email.trim(), phone: phone.trim() });
     }
 
     return new Response(
