@@ -20,9 +20,13 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({ error: 'Phone number is required.' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
   }
 
+  const resendKey = import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
+  console.log('[contact] RESEND_API_KEY present:', !!resendKey);
+
   try {
-    if (import.meta.env.RESEND_API_KEY) {
+    if (resendKey) {
       const { sendContactEmail } = await import('@/lib/resend');
+      console.log('[contact] Attempting to send email for:', name.trim());
       await sendContactEmail({
         name: name.trim(),
         email: email.trim(),
@@ -35,8 +39,9 @@ export const POST: APIRoute = async ({ request }) => {
         message: message?.trim() || '',
         source: source || '',
       });
+      console.log('[contact] Email sent successfully');
     } else {
-      console.log('Contact form submission (no email configured):', { name: name.trim(), email: email.trim(), phone: phone.trim() });
+      console.log('[contact] No RESEND_API_KEY configured — skipping email. Submission:', { name: name.trim(), email: email.trim(), phone: phone.trim() });
     }
 
     return new Response(
