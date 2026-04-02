@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 function ProjectCard({ project }) {
-  const { slug, title, location, unit_count, scope_type, image_url, is_placeholder } = project;
+  const { slug, title, apt_name, location, unit_count, scope_type, image_url, is_placeholder } = project;
   const Tag = is_placeholder ? 'div' : 'a';
   const linkProps = is_placeholder ? {} : { href: `/projects/${slug}` };
   return (
@@ -17,7 +17,8 @@ function ProjectCard({ project }) {
         {scope_type && <span className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-gold/90 text-white">{scope_type}</span>}
       </div>
       <div className="p-5">
-        <h3 className="font-heading text-lg font-bold text-charcoal group-hover:text-navy transition-colors line-clamp-2">{title}</h3>
+        {apt_name && <h3 className="font-heading text-xl font-bold text-charcoal group-hover:text-navy transition-colors leading-snug">{apt_name}</h3>}
+        <p className="mt-0.5 text-sm font-medium text-gray-500 line-clamp-1">{title}</p>
         <div className="mt-3 flex items-center gap-3 text-sm text-gray-500">
           {location && (
             <span className="flex items-center gap-1">
