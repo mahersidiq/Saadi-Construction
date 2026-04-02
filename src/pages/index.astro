@@ -10,6 +10,7 @@ import ServiceAreas from '@/components/sections/home/ServiceAreas.astro';
 import Process from '@/components/sections/home/Process.astro';
 import FeaturedProjects from '@/components/sections/home/FeaturedProjects.astro';
 import CTABanner from '@/components/sections/home/CTABanner.astro';
+import Testimonials from '@/components/sections/home/Testimonials.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -46,5 +47,6 @@ const jsonLd = {
   <PhotoGallery />
   <ServiceAreas />
   <FeaturedProjects projects={[]} />
+  <Testimonials />
   <CTABanner />
 </Layout>
