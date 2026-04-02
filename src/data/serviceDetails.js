@@ -10,9 +10,9 @@ export const serviceDetails = {
     includes: ['Complete interior demolition and haul-off', 'Framing and structural modifications', 'Full plumbing system replacement', 'Electrical rewiring and panel upgrades', 'New drywall and insulation', 'Luxury vinyl plank (LVP) flooring installation', 'Kitchen cabinetry, countertops, and appliances', 'Bathroom tile, vanity, and fixture replacement', 'Interior painting and trim', 'Fixture, hardware, and final finishes installation'],
     bestFor: 'Properties undergoing value-add repositioning, units with extensive deferred maintenance, or communities transitioning to a higher rent tier. Gut rehabs are the right scope when cosmetic upgrades alone won\'t move the needle on rents or when aging mechanical systems are driving maintenance costs.',
     heroImages: [
-      { src: '/images/kitchen-renovation-1.jpg', alt: 'Completed gut rehab kitchen in Houston apartment — new cabinetry, quartz countertops, and LVP flooring' },
-      { src: '/images/bathroom-remodel-1.jpg', alt: 'Gut rehab bathroom renovation Houston TX — new tile surround, vanity, and plumbing fixtures' },
-      { src: '/images/framing-1.jpg', alt: 'Apartment gut rehab in progress Houston TX — stripped unit with new framing and rough plumbing' },
+      { src: '/images/saadi-kitchen-renovation-houston-1.jpg', alt: 'Completed gut rehab kitchen in Houston apartment — new cabinetry, quartz countertops, and LVP flooring' },
+      { src: '/images/saadi-bathroom-remodel-houston-1.jpg', alt: 'Gut rehab bathroom renovation Houston TX — new tile surround, vanity, and plumbing fixtures' },
+      { src: '/images/saadi-multifamily-framing-houston-1.jpg', alt: 'Apartment gut rehab in progress Houston TX — stripped unit with new framing and rough plumbing' },
     ],
     faqs: [
       {

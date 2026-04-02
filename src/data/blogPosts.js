@@ -10,8 +10,8 @@ export const blogPosts = [
     author: 'Saadi Construction Group',
     category: 'Cost Guides',
     readTime: '8 min read',
-    heroImage: '/images/kitchen-renovation-1.jpg',
-    heroImageAlt: 'Renovated apartment kitchen in Houston TX with new cabinetry, quartz countertops, and LVP flooring — completed by Saadi Construction Group',
+    heroImage: '/images/saadi-apartment-living-room-houston-1.jpg',
+    heroImageAlt: 'Renovated apartment living room in Houston TX — completed by Saadi Construction Group',
     sections: [
       {
         heading: null,
