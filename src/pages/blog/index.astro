@@ -1,23 +1,6 @@
 ---
+export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
-import BlogFilter from '@/islands/BlogFilter.jsx';
-import { supabase } from '@/lib/supabase';
-
-export const prerender = false;
-
-let posts = [];
-try {
-  if (supabase) {
-    const { data } = await supabase
-      .from('blog_posts')
-      .select('slug, title, excerpt, cover_image_url, category, published_at')
-      .eq('status', 'published')
-      .order('published_at', { ascending: false });
-    if (data) posts = data;
-  }
-} catch (e) {
-  console.error('Error fetching blog posts:', e);
-}
 ---
 
 <Layout
@@ -36,10 +19,13 @@ try {
     </div>
   </section>
 
-  <!-- Category Filter + Posts -->
+  <!-- Coming Soon -->
   <section class="section-padding bg-white">
-    <div class="container-main px-4">
-      <BlogFilter client:load posts={posts} />
+    <div class="container-main px-4 text-center py-16">
+      <p class="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Coming Soon</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Articles & Renovation Insights</h2>
+      <p class="text-lg text-gray-600 max-w-xl mx-auto mb-10">We're publishing guides on multifamily renovation, cost planning, and Houston market insights. Check back soon.</p>
+      <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
     </div>
   </section>
 </Layout>

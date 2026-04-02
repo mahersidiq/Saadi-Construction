@@ -10,22 +10,6 @@ import ServiceAreas from '@/components/sections/home/ServiceAreas.astro';
 import Process from '@/components/sections/home/Process.astro';
 import FeaturedProjects from '@/components/sections/home/FeaturedProjects.astro';
 import CTABanner from '@/components/sections/home/CTABanner.astro';
-import { supabase } from '@/lib/supabase';
-
-let featuredProjects = [];
-try {
-  if (supabase) {
-    const { data } = await supabase
-      .from('projects')
-      .select('slug, title, location, unit_count, scope_type, image_url')
-      .eq('featured', true)
-      .order('sort_order', { ascending: true })
-      .limit(3);
-    if (data) featuredProjects = data;
-  }
-} catch (e) {
-  console.error('Error fetching featured projects:', e);
-}
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -61,6 +45,6 @@ const jsonLd = {
   <PhotoGallery />
   <ServiceAreas />
   <Process />
-  <FeaturedProjects projects={featuredProjects} />
+  <FeaturedProjects projects={[]} />
   <CTABanner />
 </Layout>
