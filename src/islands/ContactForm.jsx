@@ -1,18 +1,16 @@
 import { useState } from 'react';
-import { serviceAreas } from '@/data/serviceAreas';
-import { serviceCategories } from '@/data/services';
 
-const timelineOptions = ['ASAP', '1-3 Months', '3-6 Months', '6-12 Months', 'Just Exploring'];
-const sourceOptions = ['Google Search', 'LinkedIn', 'Referral', 'Texas Apartment Association', 'Other'];
-const allServiceNames = serviceCategories.flatMap((cat) => cat.services.map((s) => s.name));
+const propertyTypeOptions = ['Garden-Style Apartment', 'Mid-Rise', 'High-Rise', 'Mixed-Use', 'Other'];
+const unitCountOptions = ['1-50 units', '51-150 units', '151-300 units', '300+ units'];
+const scopeOptions = ['Full Gut Rehab', 'Unit Interior Renovation', 'Common Area & Amenity', 'Exterior & Curb Appeal', 'Value-Add Program', 'Construction Management', 'Not Sure Yet'];
+const timelineOptions = ['Immediately', '1-3 months', '3-6 months', '6+ months'];
 
 const inputClasses = 'w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-gray-400 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold transition-colors';
 const labelClasses = 'block text-sm font-semibold text-charcoal mb-1.5';
 
 export default function ContactForm() {
   const [form, setForm] = useState({
-    name: '', company: '', email: '', phone: '', propertyAddress: '',
-    city: '', unitCount: '', projectType: '', timeline: '', source: '', message: '',
+    name: '', email: '', phone: '', company: '', unitCount: '', projectType: '', timeline: '', message: '',
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -48,7 +46,7 @@ export default function ContactForm() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Something went wrong.');
       setSubmitted(true);
-      setForm({ name: '', company: '', email: '', phone: '', propertyAddress: '', city: '', unitCount: '', projectType: '', timeline: '', source: '', message: '' });
+      setForm({ name: '', email: '', phone: '', company: '', unitCount: '', projectType: '', timeline: '', message: '' });
     } catch (err) {
       alert(err.message || 'Failed to submit. Please try again.');
     } finally {
@@ -78,60 +76,46 @@ export default function ContactForm() {
           {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
         </div>
         <div>
-          <label htmlFor="company" className={labelClasses}>Company</label>
-          <input id="company" name="company" type="text" value={form.company} onChange={handleChange} placeholder="Property management company" className={inputClasses} />
-        </div>
-        <div>
           <label htmlFor="email" className={labelClasses}>Email <span className="text-red-500">*</span></label>
           <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="john@example.com" className={`${inputClasses} ${errors.email ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : ''}`} />
           {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="phone" className={labelClasses}>Phone <span className="text-red-500">*</span></label>
-          <input id="phone" name="phone" type="tel" required value={form.phone} onChange={handleChange} placeholder="(555) 123-4567" className={`${inputClasses} ${errors.phone ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : ''}`} />
+          <label htmlFor="phone" className={labelClasses}>Phone Number <span className="text-red-500">*</span></label>
+          <input id="phone" name="phone" type="tel" required value={form.phone} onChange={handleChange} placeholder="(832) 360-3804" className={`${inputClasses} ${errors.phone ? 'border-red-400 focus:border-red-400 focus:ring-red-400' : ''}`} />
           {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
         </div>
-        <div className="sm:col-span-2">
-          <label htmlFor="propertyAddress" className={labelClasses}>Property Address</label>
-          <input id="propertyAddress" name="propertyAddress" type="text" value={form.propertyAddress} onChange={handleChange} placeholder="123 Main St, Houston, TX 77001" className={inputClasses} />
-        </div>
         <div>
-          <label htmlFor="city" className={labelClasses}>City / Area</label>
-          <select id="city" name="city" value={form.city} onChange={handleChange} className={inputClasses}>
-            <option value="">Select area</option>
-            {serviceAreas.map((area) => <option key={area.slug} value={area.name}>{area.name}</option>)}
-            <option value="Other">Other</option>
+          <label htmlFor="company" className={labelClasses}>Property Type</label>
+          <select id="company" name="company" value={form.company} onChange={handleChange} className={inputClasses}>
+            <option value="">Select property type</option>
+            {propertyTypeOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
           </select>
         </div>
         <div>
           <label htmlFor="unitCount" className={labelClasses}>Number of Units</label>
-          <input id="unitCount" name="unitCount" type="text" value={form.unitCount} onChange={handleChange} placeholder="e.g. 50, 100, 250" className={inputClasses} />
-        </div>
-        <div>
-          <label htmlFor="projectType" className={labelClasses}>Project Type</label>
-          <select id="projectType" name="projectType" value={form.projectType} onChange={handleChange} className={inputClasses}>
-            <option value="">Select service</option>
-            {allServiceNames.map((name) => <option key={name} value={name}>{name}</option>)}
-            <option value="Other">Other</option>
+          <select id="unitCount" name="unitCount" value={form.unitCount} onChange={handleChange} className={inputClasses}>
+            <option value="">Select range</option>
+            {unitCountOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
           </select>
         </div>
         <div>
-          <label htmlFor="timeline" className={labelClasses}>Timeline</label>
+          <label htmlFor="projectType" className={labelClasses}>Scope of Work</label>
+          <select id="projectType" name="projectType" value={form.projectType} onChange={handleChange} className={inputClasses}>
+            <option value="">Select scope</option>
+            {scopeOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
+          </select>
+        </div>
+        <div className="sm:col-span-2">
+          <label htmlFor="timeline" className={labelClasses}>Desired Start Timeline</label>
           <select id="timeline" name="timeline" value={form.timeline} onChange={handleChange} className={inputClasses}>
             <option value="">Select timeline</option>
             {timelineOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
           </select>
         </div>
         <div className="sm:col-span-2">
-          <label htmlFor="source" className={labelClasses}>How did you hear about us?</label>
-          <select id="source" name="source" value={form.source} onChange={handleChange} className={inputClasses}>
-            <option value="">Select one</option>
-            {sourceOptions.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
-          </select>
-        </div>
-        <div className="sm:col-span-2">
-          <label htmlFor="message" className={labelClasses}>Message</label>
-          <textarea id="message" name="message" rows={5} value={form.message} onChange={handleChange} placeholder="Tell us about your project, scope of work, or any specific requirements..." className={inputClasses} />
+          <label htmlFor="message" className={labelClasses}>Project Details</label>
+          <textarea id="message" name="message" rows={5} value={form.message} onChange={handleChange} placeholder="Tell us about your property, scope of work, or any specific requirements..." className={inputClasses} />
         </div>
       </div>
       <div className="pt-2">

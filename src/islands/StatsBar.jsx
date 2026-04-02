@@ -2,9 +2,9 @@ import { useEffect, useState, useRef } from 'react';
 
 const stats = [
   { value: 1000, suffix: '+', label: 'Units Delivered' },
-  { value: null, display: '5+', label: 'Years in Houston' },
+  { value: null, display: '48-Hr', label: 'Bid Turnaround' },
   { value: null, display: 'Greater Houston', label: 'Area Coverage' },
-  { value: null, display: 'Licensed', label: '& Insured' },
+  { value: null, display: 'Owner-Led', label: '& Insured' },
 ];
 
 function AnimatedNumber({ value, suffix = '' }) {

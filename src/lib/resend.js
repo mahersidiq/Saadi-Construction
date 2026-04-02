@@ -1,11 +1,25 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
-const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'info@saadiconstructiongroup.com';
+const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || 'maher@saadi-construction.com';
 const FROM_EMAIL = import.meta.env.FROM_EMAIL || 'Saadi Construction Group <noreply@saadiconstructiongroup.com>';
 
+let resend;
+function getResendClient() {
+  if (!resend) {
+    const apiKey = import.meta.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY is not configured');
+    }
+    resend = new Resend(apiKey);
+  }
+  return resend;
+}
+
 export async function sendContactEmail(lead) {
+  const apiKey = import.meta.env.RESEND_API_KEY;
+  if (!apiKey) throw new Error('RESEND_API_KEY is not configured.');
+
+  const resend = new Resend(apiKey);
   const {
     name, email, phone, company, propertyName,
     unitCount, service, timeline, budget, message, source,
@@ -61,7 +75,7 @@ export async function sendContactEmail(lead) {
 </body>
 </html>`;
 
-  const { data, error } = await resend.emails.send({
+  const { data, error } = await getResendClient().emails.send({
     from: FROM_EMAIL,
     to: [CONTACT_EMAIL],
     replyTo: email,
