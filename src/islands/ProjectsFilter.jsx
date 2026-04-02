@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
 function ProjectCard({ project }) {
-  const { slug, title, location, unit_count, scope_type, image_url } = project;
+  const { slug, title, location, unit_count, scope_type, image_url, is_placeholder } = project;
+  const Tag = is_placeholder ? 'div' : 'a';
+  const linkProps = is_placeholder ? {} : { href: `/projects/${slug}` };
   return (
-    <a href={`/projects/${slug}`} className="group block rounded-xl overflow-hidden bg-white border border-gray-200 hover:border-gold/50 shadow-sm hover:shadow-xl transition-all duration-300">
+    <Tag {...linkProps} className="group block rounded-xl overflow-hidden bg-white border border-gray-200 hover:border-gold/50 shadow-sm hover:shadow-xl transition-all duration-300">
       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-navy to-charcoal">
         {image_url ? (
           <img src={image_url} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
@@ -26,7 +28,7 @@ function ProjectCard({ project }) {
           {unit_count && <span className="px-2 py-0.5 rounded bg-light-gray text-xs font-medium text-charcoal">{unit_count} Units</span>}
         </div>
       </div>
-    </a>
+    </Tag>
   );
 }
 
