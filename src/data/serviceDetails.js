@@ -2,12 +2,39 @@ export const serviceDetails = {
   'full-gut-rehab': {
     title: 'Full Gut Rehab',
     category: 'Unit Renovation Services',
-    subheadline: 'Complete interior demolition and rebuild for apartment units that need a total transformation.',
-    metaTitle: 'Full Gut Rehab for Apartments | Houston TX | Saadi Construction Group',
-    metaDescription: 'Complete apartment gut rehab services in Houston. We demolish and rebuild unit interiors including framing, plumbing, electrical, finishes, and fixtures.',
-    whatIsIt: 'A full gut rehab involves stripping an apartment unit down to the studs and completely rebuilding the interior. This includes demolition of all existing finishes, replacement of plumbing and electrical systems, new framing as needed, drywall, flooring, cabinetry, fixtures, and final finishes.',
-    includes: ['Complete interior demolition', 'Framing and structural modifications', 'Full plumbing replacement', 'Electrical rewiring and panel upgrades', 'New drywall and insulation', 'Flooring installation', 'Kitchen cabinetry and countertops', 'Bathroom tile and fixtures', 'Interior painting', 'Fixture and hardware installation'],
-    bestFor: 'Properties undergoing value-add repositioning, units with extensive deferred maintenance, or communities transitioning to a higher rent tier.',
+    subheadline: 'Strip-to-stud apartment renovations that reposition assets to a higher rent tier and drive measurable NOI growth.',
+    metaTitle: 'Apartment Gut Rehab Houston TX | Saadi Construction Group',
+    metaDescription: "Houston's multifamily gut rehab specialists. Strip-to-stud apartment renovations delivering measurable rent premiums and NOI growth. Get your free bid in 5 days.",
+    keywords: 'apartment gut rehab Houston TX, multifamily gut renovation Houston, value-add apartment renovation Houston, full gut rehab contractor Houston',
+    whatIsIt: 'A full apartment gut rehab in Houston TX strips every unit to the studs — framing, plumbing, electrical, drywall, finishes, and fixtures all replaced from scratch. It\'s the highest-impact renovation scope available to multifamily owners and the most reliable path to a Class A finish in a legacy asset. Property owners who execute gut rehab programs consistently reposition units to a higher rent tier, with renovated units commanding $150–$300/month above unrenovated stock across the Houston metro. Saadi Construction Group manages every phase — from initial bid to final punchlist — with the owner on-site throughout.',
+    includes: ['Complete interior demolition and haul-off', 'Framing and structural modifications', 'Full plumbing system replacement', 'Electrical rewiring and panel upgrades', 'New drywall and insulation', 'Luxury vinyl plank (LVP) flooring installation', 'Kitchen cabinetry, countertops, and appliances', 'Bathroom tile, vanity, and fixture replacement', 'Interior painting and trim', 'Fixture, hardware, and final finishes installation'],
+    bestFor: 'Properties undergoing value-add repositioning, units with extensive deferred maintenance, or communities transitioning to a higher rent tier. Gut rehabs are the right scope when cosmetic upgrades alone won\'t move the needle on rents or when aging mechanical systems are driving maintenance costs.',
+    heroImages: [
+      { src: '/images/saadi-kitchen-renovation-houston-1.jpg', alt: 'Completed gut rehab kitchen in Houston apartment — new cabinetry, quartz countertops, and LVP flooring' },
+      { src: '/images/saadi-bathroom-remodel-houston-1.jpg', alt: 'Gut rehab bathroom renovation Houston TX — new tile surround, vanity, and plumbing fixtures' },
+      { src: '/images/saadi-multifamily-framing-houston-1.jpg', alt: 'Apartment gut rehab in progress Houston TX — stripped unit with new framing and rough plumbing' },
+    ],
+    faqs: [
+      {
+        question: 'How long does a full apartment gut rehab take in Houston?',
+        answer: 'A gut rehab on a standard Houston apartment unit typically takes 3–5 weeks per unit, depending on scope, unit size, and crew allocation. Properties running parallel multi-unit programs can complete 8–12 units per month. Timeline includes demolition, rough trades, drywall, flooring, cabinetry, and final finishes.',
+      },
+      {
+        question: 'How much does an apartment gut rehab cost per unit in Houston TX?',
+        answer: 'Full apartment gut rehabs in Houston typically range from $18,000–$35,000 per unit, depending on unit size, finish level, and system replacement scope. Most programs land between $22,000 and $28,000 for a standard 700–900 sq ft unit. Saadi Construction Group provides detailed line-item bids within 5 business days.',
+      },
+      {
+        question: "What's the difference between a gut rehab and a cosmetic renovation for apartments?",
+        answer: 'A gut rehab strips the unit to the studs and replaces all systems — plumbing, electrical, framing, drywall, and finishes. A cosmetic renovation updates surface finishes only (cabinets, counters, flooring, paint) without touching mechanical systems. Gut rehabs are best for assets with deferred maintenance or properties repositioning to a higher rent tier.',
+      },
+    ],
+    internalLinks: [
+      { href: '/services/kitchen-renovation', anchor: 'apartment kitchen renovation' },
+      { href: '/services/bathroom-remodel', anchor: 'bathroom remodel' },
+      { href: '/services/flooring-installation', anchor: 'LVP flooring installation' },
+      { href: '/services/unit-interior-renovation', anchor: 'cosmetic unit renovation' },
+      { href: '/service-areas/houston', anchor: 'Houston multifamily renovation' },
+    ],
   },
   'unit-interior-renovation': {
     title: 'Unit Interior Renovation',

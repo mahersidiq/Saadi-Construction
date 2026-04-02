@@ -1,4 +1,199 @@
 ---
-export const prerender = false;
-return Astro.redirect('/blog');
+export const prerender = true;
+import Layout from '@/layouts/Layout.astro';
+import CTABanner from '@/components/sections/home/CTABanner.astro';
+import { blogPosts } from '@/data/blogPosts';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = blogPosts.find((p) => p.slug === slug);
+if (!post) return Astro.redirect('/404');
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.metaDescription,
+  author: {
+    '@type': 'Organization',
+    name: post.author,
+    url: 'https://saadiconstructiongroup.com',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Saadi Construction Group',
+    url: 'https://saadiconstructiongroup.com',
+    logo: { '@type': 'ImageObject', url: 'https://saadiconstructiongroup.com/og-image.jpg' },
+  },
+  datePublished: post.publishDate,
+  image: `https://saadiconstructiongroup.com${post.heroImage}`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://saadiconstructiongroup.com/blog/${post.slug}` },
+};
+
+const faqSchema = post.faqs && post.faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: post.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+} : null;
+
+const jsonLd = faqSchema ? [articleSchema, faqSchema] : articleSchema;
 ---
+
+<Layout
+  title={post.metaTitle}
+  description={post.metaDescription}
+  keywords={post.keywords}
+  canonicalUrl={`https://saadiconstructiongroup.com/blog/${post.slug}`}
+  ogImage={post.heroImage}
+  jsonLd={jsonLd}
+>
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
+    <div class="relative z-10 container-main px-4 py-20 md:py-28">
+      <div class="max-w-3xl">
+        <div class="animate-fade-in-up flex flex-wrap items-center gap-4 mb-6">
+          <span class="inline-block px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-sm font-semibold uppercase tracking-wide">
+            {post.category}
+          </span>
+          <span class="text-gray-400 text-sm">{post.readTime}</span>
+          <time class="text-gray-400 text-sm" datetime={post.publishDate}>
+            {new Date(post.publishDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        </div>
+        <h1 class="animate-fade-in-up font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+          {post.title}
+        </h1>
+        <p class="animate-fade-in-up-delay mt-6 text-lg text-gray-300 leading-relaxed max-w-2xl">
+          {post.excerpt}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Image -->
+  {post.heroImage && (
+    <div class="w-full bg-charcoal">
+      <div class="container-main">
+        <img
+          src={post.heroImage}
+          alt={post.heroImageAlt}
+          class="w-full max-h-[480px] object-cover"
+          loading="eager"
+        />
+      </div>
+    </div>
+  )}
+
+  <!-- Article Body -->
+  <article class="py-16 md:py-24 bg-white">
+    <div class="container-main px-4">
+      <div class="max-w-3xl mx-auto">
+
+        {post.sections.map((section) => (
+          <div class="animate-on-scroll mb-12">
+            {section.heading && (
+              <h2 class="font-heading text-2xl md:text-3xl font-bold text-charcoal mb-5">{section.heading}</h2>
+            )}
+            {section.body && section.body.map((para) => (
+              <p class="text-lg text-gray-700 leading-relaxed mb-4">{para}</p>
+            ))}
+            {section.table && (
+              <div class="overflow-x-auto my-6 rounded-lg border border-gray-200 shadow-sm">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="bg-navy text-white">
+                      <th class="text-left px-5 py-3 font-semibold">Renovation Scope</th>
+                      <th class="text-left px-5 py-3 font-semibold">Cost Range</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {section.table.map((row, i) => (
+                      <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                        <td class="px-5 py-3 text-charcoal">{row.scope}</td>
+                        <td class="px-5 py-3 font-semibold text-navy">{row.costRange}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {section.list && (
+              <ul class="my-5 space-y-2">
+                {section.list.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="mt-1 h-5 w-5 flex-shrink-0 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {section.footer && (
+              <p class="mt-4 text-gray-600 italic border-l-4 border-gold pl-4 leading-relaxed">{section.footer}</p>
+            )}
+          </div>
+        ))}
+
+        <!-- Internal Links -->
+        {post.relatedLinks && post.relatedLinks.length > 0 && (
+          <div class="animate-on-scroll my-12 rounded-lg bg-light-gray p-6 md:p-8 border border-gray-200">
+            <p class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-4">Related Services & Pages</p>
+            <div class="flex flex-wrap gap-3">
+              {post.relatedLinks.map((link) => (
+                <a href={link.href} class="inline-block px-4 py-2 rounded-full bg-white border border-gray-300 text-sm font-medium text-charcoal hover:border-gold hover:text-gold transition-colors duration-200">
+                  {link.anchor}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- FAQs -->
+        {post.faqs && post.faqs.length > 0 && (
+          <div class="animate-on-scroll mt-14">
+            <h2 class="font-heading text-2xl md:text-3xl font-bold text-charcoal mb-8">Frequently Asked Questions</h2>
+            <div class="divide-y divide-gray-200">
+              {post.faqs.map((faq) => (
+                <details class="group py-6 cursor-pointer">
+                  <summary class="flex items-center justify-between gap-4 list-none font-heading font-semibold text-lg text-charcoal">
+                    {faq.question}
+                    <svg class="h-5 w-5 flex-shrink-0 text-gold transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <p class="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <!-- Author / E-E-A-T signal -->
+        <div class="animate-on-scroll mt-14 pt-8 border-t border-gray-200 flex items-start gap-4">
+          <div class="flex-shrink-0 h-12 w-12 rounded-full bg-navy flex items-center justify-center">
+            <svg class="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-charcoal">{post.author}</p>
+            <p class="text-sm text-gray-500 mt-1">Houston-based multifamily renovation contractor specializing in value-add gut rehab programs, unit renovations, and property-wide improvements across the Greater Houston metro. <a href="/about" class="text-gold hover:underline">Learn more about us.</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTABanner />
+</Layout>

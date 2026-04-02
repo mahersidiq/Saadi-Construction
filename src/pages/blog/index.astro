@@ -1,30 +1,87 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
+import { blogPosts } from '@/data/blogPosts';
+
+const published = blogPosts.slice().sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
 ---
 
 <Layout
   title="Apartment Renovation Blog | Saadi Construction Group | Houston, TX"
-  description="Insights on apartment renovation in Houston. Industry trends, project updates, renovation tips, cost guides, and market news for multifamily owners and operators."
-  keywords="apartment renovation blog, multifamily renovation insights, Houston apartment renovation tips"
+  description="Insights on apartment renovation in Houston. Cost guides, industry trends, renovation tips, and market news for multifamily owners and operators."
+  keywords="apartment renovation blog Houston, multifamily renovation insights, Houston apartment rehab cost guide"
   canonicalUrl="https://saadiconstructiongroup.com/blog"
 >
   <!-- Hero -->
   <section class="relative min-h-[40vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
     <div class="relative z-10 container-main px-4 py-20 md:py-28 text-center">
+      <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-gold/15 text-gold border border-gold/30">
+        Renovation Insights
+      </span>
       <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
         Apartment Renovation Insights — Houston, TX
       </h1>
+      <p class="animate-fade-in-up-delay mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
+        Cost guides, renovation tips, and market insights for multifamily owners and operators across the Greater Houston metro.
+      </p>
     </div>
   </section>
 
-  <!-- Coming Soon -->
+  <!-- Post Grid -->
   <section class="section-padding bg-white">
-    <div class="container-main px-4 text-center py-16">
-      <p class="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Coming Soon</p>
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Articles & Renovation Insights</h2>
-      <p class="text-lg text-gray-600 max-w-xl mx-auto mb-10">We're publishing guides on multifamily renovation, cost planning, and Houston market insights. Check back soon.</p>
+    <div class="container-main px-4">
+      {published.length > 0 ? (
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {published.map((post) => (
+            <article class="animate-on-scroll group flex flex-col rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
+              {post.heroImage && (
+                <a href={`/blog/${post.slug}`} class="block overflow-hidden">
+                  <img
+                    src={post.heroImage}
+                    alt={post.heroImageAlt}
+                    class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </a>
+              )}
+              <div class="flex flex-col flex-1 p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-xs font-semibold uppercase tracking-widest text-gold">{post.category}</span>
+                  <span class="text-xs text-gray-400">{post.readTime}</span>
+                </div>
+                <h2 class="font-heading text-xl font-bold text-charcoal leading-snug mb-3 group-hover:text-navy transition-colors duration-200">
+                  <a href={`/blog/${post.slug}`}>{post.title}</a>
+                </h2>
+                <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-5">{post.excerpt}</p>
+                <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                  <time class="text-xs text-gray-400" datetime={post.publishDate}>
+                    {new Date(post.publishDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                  <a href={`/blog/${post.slug}`} class="text-sm font-semibold text-gold hover:underline">
+                    Read more &rarr;
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16">
+          <p class="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Coming Soon</p>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Articles & Renovation Insights</h2>
+          <p class="text-lg text-gray-600 max-w-xl mx-auto mb-10">We're publishing guides on multifamily renovation, cost planning, and Houston market insights. Check back soon.</p>
+          <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-padding bg-light-gray border-t border-gray-200">
+    <div class="container-main px-4 text-center max-w-2xl mx-auto">
+      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Ready to Plan Your Renovation?</h2>
+      <p class="text-lg text-gray-600 mb-8">Get a detailed, line-item bid within 5 business days. We scope every project on-site before we price it.</p>
       <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
     </div>
   </section>
