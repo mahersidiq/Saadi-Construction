@@ -10,7 +10,7 @@ interface Props {
   ogImage?: string;
   canonicalUrl?: string;
   noindex?: boolean;
-  jsonLd?: object;
+  jsonLd?: object | object[];
 }
 
 const {
@@ -52,9 +52,13 @@ const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow';
     {description && <meta name="twitter:description" content={description} />}
     <meta name="twitter:image" content={ogImage} />
 
-    {jsonLd && (
+    {jsonLd && Array.isArray(jsonLd) ? (
+      jsonLd.map((schema) => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    ) : jsonLd ? (
       <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-    )}
+    ) : null}
   </head>
   <body>
     <Navbar client:load pathname={Astro.url.pathname} />

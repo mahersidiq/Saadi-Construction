@@ -3,6 +3,40 @@ export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 import ContactForm from '@/islands/ContactForm.jsx';
 import { serviceAreas } from '@/data/serviceAreas';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Saadi Construction Group',
+    url: 'https://saadiconstructiongroup.com',
+    telephone: '(832) 360-3804',
+    email: 'Maher@saadi-construction.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '801 Travis St Suite 2101',
+      addressLocality: 'Houston',
+      addressRegion: 'TX',
+      postalCode: '77002',
+      addressCountry: 'US',
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '17:00',
+    },
+    areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://saadiconstructiongroup.com/contact' },
+    ],
+  },
+];
 ---
 
 <Layout
@@ -10,6 +44,7 @@ import { serviceAreas } from '@/data/serviceAreas';
   description="Request a bid for your apartment renovation project in Houston and surrounding areas. We respond within 24 hours. Full gut rehabs, unit remodels, and property-wide programs."
   keywords="apartment renovation bid Houston, multifamily renovation estimate, apartment rehab quote Houston TX"
   canonicalUrl="https://saadiconstructiongroup.com/contact"
+  jsonLd={jsonLd}
 >
   <!-- Hero -->
   <section class="relative min-h-[40vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">

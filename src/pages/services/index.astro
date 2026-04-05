@@ -1,7 +1,30 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
-import { serviceCategories } from '@/data/services';
+import { serviceCategories, allServices } from '@/data/services';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Apartment Renovation Services',
+    description: 'Comprehensive apartment renovation services offered by Saadi Construction Group in Houston, TX.',
+    itemListElement: allServices.map((service, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: service.name,
+      url: `https://saadiconstructiongroup.com/services/${service.slug}`,
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://saadiconstructiongroup.com/services' },
+    ],
+  },
+];
 ---
 
 <Layout
@@ -9,6 +32,7 @@ import { serviceCategories } from '@/data/services';
   description="Comprehensive apartment renovation services in Houston. Unit rehabs, kitchen and bathroom remodels, common area renovations, exterior upgrades, and construction management."
   keywords="apartment renovation services Houston, multifamily renovation, unit rehab, kitchen remodel apartments"
   canonicalUrl="https://saadiconstructiongroup.com/services"
+  jsonLd={jsonLd}
 >
   <!-- Hero -->
   <section class="relative min-h-[50vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">

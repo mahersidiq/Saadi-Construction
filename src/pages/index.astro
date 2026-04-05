@@ -13,14 +13,20 @@ import Testimonials from '@/components/sections/home/Testimonials.astro';
 import ServiceAreas from '@/components/sections/home/ServiceAreas.astro';
 import CTABanner from '@/components/sections/home/CTABanner.astro';
 
-const jsonLd = {
+const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'GeneralContractor',
   name: 'Saadi Construction Group',
-  url: 'https://saadi-construction.vercel.app',
+  url: 'https://saadiconstructiongroup.com',
+  logo: 'https://saadiconstructiongroup.com/og-image.jpg',
   telephone: '(832) 360-3804',
   email: 'Maher@saadi-construction.com',
   description: 'Houston apartment renovation contractor specializing in multifamily renovation, full gut rehabs, unit remodels, and property-wide renovation programs.',
+  founder: {
+    '@type': 'Person',
+    name: 'Maher Sidiq',
+    jobTitle: 'Owner & General Contractor',
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: '801 Travis St Suite 2101',
@@ -30,7 +36,49 @@ const jsonLd = {
     addressCountry: 'US',
   },
   areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: '3',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: [
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'Marcus T.' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'Saadi came in on budget and ahead of schedule on a 120-unit renovation program. Maher was on site every week. The quality of finish work was a cut above what we had seen from other contractors at this price point.',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'Diana R.' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'We needed an occupied renovation program that kept residents in place. Saadi phased the work intelligently, communicated clearly with our property management team, and delivered every unit on the agreed timeline.',
+    },
+    {
+      '@type': 'Review',
+      author: { '@type': 'Person', name: 'James O.' },
+      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewBody: 'The scope documentation and per-unit cost breakdown Saadi provided was more detailed than anything we had received from larger firms. It gave us full confidence going into the capital program.',
+    },
+  ],
 };
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How Saadi Construction Group Delivers Apartment Renovations',
+  description: 'Our four-step process for multifamily apartment renovation projects in Houston, TX.',
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Scope & Bid', text: 'Detailed per-unit cost breakdown within 5 business days' },
+    { '@type': 'HowToStep', position: 2, name: 'Contract & Schedule', text: 'Fixed-price contracts with milestone-based billing' },
+    { '@type': 'HowToStep', position: 3, name: 'Execution', text: 'Phased delivery keeps income flowing during renovation' },
+    { '@type': 'HowToStep', position: 4, name: 'Punch & Handoff', text: 'Photo documentation on every unit, clean handoff to your team' },
+  ],
+};
+
+const jsonLd = [organizationSchema, howToSchema];
 ---
 
 <Layout
