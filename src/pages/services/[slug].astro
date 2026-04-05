@@ -77,9 +77,20 @@ const breadcrumbSchema = {
   ],
 };
 
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: detail.title || service.name,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.what-is-it p', 'details summary', 'details p'],
+  },
+  url: `https://saadiconstructiongroup.com/services/${slug}`,
+};
+
 const jsonLd = faqSchema
-  ? [serviceSchema, faqSchema, breadcrumbSchema]
-  : [serviceSchema, breadcrumbSchema];
+  ? [serviceSchema, faqSchema, breadcrumbSchema, speakableSchema]
+  : [serviceSchema, breadcrumbSchema, speakableSchema];
 ---
 
 <Layout

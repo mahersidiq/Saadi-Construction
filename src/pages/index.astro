@@ -78,7 +78,18 @@ const howToSchema = {
   ],
 };
 
-const jsonLd = [organizationSchema, howToSchema];
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Saadi Construction Group | Houston Apartment Renovation & Rehab Specialists',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', '.hero-description', '.section-heading'],
+  },
+  url: 'https://saadiconstructiongroup.com',
+};
+
+const jsonLd = [organizationSchema, howToSchema, speakableSchema];
 ---
 
 <Layout

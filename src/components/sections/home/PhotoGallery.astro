@@ -1,30 +1,33 @@
 ---
+import { Image } from 'astro:assets';
+import kitchenImg from '@/assets/images/saadi-kitchen-renovation-houston-1.jpg';
+import bathroomImg from '@/assets/images/saadi-bathroom-double-vanity-houston-1.jpg';
+import clubhouseImg from '@/assets/images/saadi-clubhouse-renovation-houston-1.jpg';
+import fitnessImg from '@/assets/images/saadi-fitness-center-renovation-houston-1.jpg';
+
+const galleryImages = [
+  { src: kitchenImg, alt: 'Kitchen renovation Houston' },
+  { src: bathroomImg, alt: 'Bathroom remodel Houston' },
+  { src: clubhouseImg, alt: 'Clubhouse renovation Houston' },
+  { src: fitnessImg, alt: 'Fitness center renovation Houston' },
+];
 ---
 <section class="py-4 bg-white">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-    <div class="overflow-hidden h-64">
-      <img src="/images/saadi-kitchen-renovation-houston-1.jpg"
-           alt="Kitchen renovation Houston"
-           loading="lazy"
-           class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-    </div>
-    <div class="overflow-hidden h-64">
-      <img src="/images/saadi-bathroom-double-vanity-houston-1.jpg"
-           alt="Bathroom remodel Houston"
-           loading="lazy"
-           class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-    </div>
-    <div class="overflow-hidden h-64">
-      <img src="/images/saadi-clubhouse-renovation-houston-1.jpg"
-           alt="Clubhouse renovation Houston"
-           loading="lazy"
-           class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-    </div>
-    <div class="overflow-hidden h-64">
-      <img src="/images/saadi-fitness-center-renovation-houston-1.jpg"
-           alt="Fitness center renovation Houston"
-           loading="lazy"
-           class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-    </div>
+    {galleryImages.map((img) => (
+      <div class="overflow-hidden h-64">
+        <Image
+          src={img.src}
+          alt={img.alt}
+          loading="lazy"
+          decoding="async"
+          widths={[320, 480, 640]}
+          sizes="(max-width: 768px) 50vw, 25vw"
+          format="webp"
+          quality={80}
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+    ))}
   </div>
 </section>

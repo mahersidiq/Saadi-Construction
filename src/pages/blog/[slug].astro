@@ -55,7 +55,20 @@ const breadcrumbSchema = {
   ],
 };
 
-const jsonLd = faqSchema ? [articleSchema, faqSchema, breadcrumbSchema] : [articleSchema, breadcrumbSchema];
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: post.title,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['article h1', 'article h2', 'article p'],
+  },
+  url: `https://saadiconstructiongroup.com/blog/${post.slug}`,
+};
+
+const jsonLd = faqSchema
+  ? [articleSchema, faqSchema, breadcrumbSchema, speakableSchema]
+  : [articleSchema, breadcrumbSchema, speakableSchema];
 ---
 
 <Layout

@@ -4,6 +4,38 @@ import Layout from '@/layouts/Layout.astro';
 import { blogPosts } from '@/data/blogPosts';
 
 const published = blogPosts.slice().sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Apartment Renovation Blog',
+    description: 'Insights on apartment renovation in Houston. Cost guides, industry trends, renovation tips, and market news for multifamily owners and operators.',
+    url: 'https://saadiconstructiongroup.com/blog',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Saadi Construction Group',
+      url: 'https://saadiconstructiongroup.com',
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: published.map((post, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: post.title,
+        url: `https://saadiconstructiongroup.com/blog/${post.slug}`,
+      })),
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://saadiconstructiongroup.com/blog' },
+    ],
+  },
+];
 ---
 
 <Layout
@@ -11,6 +43,7 @@ const published = blogPosts.slice().sort((a, b) => new Date(b.publishDate) - new
   description="Insights on apartment renovation in Houston. Cost guides, industry trends, renovation tips, and market news for multifamily owners and operators."
   keywords="apartment renovation blog Houston, multifamily renovation insights, Houston apartment rehab cost guide"
   canonicalUrl="https://saadiconstructiongroup.com/blog"
+  jsonLd={jsonLd}
 >
   <!-- Hero -->
   <section class="relative min-h-[40vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
