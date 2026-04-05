@@ -1,11 +1,50 @@
 ---
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import crewImage from '@/assets/images/saadi-construction-crew-houston-1.jpg';
+import framingImage from '@/assets/images/saadi-multifamily-framing-houston-1.jpg';
 
 const values = [
   { title: 'Transparency', description: 'We provide clear, detailed scopes, honest timelines, and open-book communication from bid to punch list. You always know where your project stands.' },
   { title: 'Competence', description: 'Our team brings institutional-grade construction experience to every engagement — proper planning, disciplined scheduling, and quality execution across every trade.' },
   { title: 'Adaptability', description: 'Every property is different. We tailor our approach to your asset, your residents, and your investment goals — whether it is a 20-unit rehab or a 300-unit repositioning.' },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Saadi Construction Group',
+    url: 'https://saadiconstructiongroup.com',
+    logo: 'https://saadiconstructiongroup.com/og-image.jpg',
+    telephone: '(832) 360-3804',
+    email: 'Maher@saadi-construction.com',
+    description: 'Houston-based multifamily renovation firm delivering institutional-grade apartment renovation programs across 1,000+ units.',
+    founder: {
+      '@type': 'Person',
+      name: 'Maher Sidiq',
+      jobTitle: 'Owner & General Contractor',
+      description: 'Founder of Saadi Construction Group with hands-on experience across 1,000+ multifamily units in the Houston metro.',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '801 Travis St Suite 2101',
+      addressLocality: 'Houston',
+      addressRegion: 'TX',
+      postalCode: '77002',
+      addressCountry: 'US',
+    },
+    areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
+      { '@type': 'ListItem', position: 2, name: 'About', item: 'https://saadiconstructiongroup.com/about' },
+    ],
+  },
 ];
 ---
 
@@ -14,10 +53,11 @@ const values = [
   description="Houston-based multifamily renovation firm delivering institutional-grade apartment renovation programs across 1,000+ units. Licensed general contractor serving Houston and surrounding areas."
   keywords="about Saadi Construction Group, Houston apartment renovation contractor, multifamily renovation firm Houston"
   canonicalUrl="https://saadiconstructiongroup.com/about"
+  jsonLd={jsonLd}
 >
   <!-- Hero -->
   <section class="relative min-h-[50vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
-    <img src="/images/saadi-construction-crew-houston-1.jpg" alt="Saadi Construction crew" class="absolute inset-0 w-full h-full object-cover opacity-30" />
+    <Image src={crewImage} alt="Saadi Construction crew" class="absolute inset-0 w-full h-full object-cover opacity-30" widths={[640, 960, 1280, 1920]} sizes="100vw" format="webp" quality={75} loading="eager" decoding="async" />
     <div class="relative z-10 container-main px-4 py-20 md:py-28 text-center">
       <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
         Multifamily Expertise. Owner Accountability.
@@ -33,7 +73,7 @@ const values = [
     <div class="container-main px-4">
       <div class="animate-on-scroll grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <img src="/images/saadi-multifamily-framing-houston-1.jpg" alt="Saadi Construction multifamily framing Houston" class="w-full h-auto rounded-2xl object-cover" loading="lazy" />
+          <Image src={framingImage} alt="Saadi Construction multifamily framing Houston" class="w-full h-auto rounded-2xl object-cover" widths={[480, 640, 960]} sizes="(max-width: 768px) 100vw, 50vw" format="webp" quality={80} loading="lazy" decoding="async" />
         </div>
         <div>
           <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Maher Sidiq — Owner &amp; General Contractor</h2>

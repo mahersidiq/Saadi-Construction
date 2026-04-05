@@ -26,7 +26,7 @@ if (area.nearbyAreas && area.nearbyAreas.length > 0) {
   nearbyAreas = serviceAreas.filter((a) => a.slug !== slug).slice(0, 5);
 }
 
-const jsonLd = {
+const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Saadi Construction Group',
@@ -37,6 +37,18 @@ const jsonLd = {
   address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
   areaServed: { '@type': 'City', name: area.name, containedInPlace: { '@type': 'State', name: 'Texas' } },
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
+    { '@type': 'ListItem', position: 2, name: 'Service Areas', item: 'https://saadiconstructiongroup.com/service-areas' },
+    { '@type': 'ListItem', position: 3, name: area.name, item: `https://saadiconstructiongroup.com/service-areas/${area.slug}` },
+  ],
+};
+
+const jsonLd = [localBusinessSchema, breadcrumbSchema];
 ---
 
 <Layout

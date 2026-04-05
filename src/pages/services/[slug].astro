@@ -67,9 +67,30 @@ const faqSchema = faqs.length > 0 ? {
   })),
 } : null;
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://saadiconstructiongroup.com/services' },
+    { '@type': 'ListItem', position: 3, name: detail.title || service.name, item: `https://saadiconstructiongroup.com/services/${slug}` },
+  ],
+};
+
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: detail.title || service.name,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.what-is-it p', 'details summary', 'details p'],
+  },
+  url: `https://saadiconstructiongroup.com/services/${slug}`,
+};
+
 const jsonLd = faqSchema
-  ? [serviceSchema, faqSchema]
-  : serviceSchema;
+  ? [serviceSchema, faqSchema, breadcrumbSchema, speakableSchema]
+  : [serviceSchema, breadcrumbSchema, speakableSchema];
 ---
 
 <Layout
