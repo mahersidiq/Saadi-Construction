@@ -5,6 +5,7 @@ import { serviceAreas } from '@/data/serviceAreas';
 import { blogPosts } from '@/data/blogPosts';
 
 const SITE = 'https://saadiconstructiongroup.com';
+const LASTMOD = new Date().toISOString().split('T')[0];
 
 const staticPages = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },
@@ -42,6 +43,7 @@ ${allPages
   .map(
     (page) => `  <url>
     <loc>${SITE}${page.url}</loc>
+    <lastmod>${LASTMOD}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`
