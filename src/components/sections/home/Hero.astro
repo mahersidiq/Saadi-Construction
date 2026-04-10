@@ -1,22 +1,8 @@
 ---
-import { Image } from 'astro:assets';
-import heroImage from '@/assets/images/saadi-apartment-living-room-houston-1.jpg';
 ---
 
-<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-  <Image
-    src={heroImage}
-    alt="Renovated apartment living room Houston TX — Saadi Construction Group"
-    class="absolute inset-0 w-full h-full object-cover"
-    widths={[640, 960, 1280, 1920]}
-    sizes="100vw"
-    format="webp"
-    quality={80}
-    loading="eager"
-    decoding="async"
-    fetchpriority="high"
-  />
-  <div class="absolute inset-0 bg-black/65"></div>
+<section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-navy via-[#14304d] to-charcoal">
+  <div class="absolute inset-0 bg-black/40"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(201,149,42,0.08),transparent_60%)]"></div>
   <div class="relative z-10 container-main text-center px-4">
     <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight max-w-4xl mx-auto">

@@ -2,8 +2,6 @@
 export const prerender = true;
 import Layout from '@/layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import crewImage from '@/assets/images/saadi-construction-crew-houston-1.jpg';
-import framingImage from '@/assets/images/saadi-multifamily-framing-houston-1.jpg';
 
 const values = [
   { title: 'Transparency', description: 'We provide clear, detailed scopes, honest timelines, and open-book communication from bid to punch list. You always know where your project stands.' },
@@ -56,7 +54,6 @@ const jsonLd = [
 >
   <!-- Hero -->
   <section class="relative min-h-[50vh] flex items-center bg-gradient-to-br from-navy via-[#14304d] to-charcoal overflow-hidden">
-    <Image src={crewImage} alt="Saadi Construction crew" class="absolute inset-0 w-full h-full object-cover opacity-30" widths={[640, 960, 1280, 1920]} sizes="100vw" format="webp" quality={75} loading="eager" decoding="async" />
     <div class="relative z-10 container-main px-4 py-20 md:py-28 text-center">
       <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
         Multifamily Expertise. Owner Accountability.
@@ -72,7 +69,9 @@ const jsonLd = [
     <div class="container-main px-4">
       <div class="animate-on-scroll grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <Image src={framingImage} alt="Saadi Construction multifamily framing Houston" class="w-full h-auto rounded-2xl object-cover" widths={[480, 640, 960]} sizes="(max-width: 768px) 100vw, 50vw" format="webp" quality={80} loading="lazy" decoding="async" />
+          <div class="w-full h-64 rounded-2xl bg-gray-200 flex items-center justify-center">
+            <span class="text-gray-400 text-sm">Photo coming soon</span>
+          </div>
         </div>
         <div>
           <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Owner &amp; General Contractor</h2>
