@@ -1,84 +1,64 @@
 ---
 import { serviceCategories } from '@/data/services';
 import { serviceAreas } from '@/data/serviceAreas';
-
 const unitServices = serviceCategories.find((c) => c.slug === 'unit-renovation')?.services || [];
 const propertyServices = serviceCategories.find((c) => c.slug === 'property-wide')?.services || [];
 const managementServices = serviceCategories.find((c) => c.slug === 'management')?.services || [];
 ---
-
-<footer class="bg-navy text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-white/10">
-
-      <!-- Brand col -->
+<footer class="bg-charcoal text-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 py-16 border-b border-white/10">
       <div class="lg:col-span-2">
-        <a href="/" class="inline-flex items-center gap-3 mb-6">
-          <span class="font-heading text-3xl font-black tracking-widest text-white">SCG</span>
-          <span class="w-px h-6 bg-white/20"></span>
-          <span class="text-xs font-medium tracking-[0.2em] uppercase text-white/40">Construction</span>
-        </a>
-        <p class="text-white/50 text-sm leading-relaxed max-w-xs mb-8">
-          Houston's apartment renovation specialists. Institutional-grade execution for multifamily owners and operators.
-        </p>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="font-heading font-black text-2xl tracking-[0.15em] text-white">SCG</span>
+          <span class="text-xs font-semibold tracking-[0.3em] uppercase text-gold border-l-2 border-gold/30 pl-3">Construction</span>
+        </div>
+        <p class="text-white/50 text-sm leading-relaxed max-w-xs mb-8">Houston's apartment renovation specialists. Precision execution for multifamily owners who demand results.</p>
         <div class="space-y-3 text-sm">
           <a href="tel:8323603804" class="flex items-center gap-3 text-white/60 hover:text-gold transition-colors">
-            <span class="w-4 h-px bg-white/20"></span>
-            (832) 360-3804
+            <span class="w-4 h-px bg-gold/40 shrink-0"></span>(832) 360-3804
           </a>
           <a href="mailto:info@saadi-construction.com" class="flex items-center gap-3 text-white/60 hover:text-gold transition-colors">
-            <span class="w-4 h-px bg-white/20"></span>
-            info@saadi-construction.com
+            <span class="w-4 h-px bg-gold/40 shrink-0"></span>info@saadi-construction.com
           </a>
           <p class="flex items-center gap-3 text-white/40">
-            <span class="w-4 h-px bg-white/20"></span>
-            Serving Houston &amp; Surrounding Areas
+            <span class="w-4 h-px bg-white/20 shrink-0"></span>Serving Houston &amp; Surrounding Areas
           </p>
         </div>
       </div>
 
-      <!-- Services cols -->
       <div>
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-5">Unit Services</p>
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Unit Services</p>
         <ul class="space-y-2.5">
-          {unitServices.map((s) => (
-            <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-white transition-colors">{s.name}</a></li>
-          ))}
+          {unitServices.map(s => <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{s.name}</a></li>)}
         </ul>
       </div>
 
       <div>
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-5">Property-Wide</p>
-        <ul class="space-y-2.5">
-          {propertyServices.map((s) => (
-            <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-white transition-colors">{s.name}</a></li>
-          ))}
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Property-Wide</p>
+        <ul class="space-y-2.5 mb-8">
+          {propertyServices.map(s => <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{s.name}</a></li>)}
         </ul>
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-5 mt-8">Management</p>
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Management</p>
         <ul class="space-y-2.5">
-          {managementServices.map((s) => (
-            <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-white transition-colors">{s.name}</a></li>
-          ))}
+          {managementServices.map(s => <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{s.name}</a></li>)}
         </ul>
       </div>
 
       <div>
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-5">Service Areas</p>
-        <ul class="space-y-2.5">
-          {serviceAreas.map((area) => (
-            <li><a href={`/service-areas/${area.slug}`} class="text-sm text-white/50 hover:text-white transition-colors">{area.name}</a></li>
-          ))}
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Service Areas</p>
+        <ul class="space-y-2.5 mb-8">
+          {serviceAreas.map(a => <li><a href={`/service-areas/${a.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{a.name}</a></li>)}
         </ul>
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-5 mt-8">Company</p>
+        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Company</p>
         <ul class="space-y-2.5">
-          <li><a href="/about" class="text-sm text-white/50 hover:text-white transition-colors">About</a></li>
-          <li><a href="/contact" class="text-sm text-white/50 hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/about" class="text-sm text-white/50 hover:text-gold transition-colors">About</a></li>
+          <li><a href="/contact" class="text-sm text-white/50 hover:text-gold transition-colors">Contact</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/25 tracking-wide">
-      <p>Licensed &amp; Insured General Contractor — Houston, TX — Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p>
+    <div class="py-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/25">
+      <p>Licensed &amp; Insured · Houston, TX · Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p>
       <p>&copy; 2026 SCG</p>
     </div>
   </div>

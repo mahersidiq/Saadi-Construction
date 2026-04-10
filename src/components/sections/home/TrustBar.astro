@@ -1,24 +1,13 @@
 ---
 ---
-<div class="bg-light-gray border-y border-mid-gray">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-2 text-xs font-bold uppercase tracking-widest text-gray-400">
-      <span class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold inline-block"></span>
-        Houston-Based &amp; Owner-Led
-      </span>
-      <span class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold inline-block"></span>
-        1,000+ Units Delivered
-      </span>
-      <span class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold inline-block"></span>
-        Multifamily-Only Focus
-      </span>
-      <span class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-gold inline-block"></span>
-        Licensed &amp; Insured
-      </span>
-    </div>
+<div class="overflow-hidden bg-gold py-3 border-y-0">
+  <div class="marquee-track">
+    {[...Array(2)].map(() => (
+      <div class="flex items-center gap-0 shrink-0">
+        {['1,000+ Units Delivered','Owner on Every Project','Houston Metro','48hr Bid Turnaround','Licensed & Insured','Multifamily Only','Fixed-Price Contracts','Full Gut Rehabs','Unit Renovations','Amenity Upgrades'].map((item) => (
+          <span class="text-white text-xs font-bold uppercase tracking-[0.2em] px-8 border-r border-white/30 whitespace-nowrap">{item}</span>
+        ))}
+      </div>
+    ))}
   </div>
 </div>

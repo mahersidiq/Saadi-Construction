@@ -1,51 +1,35 @@
 ---
+const quotes = [
+  { text: 'SCG came in on budget and ahead of schedule on a 120-unit renovation program. The quality of finish work was a cut above what we had seen from other contractors at this price point.', name: 'Marcus T.', role: 'Owner, Parkside Villas — Houston, TX' },
+  { text: 'We needed an occupied renovation program that kept residents in place. SCG phased the work intelligently, communicated clearly with our property management team, and delivered every unit on the agreed timeline.', name: 'Diana R.', role: 'Asset Manager, Creekwood Apartments — Houston Metro' },
+  { text: 'The scope documentation and per-unit cost breakdown SCG provided was more detailed than anything we had received from larger firms. It gave us full confidence going into the capital program.', name: 'James O.', role: 'Regional Manager, Cypress Ridge Communities — Katy, TX' },
+];
 ---
-<section class="py-24 bg-light-gray">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-16">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-gold mb-3">Client Feedback</p>
-      <h2 class="font-heading text-4xl md:text-5xl font-black text-charcoal">What Property<br />Owners Say</h2>
+<section class="py-24 bg-light-gray border-t border-mid-gray">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-16 flex items-end justify-between">
+      <div>
+        <p class="label-tag mb-4">Client Results</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-black text-charcoal">What Owners Say</h2>
+      </div>
+      <span class="font-heading text-7xl font-black text-gold/15 leading-none select-none">"</span>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-px bg-mid-gray">
-      <div class="animate-on-scroll bg-white p-10 flex flex-col justify-between">
-        <div>
-          <span class="font-heading text-6xl font-black text-gold/20 leading-none block mb-6">"</span>
-          <p class="text-gray-600 leading-relaxed">
-            SCG came in on budget and ahead of schedule on a 120-unit renovation program. The quality of finish work was a cut above what we had seen from other contractors at this price point.
-          </p>
+    <div class="grid md:grid-cols-3 gap-0 border border-mid-gray divide-y md:divide-y-0 md:divide-x divide-mid-gray">
+      {quotes.map((q, i) => (
+        <div class="animate-on-scroll bg-white p-10 flex flex-col gap-6 hover:bg-gold/5 transition-colors">
+          <div class="flex gap-1">
+            {[...Array(5)].map(() => (
+              <span class="text-gold text-sm">★</span>
+            ))}
+          </div>
+          <p class="text-gray-600 leading-relaxed text-sm flex-1">"{q.text}"</p>
+          <div class="border-t border-mid-gray pt-6">
+            <p class="font-heading font-bold text-charcoal text-sm">{q.name}</p>
+            <p class="text-xs text-gold uppercase tracking-widest mt-1">{q.role}</p>
+          </div>
         </div>
-        <div class="mt-8 pt-8 border-t border-mid-gray">
-          <p class="font-heading font-bold text-charcoal">Marcus T.</p>
-          <p class="text-xs text-gold uppercase tracking-widest mt-1">Owner, Parkside Villas — Houston, TX</p>
-        </div>
-      </div>
-
-      <div class="animate-on-scroll bg-white p-10 flex flex-col justify-between">
-        <div>
-          <span class="font-heading text-6xl font-black text-gold/20 leading-none block mb-6">"</span>
-          <p class="text-gray-600 leading-relaxed">
-            We needed an occupied renovation program that kept residents in place. SCG phased the work intelligently, communicated clearly with our property management team, and delivered every unit on the agreed timeline.
-          </p>
-        </div>
-        <div class="mt-8 pt-8 border-t border-mid-gray">
-          <p class="font-heading font-bold text-charcoal">Diana R.</p>
-          <p class="text-xs text-gold uppercase tracking-widest mt-1">Asset Manager, Creekwood Apartments — Houston Metro</p>
-        </div>
-      </div>
-
-      <div class="animate-on-scroll bg-white p-10 flex flex-col justify-between">
-        <div>
-          <span class="font-heading text-6xl font-black text-gold/20 leading-none block mb-6">"</span>
-          <p class="text-gray-600 leading-relaxed">
-            The scope documentation and per-unit cost breakdown SCG provided was more detailed than anything we had received from larger firms. It gave us full confidence going into the capital program.
-          </p>
-        </div>
-        <div class="mt-8 pt-8 border-t border-mid-gray">
-          <p class="font-heading font-bold text-charcoal">James O.</p>
-          <p class="text-xs text-gold uppercase tracking-widest mt-1">Regional Manager, Cypress Ridge Communities — Katy, TX</p>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
