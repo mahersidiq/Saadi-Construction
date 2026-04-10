@@ -45,7 +45,7 @@ const serviceSchema = {
   description: detail.metaDescription || `${service.name} services for apartments in Houston, TX.`,
   provider: {
     '@type': 'GeneralContractor',
-    name: 'Saadi Construction Group',
+    name: 'SCG',
     url: 'https://saadiconstructiongroup.com',
     telephone: '(832) 360-3804',
     address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
@@ -94,7 +94,7 @@ const jsonLd = faqSchema
 ---
 
 <Layout
-  title={detail.metaTitle || `${service.name} | Houston TX | Saadi Construction Group`}
+  title={detail.metaTitle || `${service.name} | Houston TX | SCG`}
   description={detail.metaDescription || `Professional ${service.name.toLowerCase()} services for multifamily apartment properties in Houston, TX.`}
   keywords={detail.keywords || `${service.name} Houston, apartment ${service.name.toLowerCase()}, multifamily ${service.name.toLowerCase()} Houston TX`}
   canonicalUrl={`https://saadiconstructiongroup.com/services/${slug}`}

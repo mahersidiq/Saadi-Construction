@@ -1,5 +1,5 @@
 export const SITE_URL = 'https://saadiconstructiongroup.com';
-export const SITE_NAME = 'Saadi Construction Group';
+export const SITE_NAME = 'SCG';
 
 export function getPageTitle(topic) {
   if (!topic) return `${SITE_NAME} | Houston, TX`;

@@ -7,11 +7,11 @@ export const blogPosts = [
     keywords: 'apartment renovation cost Houston, gut rehab cost per unit Houston TX, multifamily renovation ROI Houston, apartment rehab budget Houston',
     excerpt: 'A complete breakdown of apartment renovation costs in Houston TX — from cosmetic upgrades to full gut rehabs — with real cost ranges, ROI benchmarks, and budgeting guidance for multifamily investors.',
     publishDate: '2025-04-01',
-    author: 'Saadi Construction Group',
+    author: 'SCG',
     category: 'Cost Guides',
     readTime: '8 min read',
     heroImage: '',
-    heroImageAlt: 'Renovated apartment living room in Houston TX — completed by Saadi Construction Group',
+    heroImageAlt: 'Renovated apartment living room in Houston TX — completed by SCG',
     sections: [
       {
         heading: null,
@@ -96,7 +96,7 @@ export const blogPosts = [
       {
         heading: 'How to Build a Renovation Budget for Your Houston Apartment Community',
         body: [
-          'The most reliable renovation budgets are built bottom-up, not top-down. Here is the process Saadi Construction Group uses with every client:',
+          'The most reliable renovation budgets are built bottom-up, not top-down. Here is the process SCG uses with every client:',
         ],
         list: [
           'Property walk — assess deferred maintenance, system condition, and current finish baseline across unit types',
@@ -105,7 +105,7 @@ export const blogPosts = [
           'Line-item bid — itemized cost per unit, not a lump sum, so you know exactly what you are paying for',
           'Contingency — budget 8–12% contingency for occupied renovation programs where surprises are more common',
         ],
-        footer: 'A well-structured bid protects you from scope creep and gives your lender or equity partner a document they can underwrite to. Saadi Construction Group delivers detailed line-item bids within 5 business days of a property walk.',
+        footer: 'A well-structured bid protects you from scope creep and gives your lender or equity partner a document they can underwrite to. SCG delivers detailed line-item bids within 5 business days of a property walk.',
       },
     ],
     faqs: [
@@ -119,7 +119,7 @@ export const blogPosts = [
       },
       {
         question: 'How long does an apartment renovation take in Houston TX?',
-        answer: 'Cosmetic unit renovations typically take 2–3 weeks per unit. Full gut rehabs run 3–5 weeks per unit. Large-scale programs renovating multiple units simultaneously can complete 8–12 units per month. Saadi Construction Group provides a detailed project schedule with every bid.',
+        answer: 'Cosmetic unit renovations typically take 2–3 weeks per unit. Full gut rehabs run 3–5 weeks per unit. Large-scale programs renovating multiple units simultaneously can complete 8–12 units per month. SCG provides a detailed project schedule with every bid.',
       },
     ],
     relatedLinks: [

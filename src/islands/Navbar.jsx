@@ -47,9 +47,9 @@ export default function Navbar({ pathname = '/' }) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <a href="/" className="flex items-baseline gap-1.5 text-white">
-              <span className="font-heading text-2xl font-bold tracking-tight">SAADI</span>
-              <span className="font-heading text-sm font-medium tracking-wide opacity-90">CONSTRUCTION GROUP</span>
+            <a href="/" className="flex items-center gap-2 text-white">
+              <span className="font-heading text-2xl font-black tracking-widest text-gold">SCG</span>
+              <span className="font-heading text-xs font-medium tracking-[0.2em] uppercase opacity-70 hidden sm:block">Construction</span>
             </a>
 
             {/* Desktop Nav */}
@@ -131,7 +131,7 @@ export default function Navbar({ pathname = '/' }) {
           <div className="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-navy z-50 lg:hidden overflow-y-auto" style={{ animation: 'slideInRight 0.3s ease-out' }}>
             <div className="p-6">
               <div className="flex justify-between items-center mb-8">
-                <span className="font-heading text-xl font-bold text-white">SAADI</span>
+                <span className="font-heading text-xl font-black tracking-widest text-gold">SCG</span>
                 <button onClick={() => setMobileOpen(false)} className="text-white p-1">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
