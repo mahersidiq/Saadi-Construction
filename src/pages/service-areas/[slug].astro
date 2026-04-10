@@ -29,7 +29,7 @@ if (area.nearbyAreas && area.nearbyAreas.length > 0) {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Saadi Construction Group',
+  name: 'SCG',
   description: area.metaDescription || `Apartment renovation services in ${area.name}, TX.`,
   url: `https://saadiconstructiongroup.com/service-areas/${area.slug}`,
   telephone: '(832) 360-3804',
@@ -52,7 +52,7 @@ const jsonLd = [localBusinessSchema, breadcrumbSchema];
 ---
 
 <Layout
-  title={area.metaTitle || `Apartment Renovation in ${area.name}, TX | Saadi Construction Group`}
+  title={area.metaTitle || `Apartment Renovation in ${area.name}, TX | SCG`}
   description={area.metaDescription || `Professional apartment renovation services in ${area.name}, Texas. Unit rehabs, kitchen and bathroom remodels, and property-wide renovations.`}
   keywords={`apartment renovation ${area.name}, multifamily renovation ${area.name} TX, apartment rehab ${area.name}`}
   canonicalUrl={`https://saadiconstructiongroup.com/service-areas/${area.slug}`}

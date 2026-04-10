@@ -16,7 +16,7 @@ import CTABanner from '@/components/sections/home/CTABanner.astro';
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'GeneralContractor',
-  name: 'Saadi Construction Group',
+  name: 'SCG',
   url: 'https://saadiconstructiongroup.com',
   logo: 'https://saadiconstructiongroup.com/og-image.jpg',
   telephone: '(832) 360-3804',
@@ -47,19 +47,19 @@ const organizationSchema = {
       '@type': 'Review',
       author: { '@type': 'Person', name: 'Marcus T.' },
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody: 'Saadi came in on budget and ahead of schedule on a 120-unit renovation program. The quality of finish work was a cut above what we had seen from other contractors at this price point.',
+      reviewBody: 'SCG came in on budget and ahead of schedule on a 120-unit renovation program. The quality of finish work was a cut above what we had seen from other contractors at this price point.',
     },
     {
       '@type': 'Review',
       author: { '@type': 'Person', name: 'Diana R.' },
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody: 'We needed an occupied renovation program that kept residents in place. Saadi phased the work intelligently, communicated clearly with our property management team, and delivered every unit on the agreed timeline.',
+      reviewBody: 'We needed an occupied renovation program that kept residents in place. SCG phased the work intelligently, communicated clearly with our property management team, and delivered every unit on the agreed timeline.',
     },
     {
       '@type': 'Review',
       author: { '@type': 'Person', name: 'James O.' },
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-      reviewBody: 'The scope documentation and per-unit cost breakdown Saadi provided was more detailed than anything we had received from larger firms. It gave us full confidence going into the capital program.',
+      reviewBody: 'The scope documentation and per-unit cost breakdown SCG provided was more detailed than anything we had received from larger firms. It gave us full confidence going into the capital program.',
     },
   ],
 };
@@ -67,7 +67,7 @@ const organizationSchema = {
 const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'How Saadi Construction Group Delivers Apartment Renovations',
+  name: 'How SCG Delivers Apartment Renovations',
   description: 'Our four-step process for multifamily apartment renovation projects in Houston, TX.',
   step: [
     { '@type': 'HowToStep', position: 1, name: 'Scope & Bid', text: 'Detailed per-unit cost breakdown within 5 business days' },
@@ -80,7 +80,7 @@ const howToSchema = {
 const speakableSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Saadi Construction Group | Houston Apartment Renovation & Rehab Specialists',
+  name: 'SCG | Houston Apartment Renovation & Rehab Specialists',
   speakable: {
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', '.hero-description', '.section-heading'],
@@ -92,7 +92,7 @@ const jsonLd = [organizationSchema, howToSchema, speakableSchema];
 ---
 
 <Layout
-  title="Saadi Construction Group | Houston Apartment Renovation & Rehab Specialists"
+  title="SCG | Houston Apartment Renovation & Rehab Specialists"
   description="Houston apartment renovation contractor. Full gut rehabs, unit remodels, and complete multifamily renovation services for apartment owners and operators."
   keywords="apartment renovation Houston, multifamily renovation Houston, apartment rehab Houston TX, gut rehab apartments"
   canonicalUrl="https://saadiconstructiongroup.com"

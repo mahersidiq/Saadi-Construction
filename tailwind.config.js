@@ -4,14 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: '#1B3A5C',
-        gold: '#C9952A',
-        charcoal: '#1A1A1A',
-        'light-gray': '#F5F5F5',
-        'mid-gray': '#E5E5E5',
+        navy: '#0F172A',
+        gold: '#10B981',
+        charcoal: '#111827',
+        'light-gray': '#F8FAFC',
+        'mid-gray': '#E2E8F0',
       },
       fontFamily: {
-        heading: ['Plus Jakarta Sans', 'sans-serif'],
+        heading: ['Space Grotesk', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
     },
