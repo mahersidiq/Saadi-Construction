@@ -10,7 +10,7 @@ export const blogPosts = [
     author: 'Saadi Construction Group',
     category: 'Cost Guides',
     readTime: '8 min read',
-    heroImage: '/images/saadi-apartment-living-room-houston-1.jpg',
+    heroImage: '',
     heroImageAlt: 'Renovated apartment living room in Houston TX — completed by Saadi Construction Group',
     sections: [
       {
