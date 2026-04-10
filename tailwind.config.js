@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: '#0F172A',
-        gold: '#10B981',
-        charcoal: '#111827',
-        'light-gray': '#F8FAFC',
-        'mid-gray': '#E2E8F0',
+        navy: '#0f0f0f',
+        gold: '#059669',
+        charcoal: '#171717',
+        'light-gray': '#f5f4f0',
+        'mid-gray': '#e2e0db',
       },
       fontFamily: {
         heading: ['Space Grotesk', 'sans-serif'],
