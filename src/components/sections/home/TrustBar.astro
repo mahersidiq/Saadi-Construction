@@ -1,24 +1,13 @@
 ---
 ---
-<div class="bg-charcoal/95 border-b border-white/10">
-  <div class="container-main px-4 py-3">
-    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-gray-300">
-      <span class="flex items-center gap-2">
-        <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        Houston-Based & Owner-Led
-      </span>
-      <span class="flex items-center gap-2">
-        <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        1,000+ Units Delivered
-      </span>
-      <span class="flex items-center gap-2">
-        <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        Multifamily-Only Focus
-      </span>
-      <span class="flex items-center gap-2">
-        <svg class="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        Licensed & Insured
-      </span>
-    </div>
+<div class="overflow-hidden bg-gold py-3 border-y-0">
+  <div class="marquee-track">
+    {[...Array(2)].map(() => (
+      <div class="flex items-center gap-0 shrink-0">
+        {['1,000+ Units Delivered','Owner on Every Project','Houston Metro','48hr Bid Turnaround','Licensed & Insured','Multifamily Only','Fixed-Price Contracts','Full Gut Rehabs','Unit Renovations','Amenity Upgrades'].map((item) => (
+          <span class="text-white text-xs font-bold uppercase tracking-[0.2em] px-8 border-r border-white/30 whitespace-nowrap">{item}</span>
+        ))}
+      </div>
+    ))}
   </div>
 </div>
