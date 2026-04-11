@@ -1,23 +1,21 @@
 ---
 const photos = [
-  { src: '/images/saadi-kitchen-white-shaker-ss-appliances-houston-1.webp', alt: 'Renovated kitchen with white shaker cabinets and stainless steel appliances' },
-  { src: '/images/saadi-kitchen-gray-cabinet-island-houston-1.jpg',         alt: 'Kitchen renovation with gray cabinets and center island' },
-  { src: '/images/saadi-kitchen-white-cabinet-island-houston-1.jpg',        alt: 'Kitchen with white cabinets and island' },
-  { src: '/images/saadi-kitchen-render-white-black-pendants-houston-1.webp', alt: 'Rendered kitchen design with white counters and black pendant lights' },
-  { src: '/images/saadi-bedroom-render-ceiling-fan-houston-1.webp',          alt: 'Rendered bedroom with ceiling fan' },
-  { src: '/images/saadi-bathroom-render-double-vanity-houston-1.webp',       alt: 'Rendered bathroom with double vanity' },
-  { src: '/images/saadi-kitchen-white-island-open-living-houston-1.webp',    alt: 'Kitchen with white island open to living area' },
-  { src: '/images/saadi-kitchen-sage-island-patterned-tile-houston-1.webp',  alt: 'Kitchen with sage island and patterned tile backsplash' },
+  { src: '/images/saadi-kitchen-white-open-living-geometric-houston-1.png', alt: 'Renovated apartment kitchen and living area Houston' },
+  { src: '/images/saadi-exterior-courtyard-bench-houston-1.png', alt: 'Multifamily exterior courtyard renovation Houston' },
+  { src: '/images/saadi-clubhouse-fireplace-dark-wood-houston-1.png', alt: 'Clubhouse lounge renovation Houston' },
+  { src: '/images/saadi-pool-deck-resort-tiki-bar-houston-1.png', alt: 'Pool deck and amenity renovation Houston' },
+  { src: '/images/saadi-kitchen-dark-stone-backsplash-open-houston-1.png', alt: 'Dark kitchen renovation open layout Houston' },
+  { src: '/images/saadi-clubhouse-lounge-contemporary-houston-1.png', alt: 'Contemporary clubhouse renovation Houston' },
 ];
 ---
 <section class="py-4 bg-white">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-    {photos.map((photo) => (
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+    {photos.map((p) => (
       <div class="overflow-hidden h-64">
         <img
-          src={photo.src}
-          alt={photo.alt}
-          class="object-cover h-64 w-full"
+          src={p.src}
+          alt={p.alt}
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
       </div>
