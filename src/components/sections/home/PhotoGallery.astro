@@ -1,16 +1,27 @@
 ---
-const placeholders = [
-  { label: 'Photo coming soon' },
-  { label: 'Photo coming soon' },
-  { label: 'Photo coming soon' },
-  { label: 'Photo coming soon' },
+const BASE = 'https://dimwhyteticwobwtqrke.supabase.co/storage/v1/object/public/media/projects';
+
+const photos = [
+  { src: `${BASE}/saadi-kitchen-white-shaker-ss-appliances-houston-1.webp`, alt: 'Renovated kitchen with white shaker cabinets and stainless steel appliances' },
+  { src: `${BASE}/saadi-kitchen-gray-cabinet-island-houston-1.jpg`,         alt: 'Kitchen renovation with gray cabinets and center island' },
+  { src: `${BASE}/saadi-kitchen-white-cabinet-island-houston-1.jpg`,        alt: 'Kitchen with white cabinets and island' },
+  { src: `${BASE}/saadi-kitchen-render-white-black-pendants-houston-1.webp`, alt: 'Rendered kitchen design with white counters and black pendant lights' },
+  { src: `${BASE}/saadi-bedroom-render-ceiling-fan-houston-1.webp`,          alt: 'Rendered bedroom with ceiling fan' },
+  { src: `${BASE}/saadi-bathroom-render-double-vanity-houston-1.webp`,       alt: 'Rendered bathroom with double vanity' },
+  { src: `${BASE}/saadi-kitchen-white-island-open-living-houston-1.webp`,    alt: 'Kitchen with white island open to living area' },
+  { src: `${BASE}/saadi-kitchen-sage-island-patterned-tile-houston-1.webp`,  alt: 'Kitchen with sage island and patterned tile backsplash' },
 ];
 ---
 <section class="py-4 bg-white">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-    {placeholders.map(() => (
-      <div class="overflow-hidden h-64 bg-gray-200 flex items-center justify-center">
-        <span class="text-gray-400 text-sm">Photo coming soon</span>
+    {photos.map((photo) => (
+      <div class="overflow-hidden h-64">
+        <img
+          src={photo.src}
+          alt={photo.alt}
+          class="object-cover h-64 w-full"
+          loading="lazy"
+        />
       </div>
     ))}
   </div>
