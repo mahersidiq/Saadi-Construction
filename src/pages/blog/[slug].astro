@@ -22,17 +22,17 @@ const articleSchema = {
   author: {
     '@type': 'Organization',
     name: post.author,
-    url: 'https://saadiconstructiongroup.com',
+    url: 'https://multifamilyrehabspecialists.com',
   },
   publisher: {
     '@type': 'Organization',
-    name: 'SCG',
-    url: 'https://saadiconstructiongroup.com',
-    logo: { '@type': 'ImageObject', url: 'https://saadiconstructiongroup.com/og-image.jpg' },
+    name: 'MRS',
+    url: 'https://multifamilyrehabspecialists.com',
+    logo: { '@type': 'ImageObject', url: 'https://multifamilyrehabspecialists.com/og-image.jpg' },
   },
   datePublished: post.publishDate,
-  image: `https://saadiconstructiongroup.com${post.heroImage}`,
-  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://saadiconstructiongroup.com/blog/${post.slug}` },
+  image: `https://multifamilyrehabspecialists.com${post.heroImage}`,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `https://multifamilyrehabspecialists.com/blog/${post.slug}` },
 };
 
 const faqSchema = post.faqs && post.faqs.length > 0 ? {
@@ -49,9 +49,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://saadiconstructiongroup.com/blog' },
-    { '@type': 'ListItem', position: 3, name: post.title, item: `https://saadiconstructiongroup.com/blog/${post.slug}` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://multifamilyrehabspecialists.com/blog' },
+    { '@type': 'ListItem', position: 3, name: post.title, item: `https://multifamilyrehabspecialists.com/blog/${post.slug}` },
   ],
 };
 
@@ -63,7 +63,7 @@ const speakableSchema = {
     '@type': 'SpeakableSpecification',
     cssSelector: ['article h1', 'article h2', 'article p'],
   },
-  url: `https://saadiconstructiongroup.com/blog/${post.slug}`,
+  url: `https://multifamilyrehabspecialists.com/blog/${post.slug}`,
 };
 
 const jsonLd = faqSchema
@@ -75,7 +75,7 @@ const jsonLd = faqSchema
   title={post.metaTitle}
   description={post.metaDescription}
   keywords={post.keywords}
-  canonicalUrl={`https://saadiconstructiongroup.com/blog/${post.slug}`}
+  canonicalUrl={`https://multifamilyrehabspecialists.com/blog/${post.slug}`}
   ogImage={post.heroImage}
   jsonLd={jsonLd}
 >

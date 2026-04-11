@@ -8,30 +8,30 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Apartment Renovation Service Areas',
-    description: 'SCG provides apartment renovation services across Houston and surrounding areas in Texas.',
+    description: 'MRS provides apartment renovation services across Houston and surrounding areas in Texas.',
     itemListElement: serviceAreas.map((area, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: area.name,
-      url: `https://saadiconstructiongroup.com/service-areas/${area.slug}`,
+      url: `https://multifamilyrehabspecialists.com/service-areas/${area.slug}`,
     })),
   },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-      { '@type': 'ListItem', position: 2, name: 'Service Areas', item: 'https://saadiconstructiongroup.com/service-areas' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
+      { '@type': 'ListItem', position: 2, name: 'Service Areas', item: 'https://multifamilyrehabspecialists.com/service-areas' },
     ],
   },
 ];
 ---
 
 <Layout
-  title="Service Areas | SCG | Houston, TX"
-  description="SCG provides apartment renovation services across Houston, Katy, Sugar Land, Pearland, The Woodlands, Spring, Cypress, and surrounding areas."
+  title="Service Areas | MRS | Houston, TX"
+  description="MRS provides apartment renovation services across Houston, Katy, Sugar Land, Pearland, The Woodlands, Spring, Cypress, and surrounding areas."
   keywords="apartment renovation Houston, multifamily renovation Katy, apartment rehab Sugar Land, renovation contractor The Woodlands"
-  canonicalUrl="https://saadiconstructiongroup.com/service-areas"
+  canonicalUrl="https://multifamilyrehabspecialists.com/service-areas"
   jsonLd={jsonLd}
 >
   <!-- Hero -->

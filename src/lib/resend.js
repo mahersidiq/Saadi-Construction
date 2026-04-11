@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 
-const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'info@saadi-construction.com';
-const FROM_EMAIL = import.meta.env.FROM_EMAIL || process.env.FROM_EMAIL || 'SCG <noreply@saadiconstructiongroup.com>';
+const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'info@multifamilyrehabspecialists.com';
+const FROM_EMAIL = import.meta.env.FROM_EMAIL || process.env.FROM_EMAIL || 'Multifamily Rehab Specialists <noreply@multifamilyrehabspecialists.com>';
 
 let resend;
 function getResendClient() {
@@ -70,7 +70,7 @@ export async function sendContactEmail(lead) {
       </div>` : ''}
     </div>
     <div style="padding: 16px 32px; background-color: #f9fafb; border-top: 1px solid #e5e7eb;">
-      <p style="margin: 0; font-size: 12px; color: #9ca3af; text-align: center;">SCG &middot; Houston, TX &middot; saadiconstructiongroup.com</p>
+      <p style="margin: 0; font-size: 12px; color: #9ca3af; text-align: center;">Multifamily Rehab Specialists &middot; Houston, TX &middot; multifamilyrehabspecialists.com</p>
     </div>
   </div>
 </body>

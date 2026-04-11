@@ -45,8 +45,8 @@ const serviceSchema = {
   description: detail.metaDescription || `${service.name} services for apartments in Houston, TX.`,
   provider: {
     '@type': 'GeneralContractor',
-    name: 'SCG',
-    url: 'https://saadiconstructiongroup.com',
+    name: 'MRS',
+    url: 'https://multifamilyrehabspecialists.com',
     telephone: '(832) 360-3804',
     address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
   },
@@ -71,9 +71,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://saadiconstructiongroup.com/services' },
-    { '@type': 'ListItem', position: 3, name: detail.title || service.name, item: `https://saadiconstructiongroup.com/services/${slug}` },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://multifamilyrehabspecialists.com/services' },
+    { '@type': 'ListItem', position: 3, name: detail.title || service.name, item: `https://multifamilyrehabspecialists.com/services/${slug}` },
   ],
 };
 
@@ -85,7 +85,7 @@ const speakableSchema = {
     '@type': 'SpeakableSpecification',
     cssSelector: ['h1', 'h2', '.what-is-it p', 'details summary', 'details p'],
   },
-  url: `https://saadiconstructiongroup.com/services/${slug}`,
+  url: `https://multifamilyrehabspecialists.com/services/${slug}`,
 };
 
 const jsonLd = faqSchema
@@ -94,10 +94,10 @@ const jsonLd = faqSchema
 ---
 
 <Layout
-  title={detail.metaTitle || `${service.name} | Houston TX | SCG`}
+  title={detail.metaTitle || `${service.name} | Houston TX | MRS`}
   description={detail.metaDescription || `Professional ${service.name.toLowerCase()} services for multifamily apartment properties in Houston, TX.`}
   keywords={detail.keywords || `${service.name} Houston, apartment ${service.name.toLowerCase()}, multifamily ${service.name.toLowerCase()} Houston TX`}
-  canonicalUrl={`https://saadiconstructiongroup.com/services/${slug}`}
+  canonicalUrl={`https://multifamilyrehabspecialists.com/services/${slug}`}
   jsonLd={jsonLd}
 >
   <ServiceHero title={detail.title || service.name} subheadline={detail.subheadline} category={detail.category} />

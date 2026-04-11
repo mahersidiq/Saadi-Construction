@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://saadiconstructiongroup.com',
+  site: 'https://multifamilyrehabspecialists.com',
   integrations: [
     react(),
     tailwind(),

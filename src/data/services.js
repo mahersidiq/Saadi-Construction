@@ -49,7 +49,7 @@ export const serviceCategories = [
         slug: 'construction-management',
         name: 'Construction Management',
         category: 'Management',
-        description: 'Owner-side construction management for larger capital programs. Scope development, contractor procurement, scheduling, and quality control — with SCG accountability on every project.',
+        description: 'Owner-side construction management for larger capital programs. Scope development, contractor procurement, scheduling, and quality control — with MRS accountability on every project.',
       },
     ],
   },

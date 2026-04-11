@@ -8,30 +8,30 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Apartment Renovation Services',
-    description: 'Comprehensive apartment renovation services offered by SCG in Houston, TX.',
+    description: 'Comprehensive apartment renovation services offered by MRS in Houston, TX.',
     itemListElement: allServices.map((service, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: service.name,
-      url: `https://saadiconstructiongroup.com/services/${service.slug}`,
+      url: `https://multifamilyrehabspecialists.com/services/${service.slug}`,
     })),
   },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://saadiconstructiongroup.com' },
-      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://saadiconstructiongroup.com/services' },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://multifamilyrehabspecialists.com/services' },
     ],
   },
 ];
 ---
 
 <Layout
-  title="Apartment Renovation Services Houston TX | SCG"
+  title="Apartment Renovation Services Houston TX | MRS"
   description="Comprehensive apartment renovation services in Houston. Unit rehabs, kitchen and bathroom remodels, common area renovations, exterior upgrades, and construction management."
   keywords="apartment renovation services Houston, multifamily renovation, unit rehab, kitchen remodel apartments"
-  canonicalUrl="https://saadiconstructiongroup.com/services"
+  canonicalUrl="https://multifamilyrehabspecialists.com/services"
   jsonLd={jsonLd}
 >
   <!-- Hero -->
