@@ -45,22 +45,19 @@
       </div>
     </div>
 
-    <!-- Right: placeholder panel -->
-    <div class="hidden lg:flex flex-col w-[42%] bg-light-gray relative overflow-hidden">
-      <div class="absolute top-0 left-0 w-1 h-full bg-gold"></div>
-      <div class="absolute top-6 right-6 w-20 h-20 border-2 border-gold/20"></div>
-      <div class="absolute bottom-6 left-10 w-32 h-32 border border-gold/10"></div>
-      <div class="flex-1 flex flex-col items-center justify-center gap-3 text-center p-12">
-        <div class="w-16 h-16 border-2 border-mid-gray flex items-center justify-center">
-          <svg class="w-6 h-6 text-mid-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-          </svg>
-        </div>
-        <p class="text-xs text-gray-300 uppercase tracking-widest">Photos Coming Soon</p>
-      </div>
-      <div class="bg-gold/10 border-t border-gold/20 px-8 py-5 flex items-center justify-between">
+    <!-- Right: hero photo panel -->
+    <div class="hidden lg:flex flex-col w-[42%] relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-1 h-full bg-gold z-10"></div>
+      <img
+        src="/images/saadi-kitchen-white-island-open-living-houston-1.webp"
+        alt="Renovated apartment kitchen with white island open to living area — Houston, TX"
+        class="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-charcoal/20"></div>
+      <div class="relative z-10 mt-auto bg-charcoal/70 backdrop-blur-sm border-t border-gold/30 px-8 py-5 flex items-center justify-between">
         <span class="text-xs font-bold uppercase tracking-widest text-gold">Licensed &amp; Insured</span>
-        <a href="tel:8323603804" class="text-xs font-bold text-charcoal hover:text-gold transition-colors">(832) 360-3804</a>
+        <a href="tel:8323603804" class="text-xs font-bold text-white hover:text-gold transition-colors">(832) 360-3804</a>
       </div>
     </div>
   </div>

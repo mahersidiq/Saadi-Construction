@@ -1,12 +1,10 @@
 ---
 const { projects = [] } = Astro.props;
 
-const BASE = 'https://dimwhyteticwobwtqrke.supabase.co/storage/v1/object/public/media/projects';
-
 const placeholders = [
-  { title: 'Garden-Style Community Renovation', location: 'Houston, TX', units: '150+', scope_type: 'Full Gut Rehab', image_url: `${BASE}/saadi-kitchen-white-shaker-ss-appliances-houston-1.webp` },
-  { title: 'Multifamily Unit Renovation Program', location: 'Houston, TX', units: '200+', scope_type: 'Unit Interior Renovation', image_url: `${BASE}/saadi-kitchen-gray-cabinet-island-houston-1.jpg` },
-  { title: 'Amenity & Common Area Renovation', location: 'Houston, TX', units: '100+', scope_type: 'Amenity Renovation', image_url: `${BASE}/saadi-kitchen-sage-island-patterned-tile-houston-1.webp` },
+  { title: 'Garden-Style Community Renovation', location: 'Houston, TX', units: '150+', scope_type: 'Full Gut Rehab', image_url: '/images/saadi-kitchen-white-shaker-ss-appliances-houston-1.webp' },
+  { title: 'Multifamily Unit Renovation Program', location: 'Houston, TX', units: '200+', scope_type: 'Unit Interior Renovation', image_url: '/images/saadi-kitchen-gray-cabinet-island-houston-1.jpg' },
+  { title: 'Amenity & Common Area Renovation', location: 'Houston, TX', units: '100+', scope_type: 'Amenity Renovation', image_url: '/images/saadi-kitchen-sage-island-patterned-tile-houston-1.webp' },
 ];
 
 const items = projects.length > 0 ? projects.slice(0, 3) : placeholders;
