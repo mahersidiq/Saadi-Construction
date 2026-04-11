@@ -2,9 +2,27 @@
 const { projects = [] } = Astro.props;
 
 const placeholders = [
-  { title: 'Garden-Style Community Renovation', location: 'Houston, TX', units: '150+', scope_type: 'Full Gut Rehab', image_url: '/images/saadi-kitchen-white-shaker-ss-appliances-houston-1.webp' },
-  { title: 'Multifamily Unit Renovation Program', location: 'Houston, TX', units: '200+', scope_type: 'Unit Interior Renovation', image_url: '/images/saadi-kitchen-gray-cabinet-island-houston-1.jpg' },
-  { title: 'Amenity & Common Area Renovation', location: 'Houston, TX', units: '100+', scope_type: 'Amenity Renovation', image_url: '/images/saadi-kitchen-sage-island-patterned-tile-houston-1.webp' },
+  {
+    title: 'Garden-Style Community Renovation',
+    location: 'Houston, TX',
+    units: '150+',
+    scope_type: 'Full Gut Rehab',
+    image_url: '/images/saadi-kitchen-white-open-living-geometric-houston-1.png',
+  },
+  {
+    title: 'Clubhouse & Amenity Renovation',
+    location: 'Houston, TX',
+    units: '200+',
+    scope_type: 'Common Areas',
+    image_url: '/images/saadi-clubhouse-fireplace-dark-wood-houston-1.png',
+  },
+  {
+    title: 'Exterior & Curb Appeal Program',
+    location: 'Houston, TX',
+    units: '100+',
+    scope_type: 'Exterior',
+    image_url: '/images/saadi-exterior-courtyard-bench-houston-1.png',
+  },
 ];
 
 const items = projects.length > 0 ? projects.slice(0, 3) : placeholders;
