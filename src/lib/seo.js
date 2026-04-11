@@ -1,5 +1,5 @@
-export const SITE_URL = 'https://saadiconstructiongroup.com';
-export const SITE_NAME = 'SCG';
+export const SITE_URL = 'https://multifamilyrehabspecialists.com';
+export const SITE_NAME = 'MRS';
 
 export function getPageTitle(topic) {
   if (!topic) return `${SITE_NAME} | Houston, TX`;

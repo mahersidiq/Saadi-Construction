@@ -19,8 +19,8 @@ export default function Navbar({ pathname = '/' }) {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-gold/20">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
           <a href="/" className="flex items-center gap-3">
-            <span className="font-heading font-black text-2xl tracking-[0.15em] text-charcoal">SCG</span>
-            <span className="hidden md:block text-[10px] font-semibold tracking-[0.3em] uppercase text-gold border-l-2 border-gold/30 pl-3">Construction</span>
+            <span className="font-heading font-black text-2xl tracking-[0.15em] text-charcoal">MRS</span>
+            <span className="hidden md:block text-[10px] font-semibold tracking-[0.3em] uppercase text-gold border-l-2 border-gold/30 pl-3">Multifamily Rehab Specialists</span>
           </a>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -78,7 +78,7 @@ export default function Navbar({ pathname = '/' }) {
       {open && (
         <div className="fixed inset-0 z-50 bg-white flex flex-col lg:hidden">
           <div className="flex items-center justify-between px-6 h-16 border-b-2 border-gold/20">
-            <span className="font-heading font-black text-2xl tracking-[0.15em] text-charcoal">SCG</span>
+            <span className="font-heading font-black text-2xl tracking-[0.15em] text-charcoal">MRS</span>
             <button onClick={() => setOpen(false)} className="p-2 text-gray-400"><svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
           </div>
           <nav className="flex-1 flex flex-col justify-center px-8 gap-1">
