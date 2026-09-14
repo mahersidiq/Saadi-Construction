@@ -70,7 +70,7 @@ INSERT INTO site_settings (id, contact_email, phone, tagline)
 VALUES (
   1,
   'Maher@saadi-construction.com',
-  '(512) 962-9856',
+  '(832) 360-3804',
   'Houston''s Apartment Renovation Specialists'
 );
 
