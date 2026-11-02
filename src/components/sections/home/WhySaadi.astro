@@ -1,27 +1,51 @@
 ---
-const values = [
-  { stat: '1,000+', label: 'Units Delivered', text: 'Across Houston metro — from ground-up garden-style to full gut rehab programs.' },
-  { stat: '48hr', label: 'Bid Turnaround', text: 'Detailed per-unit cost breakdowns delivered within 48 business hours.' },
-  { stat: '100%', label: 'Multifamily Focus', text: 'Every project, every dollar, every trade relationship — built for apartments only.' },
-  { stat: 'Owner-Led', label: 'Every Project', text: 'No handoffs. Decision-making leadership on-site from bid day to punchlist.' },
+import Icon from "@/components/Icon.astro";
+const points = [
+  {
+    title: "A scope you can actually compare.",
+    text: "What stays, what goes, which finishes, and what is excluded. Get those details on the table before comparing the bottom-line price.",
+  },
+  {
+    title: "A plan for an operating property.",
+    text: "Vacant units, resident access, material deliveries, and shared spaces all affect the job. Talk through the site conditions before setting the sequence.",
+  },
+  {
+    title: "A clear way to handle changes.",
+    text: "Hidden damage and changed selections can affect cost and timing. Agree on how changes will be priced and approved before they become extra work.",
+  },
 ];
 ---
-<section class="bg-light-gray py-24 border-y border-mid-gray">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="mb-16">
-      <p class="label-tag mb-4">Why MRS</p>
-      <h2 class="font-heading text-4xl md:text-5xl font-black text-charcoal">Built Different.</h2>
+
+<section class="approach-section section-padding">
+  <div class="container-main approach-grid">
+    <div class="approach-intro">
+      <p class="eyebrow">The way we look at it</p><h2>
+        A renovation is more than<br /><em>a good after photo.</em>
+      </h2><p>
+        It’s the unit you need back. The residents still living next door. The
+        budget you have to explain.
+      </p><p>
+        That’s where the conversation starts. With the work, the constraints,
+        and what a finished job needs to look like for you.
+      </p><a href="/about" class="text-link"
+        >Get to know our approach<Icon /></a>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-mid-gray divide-y sm:divide-y-0 sm:divide-x divide-mid-gray">
-      {values.map((v, i) => (
-        <div class="animate-on-scroll bg-white p-10 flex flex-col gap-4 hover:bg-gold/5 transition-colors">
-          <div>
-            <p class="font-heading text-5xl font-black text-gold leading-none">{v.stat}</p>
-            <p class="text-xs font-bold uppercase tracking-widest text-charcoal mt-1">{v.label}</p>
+    <div class="approach-points">
+      {
+        points.map((point, i) => (
+          <div class="approach-point">
+            <>
+              <span>0{i + 1}</span>
+              <div>
+                <>
+                  <h3>{point.title}</h3>
+                  <p>{point.text}</p>
+                </>
+              </div>
+            </>
           </div>
-          <p class="text-sm text-gray-500 leading-relaxed border-t border-mid-gray pt-4">{v.text}</p>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

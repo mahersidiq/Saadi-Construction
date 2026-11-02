@@ -1,95 +1,52 @@
-import { Resend } from 'resend';
+import { Resend } from "resend";
+import { business } from "../data/business.js";
 
-const CONTACT_EMAIL = import.meta.env.CONTACT_EMAIL || process.env.CONTACT_EMAIL || 'info@multifamilyrehabspecialists.com';
-const FROM_EMAIL = import.meta.env.FROM_EMAIL || process.env.FROM_EMAIL || 'Multifamily Rehab Specialists <noreply@multifamilyrehabspecialists.com>';
-
-let resend;
-function getResendClient() {
-  if (!resend) {
-    const apiKey = import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      throw new Error('RESEND_API_KEY is not configured');
-    }
-    resend = new Resend(apiKey);
-  }
-  return resend;
+export function escapeHtml(value = "") {
+  return String(value).replace(
+    /[&<>"']/g,
+    (char) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        char
+      ],
+  );
 }
-
+export function renderContactEmail(lead) {
+  const rows = [
+    ["Name", lead.name],
+    ["Email", lead.email],
+    ["Phone", lead.phone],
+    ["Property", lead.propertyName],
+    ["Renovation scope", lead.service],
+    ["Project details", lead.message],
+  ];
+  return `<!doctype html><html lang="en"><body style="font-family:Arial,sans-serif;color:#25372f"><h1>New apartment renovation inquiry</h1><table style="border-collapse:collapse;width:100%">${rows
+    .filter(([, value]) => value)
+    .map(
+      ([label, value]) =>
+        `<tr><th style="padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid #ddd">${label}</th><td style="padding:12px;white-space:pre-wrap;border-bottom:1px solid #ddd">${escapeHtml(value)}</td></tr>`,
+    )
+    .join("")}</table><p>${business.name} · Houston, Texas</p></body></html>`;
+}
 export async function sendContactEmail(lead) {
-  const apiKey = import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
-  if (!apiKey) throw new Error('RESEND_API_KEY is not configured.');
-  console.log('[resend] Sending to:', CONTACT_EMAIL, '| From:', FROM_EMAIL);
-
+  const apiKey = import.meta.env?.RESEND_API_KEY || process.env.RESEND_API_KEY;
+  if (!apiKey) throw new Error("Email is unavailable.");
+  const to =
+    import.meta.env?.CONTACT_EMAIL ||
+    process.env.CONTACT_EMAIL ||
+    business.email;
+  const from =
+    import.meta.env?.FROM_EMAIL ||
+    process.env.FROM_EMAIL ||
+    `${business.name} <noreply@multifamilyrehabspecialists.com>`;
   const resend = new Resend(apiKey);
-  const {
-    name, email, phone, company, propertyName,
-    unitCount, service, timeline, budget, message, source,
-  } = lead;
-
-  const submittedAt = new Date().toLocaleString('en-US', {
-    timeZone: 'America/Chicago',
-    dateStyle: 'full',
-    timeStyle: 'short',
+  const { data, error } = await resend.emails.send({
+    from,
+    to: [to],
+    reply_to: lead.email,
+    subject: `Property inquiry: ${lead.name.replace(/[\r\n]/g, " ")}`,
+    html: renderContactEmail(lead),
   });
-
-  const buildRow = (label, value) => {
-    if (!value) return '';
-    return `
-      <tr>
-        <td style="padding: 10px 16px; font-weight: 600; color: #374151; border-bottom: 1px solid #e5e7eb; width: 160px; vertical-align: top;">${label}</td>
-        <td style="padding: 10px 16px; color: #1f2937; border-bottom: 1px solid #e5e7eb;">${value}</td>
-      </tr>`;
-  };
-
-  const html = `<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8" /></head>
-<body style="margin: 0; padding: 0; background-color: #f3f4f6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
-  <div style="max-width: 600px; margin: 32px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-    <div style="background-color: #0A2240; padding: 24px 32px;">
-      <h1 style="margin: 0; color: #C8982A; font-size: 20px; font-weight: 700;">New Lead Received</h1>
-      <p style="margin: 8px 0 0; color: #d1d5db; font-size: 14px;">${submittedAt} (CST)</p>
-    </div>
-    <div style="padding: 24px 32px;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-        ${buildRow('Name', name)}
-        ${buildRow('Email', `<a href="mailto:${email}" style="color: #2563eb;">${email}</a>`)}
-        ${buildRow('Phone', phone ? `<a href="tel:${phone}" style="color: #2563eb;">${phone}</a>` : null)}
-        ${buildRow('Company', company)}
-        ${buildRow('Property', propertyName)}
-        ${buildRow('Unit Count', unitCount)}
-        ${buildRow('Service', service)}
-        ${buildRow('Timeline', timeline)}
-        ${buildRow('Budget', budget)}
-        ${buildRow('Source', source)}
-      </table>
-      ${message ? `
-      <div style="margin-top: 24px; padding: 16px; background-color: #f9fafb; border-radius: 6px; border-left: 4px solid #C8982A;">
-        <p style="margin: 0 0 4px; font-size: 13px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em;">Message</p>
-        <p style="margin: 0; color: #1f2937; font-size: 14px; line-height: 1.6; white-space: pre-wrap;">${message}</p>
-      </div>` : ''}
-    </div>
-    <div style="padding: 16px 32px; background-color: #f9fafb; border-top: 1px solid #e5e7eb;">
-      <p style="margin: 0; font-size: 12px; color: #9ca3af; text-align: center;">Multifamily Rehab Specialists &middot; Houston, TX &middot; multifamilyrehabspecialists.com</p>
-    </div>
-  </div>
-</body>
-</html>`;
-
-  const { data, error } = await getResendClient().emails.send({
-    from: FROM_EMAIL,
-    to: [CONTACT_EMAIL],
-    replyTo: email,
-    subject: `New Lead: ${name}${service ? ` - ${service}` : ''}`,
-    html,
-  });
-
-  if (error) {
-    console.error('Resend email error:', error);
-    throw new Error(`Failed to send email: ${error.message}`);
-  }
-
+  if (error || !data?.id) throw new Error("Email delivery was not confirmed.");
   return data;
 }
-
 export default sendContactEmail;

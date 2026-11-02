@@ -1,121 +1,63 @@
 ---
 export const prerender = true;
-import Layout from '@/layouts/Layout.astro';
-import { blogPosts } from '@/data/blogPosts';
-
-const published = blogPosts.slice().sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
-
-const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Apartment Renovation Blog',
-    description: 'Insights on apartment renovation in Houston. Cost guides, industry trends, renovation tips, and market news for multifamily owners and operators.',
-    url: 'https://multifamilyrehabspecialists.com/blog',
-    publisher: {
-      '@type': 'Organization',
-      name: 'MRS',
-      url: 'https://multifamilyrehabspecialists.com',
-    },
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListElement: published.map((post, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        name: post.title,
-        url: `https://multifamilyrehabspecialists.com/blog/${post.slug}`,
-      })),
-    },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://multifamilyrehabspecialists.com/blog' },
-    ],
-  },
-];
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import kitchen from "@/assets/images/saadi-kitchen-renovation-houston-1.jpg";
+import Icon from "@/components/Icon.astro";
+import CTABanner from "@/components/sections/home/CTABanner.astro";
+import { blogPosts } from "@/data/blogPosts";
+import { breadcrumbs } from "@/data/business";
 ---
 
 <Layout
-  title="Apartment Renovation Blog | MRS | Houston, TX"
-  description="Insights on apartment renovation in Houston. Cost guides, industry trends, renovation tips, and market news for multifamily owners and operators."
-  keywords="apartment renovation blog Houston, multifamily renovation insights, Houston apartment rehab cost guide"
-  canonicalUrl="https://multifamilyrehabspecialists.com/blog"
-  jsonLd={jsonLd}
+  title="Apartment Renovation Planning Guide | Multifamily Rehab Specialists"
+  description="Practical renovation planning for Houston apartment owners: defining the scope, comparing bids, budgeting for repairs, and planning around residents."
+  jsonLd={breadcrumbs([["Planning guide", "/blog"]])}
 >
-  <!-- Hero -->
-  <section class="bg-light-gray border-b-2 border-gold/20 pt-16">
-    <div class=></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24">
-      <span class="animate-fade-in-up inline-block mb-4 px-4 py-1.5 text-sm font-semibold tracking-wide uppercase rounded-full bg-gold/15 text-gold border border-gold/30">
-        Renovation Insights
-      </span>
-      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl font-black text-charcoal leading-tight mt-4">
-        Apartment Renovation Insights — Houston, TX
-      </h1>
-      <p class="animate-fade-in-up-delay mt-6 text-lg text-gray-300 max-w-2xl mx-auto">
-        Cost guides, renovation tips, and market insights for multifamily owners and operators across the Greater Houston metro.
+  <section class="page-hero">
+    <div class="container-main">
+      <p class="eyebrow">Before the work starts</p><h1>
+        Better questions.<br /><em>A clearer renovation plan.</em>
+      </h1><p class="lead">
+        Practical reading for apartment owners and property managers. Start with
+        the scope and budget.
       </p>
     </div>
   </section>
-
-  <!-- Post Grid -->
-  <section class="section-padding bg-white">
-    <div class="container-main px-4">
-      {published.length > 0 ? (
-        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {published.map((post) => (
-            <article class="animate-on-scroll group flex flex-col rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-200">
-              {post.heroImage && (
-                <a href={`/blog/${post.slug}`} class="block overflow-hidden">
-                  <img
-                    src={post.heroImage}
-                    alt={post.heroImageAlt}
-                    class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                  />
-                </a>
-              )}
-              <div class="flex flex-col flex-1 p-6">
-                <div class="flex items-center gap-3 mb-3">
-                  <span class="text-xs font-semibold uppercase tracking-widest text-gold">{post.category}</span>
-                  <span class="text-xs text-gray-400">{post.readTime}</span>
-                </div>
-                <h2 class="font-heading text-xl font-bold text-charcoal leading-snug mb-3 group-hover:text-navy transition-colors duration-200">
-                  <a href={`/blog/${post.slug}`}>{post.title}</a>
-                </h2>
-                <p class="text-gray-600 text-sm leading-relaxed flex-1 mb-5">{post.excerpt}</p>
-                <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                  <time class="text-xs text-gray-400" datetime={post.publishDate}>
-                    {new Date(post.publishDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </time>
-                  <a href={`/blog/${post.slug}`} class="text-sm font-semibold text-gold hover:underline">
-                    Read more &rarr;
+  <section class="section-padding">
+    <div class="container-main">
+      {
+        blogPosts.map((post) => (
+          <article class="article-card">
+            <>
+              <Image
+                src={kitchen}
+                alt="Apartment kitchen layout and finish reference"
+                widths={[480, 800]}
+                sizes="(max-width: 767px) 90vw, 45vw"
+                format="webp"
+                loading="lazy"
+              />
+              <div>
+                <>
+                  <p class="eyebrow">
+                    {post.category} · {post.readTime}
+                  </p>
+                  <h2>
+                    <a href={`/blog/${post.slug}`}>{post.title}</a>
+                  </h2>
+                  <p>{post.excerpt}</p>
+                  <a class="text-link" href={`/blog/${post.slug}`}>
+                    Read the budgeting guide
+                    <Icon />
                   </a>
-                </div>
+                </>
               </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <div class="text-center py-16">
-          <p class="text-gold font-semibold uppercase tracking-widest text-sm mb-4">Coming Soon</p>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Articles & Renovation Insights</h2>
-          <p class="text-lg text-gray-600 max-w-xl mx-auto mb-10">We're publishing guides on multifamily renovation, cost planning, and Houston market insights. Check back soon.</p>
-          <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
-        </div>
-      )}
+            </>
+          </article>
+        ))
+      }
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="section-padding bg-light-gray border-t border-gray-200">
-    <div class="container-main px-4 text-center max-w-2xl mx-auto">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Ready to Plan Your Renovation?</h2>
-      <p class="text-lg text-gray-600 mb-8">Get a detailed, line-item bid within 5 business days. We scope every project on-site before we price it.</p>
-      <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
-    </div>
-  </section>
+  <CTABanner />
 </Layout>

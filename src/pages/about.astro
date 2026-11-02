@@ -1,136 +1,84 @@
 ---
 export const prerender = true;
-import Layout from '@/layouts/Layout.astro';
-import { Image } from 'astro:assets';
-
-const values = [
-  { title: 'Transparency', description: 'We provide clear, detailed scopes, honest timelines, and open-book communication from bid to punch list. You always know where your project stands.' },
-  { title: 'Competence', description: 'Our team brings institutional-grade construction experience to every engagement — proper planning, disciplined scheduling, and quality execution across every trade.' },
-  { title: 'Adaptability', description: 'Every property is different. We tailor our approach to your asset, your residents, and your investment goals — whether it is a 20-unit rehab or a 300-unit repositioning.' },
-];
-
-const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'MRS',
-    url: 'https://multifamilyrehabspecialists.com',
-    logo: 'https://multifamilyrehabspecialists.com/og-image.jpg',
-    telephone: '(832) 360-3804',
-    email: 'info@multifamilyrehabspecialists.com',
-    description: 'Houston-based multifamily renovation firm delivering institutional-grade apartment renovation programs across 1,000+ units.',
-    founder: {
-      '@type': 'Person',
-      jobTitle: 'Owner & General Contractor',
-      description: 'Founder of MRS with hands-on experience across 1,000+ multifamily units in the Houston metro.',
-    },
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '801 Travis St Suite 2101',
-      addressLocality: 'Houston',
-      addressRegion: 'TX',
-      postalCode: '77002',
-      addressCountry: 'US',
-    },
-    areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
-      { '@type': 'ListItem', position: 2, name: 'About', item: 'https://multifamilyrehabspecialists.com/about' },
-    ],
-  },
-];
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import kitchen from "@/assets/images/saadi-kitchen-renovation-houston-1.jpg";
+import CTABanner from "@/components/sections/home/CTABanner.astro";
+import Process from "@/components/sections/home/Process.astro";
+import { breadcrumbs } from "@/data/business";
 ---
 
 <Layout
-  title="About MRS | Houston Apartment Renovation Contractor"
-  description="Houston-based multifamily renovation firm delivering institutional-grade apartment renovation programs across 1,000+ units. Licensed general contractor serving Houston and surrounding areas."
-  keywords="about MRS, Houston apartment renovation contractor, multifamily renovation firm Houston"
-  canonicalUrl="https://multifamilyrehabspecialists.com/about"
-  jsonLd={jsonLd}
+  title="Our Approach | Multifamily Rehab Specialists, Houston"
+  description="Apartment renovation starts with the property: its condition, residents, access, and budget. Get to know the approach at Multifamily Rehab Specialists."
+  jsonLd={breadcrumbs([["Our approach", "/about"]])}
 >
-  <!-- Hero -->
-  <section class="bg-light-gray border-b-2 border-gold/20 pt-16">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24">
-      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl font-black text-charcoal leading-tight mt-4">
-        Multifamily Expertise. Owner Accountability.
-      </h1>
-      <p class="animate-fade-in-up-delay mt-5 text-lg text-gray-500 max-w-xl">
-        A Houston-based renovation firm built for apartment owners and operators who demand results.
+  <section class="page-hero">
+    <div class="container-main">
+      <p class="eyebrow">Multifamily Rehab Specialists · Houston, Texas</p><h1>
+        Less sales pitch.<br /><em>More about the work.</em>
+      </h1><p class="lead">
+        Apartment renovations have enough moving parts. The conversation with
+        your contractor should make them easier to understand.
       </p>
     </div>
   </section>
-
-  <!-- Who We Are + Owner -->
-  <section class="section-padding bg-white">
-    <div class="container-main px-4">
-      <div class="animate-on-scroll grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <div class="w-full h-64 rounded-2xl bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm">Photo coming soon</span>
-          </div>
-        </div>
-        <div>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-4">Owner &amp; General Contractor</h2>
-          <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            I founded MRS to bring institutional-grade construction management to apartment owners who deserve better execution. With hands-on experience across 1,000+ multifamily units in the Houston metro — from ground-up garden-style communities to full gut rehab programs — I built this company around one principle: the owner is on every project, from bid to punchlist.
-          </p>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            MRS is focused exclusively on apartment communities. We partner with property owners, operators, and investment groups to deliver renovation programs that protect asset value, accelerate rent premiums, and drive returns — with no handoffs and no surprises.
-          </p>
-        </div>
+  <section class="section-padding">
+    <div class="container-main content-grid">
+      <div class="content-copy">
+        <p class="eyebrow">What we’re here to do</p><h2>
+          Help you make the right call<br />for your property.
+        </h2><p>
+          Multifamily Rehab Specialists works with apartment owners and property
+          managers in Greater Houston on unit interiors, full rehabs, and
+          improvements across the community.
+        </p><p>
+          A vacant unit with worn finishes needs a different plan from a
+          building with hidden damage. A clubhouse renovation has different
+          access needs from an occupied apartment. The useful questions come
+          before the quote.
+        </p><p>
+          What can stay? What needs replacing? Who needs access, and when? Which
+          decisions have to be made before the work starts? Those are the
+          details we want to work through with you.
+        </p>
+      </div>
+      <div>
+        <Image
+          class="content-photo"
+          src={kitchen}
+          alt="Kitchen layout with an island and adjoining living space"
+          widths={[480, 800]}
+          sizes="(max-width: 767px) 90vw, 40vw"
+          format="webp"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
-
-  <!-- Multifamily-Only Focus -->
-  <section class="section-padding bg-white">
-    <div class="container-main px-4 max-w-4xl">
-      <div class="animate-on-scroll">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Multifamily-Only Focus</h2>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          We do not renovate single-family homes, offices, or retail spaces. Every dollar we invest in systems, training, and trade relationships is directed at one thing: making apartment renovations run better. That singular focus means tighter scopes, faster turns, and fewer surprises on your project.
+  <section class="section-padding areas-section">
+    <div class="container-main content-grid">
+      <div>
+        <p class="eyebrow">Practical things that matter</p><h2>
+          A good working relationship<br />starts with clarity.
+        </h2>
+      </div><div class="content-copy">
+        <ul class="plain-list">
+          <li>
+            A written scope that makes inclusions and exclusions clear.
+          </li><li>
+            Finish selections and material responsibilities agreed in advance.
+          </li><li>
+            A realistic sequence that considers access and residents.
+          </li><li>A process for pricing and approving changes.</li><li>
+            A punch list and an agreed standard for handoff.
+          </li>
+        </ul><p>
+          These are the points to cover before committing to a renovation. Bring
+          your questions. We’ll talk through them.
         </p>
       </div>
     </div>
   </section>
-
-  <!-- Service Area -->
-  <section class="section-padding bg-light-gray">
-    <div class="container-main px-4 max-w-4xl">
-      <div class="animate-on-scroll">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal mb-6">Service Area</h2>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          We serve the Greater Houston metropolitan area including Katy, Sugar Land, Pearland, Pasadena, The Woodlands, Spring, Cypress, League City, Missouri City, Conroe, Baytown, Richmond, Friendswood, and Humble. If your property is within the Houston metro, we can get a team on site.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Values -->
-  <section class="section-padding bg-white">
-    <div class="container-main px-4 max-w-4xl">
-      <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-charcoal mb-12 text-center">Our Values</h2>
-      <div class="grid gap-8 md:grid-cols-3">
-        {values.map((value) => (
-          <div class="animate-on-scroll rounded-xl bg-light-gray p-8 border border-gray-200">
-            <h3 class="font-heading text-xl font-bold text-navy mb-3">{value.title}</h3>
-            <p class="text-gray-700 leading-relaxed">{value.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer Statement -->
-  <section class="bg-navy py-12">
-    <div class="container-main px-4 text-center">
-      <p class="animate-on-scroll text-lg font-semibold text-gold tracking-wide">
-        General Contractor | Licensed &amp; Insured | Houston, Texas
-      </p>
-    </div>
-  </section>
+  <Process /><CTABanner />
 </Layout>

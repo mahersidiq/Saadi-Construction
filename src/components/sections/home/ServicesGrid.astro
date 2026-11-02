@@ -1,36 +1,92 @@
 ---
-import { allServices } from '@/data/services';
+import { Image } from "astro:assets";
+import kitchen from "@/assets/images/saadi-kitchen-renovation-houston-1.jpg";
+import framing from "@/assets/images/saadi-multifamily-framing-houston-1.jpg";
+import clubhouse from "@/assets/images/saadi-clubhouse-renovation-houston-1.jpg";
+import Icon from "@/components/Icon.astro";
+const services = [
+  {
+    num: "01",
+    title: "Make the unit work harder.",
+    label: "Apartment interiors",
+    image: kitchen,
+    alt: "Kitchen cabinetry and island finish reference",
+    text: "Kitchens, bathrooms, flooring, paint, and the repairs that need to happen before the next resident moves in.",
+    href: "/services/unit-interior-renovation",
+    link: "Unit interior renovation",
+  },
+  {
+    num: "02",
+    title: "Start with what’s underneath.",
+    label: "Full gut rehabs",
+    image: framing,
+    alt: "Exposed wood framing during building construction",
+    text: "When a surface refresh won’t solve it: demolition, repairs, trade coordination, and a complete interior rebuild.",
+    href: "/services/full-gut-rehab",
+    link: "Full gut rehab",
+  },
+  {
+    num: "03",
+    title: "Look beyond the front door.",
+    label: "Property-wide improvements",
+    image: clubhouse,
+    alt: "Shared lounge with seating and high ceilings",
+    text: "Clubhouses, leasing spaces, amenities, and exterior improvements. Plan the shared spaces along with the units.",
+    href: "/services/common-area-amenity-renovation",
+    link: "Common areas & amenities",
+  },
+];
 ---
-<section class="py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <!-- Section header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-      <div>
-        <p class="label-tag mb-4">What We Do</p>
-        <h2 class="font-heading text-4xl md:text-5xl font-black text-charcoal leading-tight">
-          Full-Scope Renovation<br />Services
-        </h2>
-      </div>
-      <a href="/services" class="label-tag hover:underline shrink-0">All Services →</a>
-    </div>
 
-    <!-- Two-column manifest list -->
-    <div class="grid md:grid-cols-2 gap-0 border border-mid-gray divide-y md:divide-y-0 md:divide-x divide-mid-gray">
-      {allServices.map((service, i) => (
-        <a
-          href={`/services/${service.slug}`}
-          class="group flex items-center justify-between p-8 border-b border-mid-gray hover:bg-light-gray transition-colors"
-        >
-          <div class="flex items-center gap-6">
-            <span class="font-heading text-3xl font-black text-gold/25 shrink-0 w-10">{String(i + 1).padStart(2, '0')}</span>
-            <div>
-              <h3 class="font-heading text-lg font-bold text-charcoal group-hover:text-gold transition-colors">{service.name}</h3>
-              <p class="text-xs uppercase tracking-widest text-gray-400 mt-0.5">{service.category}</p>
+<section class="section-padding services-section" id="services">
+  <div class="container-main">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">What needs work?</p><h2>
+          The right scope.<br />Not just a longer punch list.
+        </h2>
+      </div><p>
+        Keep what works. Replace what doesn’t.<br />Start with the part of your
+        property that needs attention.
+      </p>
+    </div>
+    <div class="service-card-grid">
+      {
+        services.map((service) => (
+          <a href={service.href} class="service-card">
+            <div class="service-card-image">
+              <>
+                <Image
+                  src={service.image}
+                  alt={service.alt}
+                  widths={[360, 560, 800]}
+                  sizes="(max-width: 767px) 92vw, 30vw"
+                  format="webp"
+                  loading="lazy"
+                />
+                <span>
+                  {service.num} / {service.label}
+                </span>
+              </>
             </div>
-          </div>
-          <svg class="w-5 h-5 text-mid-gray group-hover:text-gold group-hover:translate-x-1 transition-all shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-      ))}
+            <div class="service-card-copy">
+              <>
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+                <span class="text-link">
+                  {service.link}
+                  <Icon />
+                </span>
+              </>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    <div class="service-bottom">
+      <span>Planning several phases or managing a larger renovation?</span><a
+        href="/services"
+        class="text-link">See all renovation services<Icon /></a>
     </div>
   </div>
 </section>

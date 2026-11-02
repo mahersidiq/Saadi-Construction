@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#f7f5ef"/><rect x="870" width="330" height="630" fill="#243f35"/>
+<path d="M920 460V245l65-50v265m0 0V245l65-50v265m0 0V245l65-50v265M917 463h206" fill="none" stroke="#c9d3b2" stroke-width="7"/>
+<text x="70" y="95" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#243f35">MULTIFAMILY REHAB SPECIALISTS</text>
+<text x="70" y="245" font-family="Arial,sans-serif" font-size="67" font-weight="bold" letter-spacing="-3" fill="#25372f">Houston apartment</text>
+<text x="70" y="325" font-family="Arial,sans-serif" font-size="67" font-weight="bold" letter-spacing="-3" fill="#25372f">renovations.</text>
+<text x="70" y="410" font-family="Georgia,serif" font-style="italic" font-size="62" fill="#52674c">Let’s get to work.</text>
+<path d="M70 475h720" stroke="#cbd1c0"/>
+<text x="70" y="540" font-family="Arial,sans-serif" font-size="29" fill="#25372f">(832) 360-3804</text>
+</svg>

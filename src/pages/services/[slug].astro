@@ -1,146 +1,94 @@
 ---
 export const prerender = true;
-import Layout from '@/layouts/Layout.astro';
-import ServiceHero from '@/components/sections/services/ServiceHero.astro';
-import ServiceIncludes from '@/components/sections/services/ServiceIncludes.astro';
-import RelatedServices from '@/components/sections/services/RelatedServices.astro';
-import CTABanner from '@/components/sections/home/CTABanner.astro';
-import { serviceCategories, allServices } from '@/data/services';
-import { serviceDetails } from '@/data/serviceDetails';
-
+import Layout from "@/layouts/Layout.astro";
+import CTABanner from "@/components/sections/home/CTABanner.astro";
+import Faq from "@/components/Faq.astro";
+import Icon from "@/components/Icon.astro";
+import { allServices } from "@/data/services";
+import { serviceDetails } from "@/data/serviceDetails";
+import { business, breadcrumbs } from "@/data/business";
 export function getStaticPaths() {
-  return allServices.map((service) => ({
-    params: { slug: service.slug },
-  }));
+  return allServices.map((service) => ({ params: { slug: service.slug } }));
 }
-
-const { slug } = Astro.params;
-const service = allServices.find((s) => s.slug === slug);
-if (!service) return Astro.redirect('/404');
-
-const detail = serviceDetails[slug] || {};
-
-// Find related services
-let relatedServices = [];
-for (const category of serviceCategories) {
-  const inCategory = category.services.find((s) => s.slug === slug);
-  if (inCategory) {
-    relatedServices = category.services.filter((s) => s.slug !== slug).slice(0, 3);
-    break;
-  }
-}
-if (relatedServices.length < 3) {
-  const remaining = allServices
-    .filter((s) => s.slug !== slug && !relatedServices.find((r) => r.slug === s.slug))
-    .slice(0, 3 - relatedServices.length);
-  relatedServices = [...relatedServices, ...remaining];
-}
-
-const faqs = detail.faqs || [];
-
+const service = allServices.find((s) => s.slug === Astro.params.slug)!;
+const detail = serviceDetails[service.slug];
 const serviceSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: detail.title || service.name,
-  description: detail.metaDescription || `${service.name} services for apartments in Houston, TX.`,
-  provider: {
-    '@type': 'GeneralContractor',
-    name: 'MRS',
-    url: 'https://multifamilyrehabspecialists.com',
-    telephone: '(832) 360-3804',
-    address: { '@type': 'PostalAddress', streetAddress: '801 Travis St Suite 2101', addressLocality: 'Houston', addressRegion: 'TX', postalCode: '77002', addressCountry: 'US' },
-  },
-  areaServed: { '@type': 'City', name: 'Houston', containedInPlace: { '@type': 'State', name: 'Texas' } },
-  serviceType: detail.title || service.name,
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: detail.title,
+  description: detail.subheadline,
+  provider: { "@id": `${business.url}/#business` },
+  areaServed: { "@type": "Place", name: "Greater Houston, Texas" },
+  url: `${business.url}/services/${service.slug}`,
 };
-
-const faqSchema = faqs.length > 0 ? {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer,
-    },
-  })),
-} : null;
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
-    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://multifamilyrehabspecialists.com/services' },
-    { '@type': 'ListItem', position: 3, name: detail.title || service.name, item: `https://multifamilyrehabspecialists.com/services/${slug}` },
-  ],
-};
-
-const speakableSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  name: detail.title || service.name,
-  speakable: {
-    '@type': 'SpeakableSpecification',
-    cssSelector: ['h1', 'h2', '.what-is-it p', 'details summary', 'details p'],
-  },
-  url: `https://multifamilyrehabspecialists.com/services/${slug}`,
-};
-
-const jsonLd = faqSchema
-  ? [serviceSchema, faqSchema, breadcrumbSchema, speakableSchema]
-  : [serviceSchema, breadcrumbSchema, speakableSchema];
+const related = allServices.filter((s) => s.slug !== service.slug).slice(0, 3);
 ---
 
 <Layout
-  title={detail.metaTitle || `${service.name} | Houston TX | MRS`}
-  description={detail.metaDescription || `Professional ${service.name.toLowerCase()} services for multifamily apartment properties in Houston, TX.`}
-  keywords={detail.keywords || `${service.name} Houston, apartment ${service.name.toLowerCase()}, multifamily ${service.name.toLowerCase()} Houston TX`}
-  canonicalUrl={`https://multifamilyrehabspecialists.com/services/${slug}`}
-  jsonLd={jsonLd}
+  title={`${detail.title} | Multifamily Rehab Specialists`}
+  description={detail.subheadline +
+    " Discuss your property with Multifamily Rehab Specialists. Call (832) 360-3804."}
+  jsonLd={[
+    serviceSchema,
+    breadcrumbs([
+      ["Services", "/services"],
+      [service.name, `/services/${service.slug}`],
+    ]),
+  ]}
 >
-  <ServiceHero title={detail.title || service.name} subheadline={detail.subheadline} category={detail.category} />
-  <ServiceIncludes includes={detail.includes} whatIsIt={detail.whatIsIt} bestFor={detail.bestFor} />
-
-  {faqs.length > 0 && (
-    <section class="py-16 md:py-24 bg-white">
-      <div class="container-main px-4 max-w-3xl">
-        <div class="animate-on-scroll mb-10">
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-charcoal">Frequently Asked Questions</h2>
-        </div>
-        <div class="divide-y divide-gray-200">
-          {faqs.map((faq) => (
-            <details class="animate-on-scroll group py-6 cursor-pointer" open={false}>
-              <summary class="flex items-center justify-between gap-4 list-none font-heading font-semibold text-lg text-charcoal">
-                {faq.question}
-                <svg class="h-5 w-5 flex-shrink-0 text-gold transition-transform duration-200 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <p class="mt-4 text-gray-700 leading-relaxed">{faq.answer}</p>
-            </details>
-          ))}
-        </div>
+  <section class="page-hero">
+    <div class="container-main">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><a href="/services">Services</a><span
+          >/</span
+        ><span>{service.name}</span>
+      </nav>
+      <p class="eyebrow">{service.category} · Greater Houston</p><h1>
+        {detail.title}
+      </h1><p class="lead">{detail.subheadline}</p>
+      <div class="hero-actions">
+        <a
+          class="btn-primary"
+          href={business.phoneHref}
+          data-call-source="service"
+          ><Icon name="phone" />Talk about your property</a
+        ><a class="text-link" href="/contact#project-inquiry"
+          >Send the details<Icon /></a>
       </div>
-    </section>
-  )}
-
-  {detail.internalLinks && detail.internalLinks.length > 0 && (
-    <section class="py-10 bg-light-gray border-t border-gray-200">
-      <div class="container-main px-4 max-w-3xl">
-        <p class="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-4">Related Services</p>
-        <div class="flex flex-wrap gap-3">
-          {detail.internalLinks.map((link) => (
-            <a href={link.href} class="inline-block px-4 py-2 rounded-full bg-white border border-gray-300 text-sm font-medium text-charcoal hover:border-gold hover:text-gold transition-colors duration-200">
-              {link.anchor}
-            </a>
-          ))}
-        </div>
+    </div>
+  </section>
+  <section class="section-padding">
+    <div class="container-main service-detail-grid">
+      <div>
+        <p class="eyebrow">Understand the scope</p><h2>
+          What the work involves.
+        </h2><p>{detail.whatIsIt}</p><h3 class="mt-10">
+          Work to consider in your scope
+        </h3><ul class="plain-list detail-checklist">
+          {detail.includes.map((item) => <li>{item}</li>)}
+        </ul><p class="text-sm">
+          The final scope, exclusions, and any permit or specialist requirements
+          are agreed for your property.
+        </p>
+      </div><aside class="side-note">
+        <h2>Before we price it.</h2><ul>
+          {detail.planning.map((item) => <li>{item}</li>)}
+        </ul><h3 class="mt-8">When this scope makes sense</h3><p>
+          {detail.bestFor}
+        </p><a class="text-link" href="/projects"
+          >Explore renovation scope ideas<Icon /></a>
+      </aside>
+    </div>
+  </section>
+  <Faq items={detail.faqs} />
+  <section class="section-padding areas-section">
+    <div class="container-main">
+      <p class="eyebrow">Connected work</p><h2>
+        What else is on the list?
+      </h2><div class="related-links">
+        {related.map((s) => <a href={`/services/${s.slug}`}>{s.name} →</a>)}
       </div>
-    </section>
-  )}
-
-  <RelatedServices relatedServices={relatedServices} />
+    </div>
+  </section>
   <CTABanner />
 </Layout>

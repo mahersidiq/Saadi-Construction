@@ -1,77 +1,59 @@
 ---
+import { Image } from "astro:assets";
+import kitchen from "@/assets/images/saadi-kitchen-renovation-houston-1.jpg";
+import Icon from "@/components/Icon.astro";
+import { business } from "@/data/business";
 ---
-<section class="bg-white pt-16 min-h-screen flex flex-col">
-  <!-- Top accent bar -->
-  <div class="h-1.5 bg-gold w-full"></div>
 
-  <div class="flex-1 flex flex-col lg:flex-row">
-    <!-- Mobile hero image (hidden on desktop — desktop uses right panel) -->
-    <div class="lg:hidden w-full h-72 sm:h-80 relative overflow-hidden flex-shrink-0">
-      <img
-        src="/images/saadi-exterior-walkway-tropical-landscaping-houston-1.png"
-        alt="Multifamily exterior renovation Houston"
-        class="w-full h-full object-cover"
-        loading="eager"
-      />
-      <div class="absolute bottom-0 left-0 right-0 bg-gold/10 border-t border-gold/20 px-6 py-3 flex items-center justify-between">
-        <span class="text-xs font-bold uppercase tracking-widest text-white">Licensed & Insured</span>
-        <a href="tel:8323603804" class="text-xs font-bold text-white hover:text-gold transition-colors">(832) 360-3804</a>
-      </div>
-    </div>
-
-    <!-- Left: main content -->
-    <div class="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-20 pt-10 pb-16 lg:py-24">
-      <p class="animate-fade-in-up label-tag mb-6">Houston, Texas · Multifamily Renovation</p>
-
-      <h1 class="animate-fade-in-up font-heading font-black text-charcoal leading-[1.0] tracking-tight">
-        <span class="block text-5xl md:text-7xl lg:text-8xl">Renovation</span>
-        <span class="block text-5xl md:text-7xl lg:text-8xl text-gold">That</span>
-        <span class="block text-5xl md:text-7xl lg:text-8xl">Delivers.</span>
-      </h1>
-
-      <p class="animate-fade-in-up-delay mt-8 text-lg text-gray-500 leading-relaxed max-w-lg">
-        Full-scope apartment renovation for owners and operators who demand institutional-grade execution — from bid to punchlist.
+<section class="home-hero">
+  <div class="container-main hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="status-dot"></span> Multifamily renovation · Houston, TX
       </p>
-
-      <div class="animate-fade-in-up-delay-2 mt-10 flex flex-wrap gap-4">
-        <a href="/contact" class="bg-gold text-white font-bold px-8 py-4 text-sm uppercase tracking-widest hover:bg-emerald-700 transition-colors">
-          Request a Bid →
-        </a>
-        <a href="/services" class="border-2 border-charcoal text-charcoal font-bold px-8 py-4 text-sm uppercase tracking-widest hover:bg-charcoal hover:text-white transition-colors">
-          Our Services
-        </a>
-      </div>
-
-      <!-- Inline stats -->
-      <div class="animate-fade-in-up-delay-2 mt-14 grid grid-cols-3 gap-0 border border-mid-gray divide-x divide-mid-gray max-w-sm">
-        <div class="px-4 py-4 text-center">
-          <p class="font-heading text-2xl font-black text-charcoal">1K+</p>
-          <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-0.5">Units</p>
-        </div>
-        <div class="px-4 py-4 text-center">
-          <p class="font-heading text-2xl font-black text-gold">48hr</p>
-          <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-0.5">Bids</p>
-        </div>
-        <div class="px-4 py-4 text-center">
-          <p class="font-heading text-2xl font-black text-charcoal">100%</p>
-          <p class="text-[10px] uppercase tracking-widest text-gray-400 mt-0.5">Multifamily</p>
-        </div>
+      <h1>Apartment<br />renovations.<br /><em>Let’s get to work.</em></h1>
+      <p class="hero-description">
+        Your next unit turn. A full rehab. A property that needs a fresh start.
+        We help apartment owners and managers turn a list of repairs into a
+        clear renovation plan.
+      </p>
+      <a
+        href={business.phoneHref}
+        class="btn-primary hero-call"
+        data-call-source="hero"
+        ><Icon name="phone" />Call {business.phone}<Icon /></a
+      >
+      <a href="/services" class="text-link hero-secondary"
+        >Find the right scope for your property<Icon /></a
+      >
+      <div class="hero-note">
+        <span class="note-rule"></span><p>
+          Kitchens &amp; baths. Interiors &amp; exteriors.<br /><strong
+            >One property. One practical plan.</strong>
+        </p>
       </div>
     </div>
-
-    <!-- Right: hero photo panel -->
-    <div class="hidden lg:flex flex-col w-[42%] relative overflow-hidden">
-      <div class="absolute top-0 left-0 w-1 h-full bg-gold z-10"></div>
-      <img
-        src="/images/saadi-exterior-walkway-tropical-landscaping-houston-1.png"
-        alt="Multifamily exterior renovation Houston"
-        class="w-full h-full object-cover"
+    <figure class="hero-visual">
+      <Image
+        src={kitchen}
+        alt="Apartment kitchen with dark cabinets, an island, and wood-look flooring"
+        widths={[480, 720, 1080]}
+        sizes="(max-width: 767px) 100vw, 48vw"
+        format="webp"
         loading="eager"
+        fetchpriority="high"
+        class="hero-photo"
       />
-      <div class="absolute bottom-0 left-0 right-0 bg-gold/10 border-t border-gold/20 px-8 py-5 flex items-center justify-between">
-        <span class="text-xs font-bold uppercase tracking-widest text-white">Licensed & Insured</span>
-        <a href="tel:8323603804" class="text-xs font-bold text-white hover:text-gold transition-colors">(832) 360-3804</a>
+      <div class="hero-image-tag">
+        <Icon class="tag-mark" /><span
+          >Apartments are your business.<br /><strong
+            >Renovating them is ours.</strong
+          ></span>
       </div>
-    </div>
+      <figcaption>
+        <span>Interiors · Full rehabs · Community spaces</span><span
+          >Greater Houston</span>
+      </figcaption>
+    </figure>
   </div>
 </section>

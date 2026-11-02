@@ -1,60 +1,66 @@
 export const serviceCategories = [
   {
-    name: 'Unit Renovation',
-    slug: 'unit-renovation',
+    name: "Inside the apartment",
+    slug: "unit-renovation",
     services: [
       {
-        slug: 'full-gut-rehab',
-        name: 'Full Gut Rehab',
-        category: 'Unit Renovation',
-        description: 'Complete unit demolition and reconstruction. From stripped walls to move-in ready — kitchens, baths, flooring, paint, doors, and all finishes delivered on schedule.',
+        slug: "unit-interior-renovation",
+        name: "Unit Interior Renovation",
+        category: "Apartment interiors",
+        description:
+          "Kitchen and bathroom updates, flooring, paint, lighting, and the repairs that tie the unit together.",
       },
       {
-        slug: 'unit-interior-renovation',
-        name: 'Unit Interior Renovation',
-        category: 'Unit Renovation',
-        description: 'Targeted interior upgrades that drive rent premiums. We scope, schedule, and execute kitchen and bath renovations, flooring replacement, and full interior refresh programs across any number of units.',
+        slug: "full-gut-rehab",
+        name: "Full Gut Rehab",
+        category: "Apartment interiors",
+        description:
+          "A deeper rebuild when new finishes alone won’t address the condition of the apartment.",
       },
     ],
   },
   {
-    name: 'Property-Wide',
-    slug: 'property-wide',
+    name: "Across the community",
+    slug: "property-wide",
     services: [
       {
-        slug: 'common-area-amenity-renovation',
-        name: 'Common Area & Amenity Renovation',
-        category: 'Property-Wide',
-        description: 'Clubhouse renovations, fitness centers, leasing offices, and amenity build-outs that reposition your property and justify premium rents.',
+        slug: "common-area-amenity-renovation",
+        name: "Common Areas & Amenities",
+        category: "Property-wide",
+        description:
+          "Leasing offices, clubhouses, fitness rooms, and shared spaces, planned around the people using them.",
       },
       {
-        slug: 'exterior-curb-appeal',
-        name: 'Exterior & Curb Appeal',
-        category: 'Property-Wide',
-        description: 'Facade upgrades, siding replacement, window and door packages, breezeways, and exterior painting programs that transform first impressions at the property line.',
+        slug: "exterior-curb-appeal",
+        name: "Exterior Improvements",
+        category: "Property-wide",
+        description:
+          "Siding, paint, entrances, and exterior repairs. Address condition as well as appearance.",
       },
     ],
   },
   {
-    name: 'Management',
-    slug: 'management',
+    name: "Planning the bigger job",
+    slug: "management",
     services: [
       {
-        slug: 'value-add-programs',
-        name: 'Value-Add Programs',
-        category: 'Management',
-        description: 'Phased renovation programs designed around your occupancy and budget. We plan capital deployment, sequence unit turns, and execute renovation programs that maximize NOI impact without disrupting operations.',
+        slug: "value-add-programs",
+        name: "Phased Renovation Programs",
+        category: "Planning & coordination",
+        description:
+          "A repeatable unit scope and a phased schedule built around vacancy, materials, and your budget.",
       },
       {
-        slug: 'construction-management',
-        name: 'Construction Management',
-        category: 'Management',
-        description: 'Owner-side construction management for larger capital programs. Scope development, contractor procurement, scheduling, and quality control — with MRS accountability on every project.',
+        slug: "construction-management",
+        name: "Construction Management",
+        category: "Planning & coordination",
+        description:
+          "Scope, budgets, scheduling, trade coordination, and punch lists for a renovation with more moving parts.",
       },
     ],
   },
 ];
-
-export const allServices = serviceCategories.flatMap((cat) => cat.services);
-
+export const allServices = serviceCategories.flatMap(
+  (category) => category.services,
+);
 export default serviceCategories;

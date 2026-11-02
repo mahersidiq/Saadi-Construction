@@ -1,65 +1,67 @@
 ---
-import { serviceCategories } from '@/data/services';
-import { serviceAreas } from '@/data/serviceAreas';
-const unitServices = serviceCategories.find((c) => c.slug === 'unit-renovation')?.services || [];
-const propertyServices = serviceCategories.find((c) => c.slug === 'property-wide')?.services || [];
-const managementServices = serviceCategories.find((c) => c.slug === 'management')?.services || [];
+import { business } from "@/data/business";
+import Icon from "./Icon.astro";
 ---
-<footer class="bg-charcoal text-white">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 py-16 border-b border-white/10">
-      <div class="lg:col-span-2">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="font-heading font-black text-2xl tracking-[0.15em] text-white">MRS</span>
-          <span class="text-xs font-semibold tracking-[0.3em] uppercase text-gold border-l-2 border-gold/30 pl-3">Multifamily Rehab Specialists</span>
-        </div>
-        <p class="text-white/50 text-sm leading-relaxed max-w-xs mb-8">Houston's apartment renovation specialists. Precision execution for multifamily owners who demand results.</p>
-        <div class="space-y-3 text-sm">
-          <a href="tel:8323603804" class="flex items-center gap-3 text-white/60 hover:text-gold transition-colors">
-            <span class="w-4 h-px bg-gold/40 shrink-0"></span>(832) 360-3804
-          </a>
-          <a href="mailto:info@multifamilyrehabspecialists.com" class="flex items-center gap-3 text-white/60 hover:text-gold transition-colors">
-            <span class="w-4 h-px bg-gold/40 shrink-0"></span>info@multifamilyrehabspecialists.com
-          </a>
-          <p class="flex items-center gap-3 text-white/40">
-            <span class="w-4 h-px bg-white/20 shrink-0"></span>Serving Houston &amp; Surrounding Areas
-          </p>
-        </div>
-      </div>
 
+<footer class="site-footer">
+  <div class="container-main">
+    <div class="footer-main">
+      <div class="footer-intro">
+        <a class="brand" href="/"
+          ><span>Multifamily<span>Rehab Specialists</span></span></a
+        >
+        <p>
+          Apartment renovations.<br />Houston and the communities around it.
+        </p>
+        <a
+          class="footer-phone"
+          href={business.phoneHref}
+          data-call-source="footer">{business.phone}<Icon /></a
+        >
+        <a class="footer-email" href={`mailto:${business.email}`}
+          >{business.email}</a
+        >
+      </div>
       <div>
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Unit Services</p>
-        <ul class="space-y-2.5">
-          {unitServices.map(s => <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{s.name}</a></li>)}
+        <h2>What we do</h2><ul>
+          <li>
+            <a href="/services/unit-interior-renovation">Apartment interiors</a>
+          </li>
+          <li><a href="/services/full-gut-rehab">Full gut rehabs</a></li>
+          <li>
+            <a href="/services/common-area-amenity-renovation"
+              >Common areas &amp; amenities</a>
+          </li>
+          <li>
+            <a href="/services/exterior-curb-appeal">Exterior improvements</a>
+          </li>
+          <li>
+            <a href="/services/value-add-programs"
+              >Phased renovation programs</a>
+          </li>
         </ul>
       </div>
-
       <div>
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Property-Wide</p>
-        <ul class="space-y-2.5 mb-8">
-          {propertyServices.map(s => <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{s.name}</a></li>)}
-        </ul>
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Management</p>
-        <ul class="space-y-2.5">
-          {managementServices.map(s => <li><a href={`/services/${s.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{s.name}</a></li>)}
-        </ul>
-      </div>
-
-      <div>
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Service Areas</p>
-        <ul class="space-y-2.5 mb-8">
-          {serviceAreas.map(a => <li><a href={`/service-areas/${a.slug}`} class="text-sm text-white/50 hover:text-gold transition-colors">{a.name}</a></li>)}
-        </ul>
-        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-gold mb-5">Company</p>
-        <ul class="space-y-2.5">
-          <li><a href="/about" class="text-sm text-white/50 hover:text-gold transition-colors">About</a></li>
-          <li><a href="/contact" class="text-sm text-white/50 hover:text-gold transition-colors">Contact</a></li>
+        <h2>Around the site</h2><ul>
+          <li><a href="/about">Our approach</a></li><li>
+            <a href="/projects">Renovation scope ideas</a>
+          </li>
+          <li><a href="/service-areas">Greater Houston service areas</a></li><li
+          >
+            <a href="/blog">Renovation planning guide</a>
+          </li><li><a href="/contact">Talk about your property</a></li>
         </ul>
       </div>
     </div>
-    <div class="py-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-white/25">
-      <p>Licensed &amp; Insured · Houston, TX · Harris, Fort Bend, Montgomery, Brazoria &amp; Galveston Counties</p>
-      <p>&copy; 2026 Multifamily Rehab Specialists</p>
+    <div class="footer-bottom">
+      <span>&copy; {new Date().getFullYear()} {business.name}</span><span
+        >Houston, Texas</span>
     </div>
   </div>
 </footer>
+<div class="mobile-call-bar">
+  <a href={business.phoneHref} data-call-source="mobile-bar"
+    ><Icon name="phone" /><span
+      >Call about your property <strong>{business.phone}</strong></span
+    ><Icon /></a>
+</div>

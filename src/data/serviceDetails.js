@@ -1,241 +1,221 @@
 export const serviceDetails = {
-  'full-gut-rehab': {
-    title: 'Full Gut Rehab',
-    category: 'Unit Renovation Services',
-    subheadline: 'Strip-to-stud apartment renovations that reposition assets to a higher rent tier and drive measurable NOI growth.',
-    metaTitle: 'Apartment Gut Rehab Houston TX | MRS',
-    metaDescription: "Houston's multifamily gut rehab specialists. Strip-to-stud apartment renovations delivering measurable rent premiums and NOI growth. Get your free bid in 5 days.",
-    keywords: 'apartment gut rehab Houston TX, multifamily gut renovation Houston, value-add apartment renovation Houston, full gut rehab contractor Houston',
-    whatIsIt: 'A full apartment gut rehab in Houston TX strips every unit to the studs — framing, plumbing, electrical, drywall, finishes, and fixtures all replaced from scratch. It\'s the highest-impact renovation scope available to multifamily owners and the most reliable path to a Class A finish in a legacy asset. Property owners who execute gut rehab programs consistently reposition units to a higher rent tier, with renovated units commanding $150–$300/month above unrenovated stock across the Houston metro. MRS manages every phase — from initial bid to final punchlist — with the owner on-site throughout.',
-    includes: ['Complete interior demolition and haul-off', 'Framing and structural modifications', 'Full plumbing system replacement', 'Electrical rewiring and panel upgrades', 'New drywall and insulation', 'Luxury vinyl plank (LVP) flooring installation', 'Kitchen cabinetry, countertops, and appliances', 'Bathroom tile, vanity, and fixture replacement', 'Interior painting and trim', 'Fixture, hardware, and final finishes installation'],
-    bestFor: 'Properties undergoing value-add repositioning, units with extensive deferred maintenance, or communities transitioning to a higher rent tier. Gut rehabs are the right scope when cosmetic upgrades alone won\'t move the needle on rents or when aging mechanical systems are driving maintenance costs.',
-    heroImages: [
-      { src: '', alt: 'Completed gut rehab kitchen in Houston apartment — new cabinetry, quartz countertops, and LVP flooring' },
-      { src: '', alt: 'Gut rehab bathroom renovation Houston TX — new tile surround, vanity, and plumbing fixtures' },
-      { src: '', alt: 'Apartment gut rehab in progress Houston TX — stripped unit with new framing and rough plumbing' },
+  "unit-interior-renovation": {
+    title: "Apartment interior renovation in Houston",
+    subheadline:
+      "Update the finishes that see daily use. Keep the parts of the apartment that still work.",
+    whatIsIt:
+      "An interior renovation updates an apartment without stripping everything back. The right scope might include a new kitchen, a bathroom refresh, flooring, paint, or a consistent finish package across several floor plans. Start by separating worn finishes from underlying problems so the work addresses both appearance and condition.",
+    includes: [
+      "Cabinet refacing or replacement",
+      "Countertops, sinks, and backsplashes",
+      "Bathroom vanities and fixtures",
+      "Flooring and subfloor preparation",
+      "Interior paint, trim, and doors",
+      "Lighting, hardware, and finishing details",
+    ],
+    bestFor:
+      "Vacant units with usable layouts and systems, or a phased program where each apartment needs a consistent interior update.",
+    planning: [
+      "Which cabinets, appliances, and fixtures will stay?",
+      "Are there signs of leaks, damaged subfloors, or electrical issues?",
+      "Who selects and supplies each finish?",
+      "How many units will be available at a time?",
     ],
     faqs: [
       {
-        question: 'How long does a full apartment gut rehab take in Houston?',
-        answer: 'A gut rehab on a standard Houston apartment unit typically takes 3–5 weeks per unit, depending on scope, unit size, and crew allocation. Properties running parallel multi-unit programs can complete 8–12 units per month. Timeline includes demolition, rough trades, drywall, flooring, cabinetry, and final finishes.',
+        question: "Can a kitchen and bathroom update be part of one scope?",
+        answer:
+          "Yes. Grouping the work can make it easier to coordinate flooring, paint, fixtures, and the final handoff. The bid should identify each item and any repairs that are excluded.",
       },
       {
-        question: 'How much does an apartment gut rehab cost per unit in Houston TX?',
-        answer: 'Full apartment gut rehabs in Houston typically range from $18,000–$35,000 per unit, depending on unit size, finish level, and system replacement scope. Most programs land between $22,000 and $28,000 for a standard 700–900 sq ft unit. MRS provides detailed line-item bids within 5 business days.',
+        question: "Is a cosmetic update enough for an older unit?",
+        answer:
+          "Sometimes. Check for moisture, damaged materials, and system issues before committing to surface finishes. If the condition calls for deeper work, a full rehab may be a better fit.",
+      },
+    ],
+  },
+  "full-gut-rehab": {
+    title: "Full apartment gut rehab in Houston",
+    subheadline:
+      "For apartments that need a deeper rebuild, plan the work behind the walls along with the finishes.",
+    whatIsIt:
+      "A full gut rehab removes interior materials as needed to address the unit’s condition and rebuild the space. The extent of demolition depends on what is there, what can safely remain, and the approved scope. Existing structure, moisture damage, utilities, permits, and inspections can all affect the plan. Those questions come before a finish package or a completion date.",
+    includes: [
+      "Demolition and debris removal",
+      "Condition review after opening walls",
+      "Framing and repair coordination",
+      "Plumbing and electrical trade coordination",
+      "Insulation, drywall, and finish preparation",
+      "Kitchens, bathrooms, flooring, paint, and trim",
+    ],
+    bestFor:
+      "Units with extensive damage, obsolete interiors, or a planned rebuild that goes beyond replacing surface finishes. A full gut rehab generally requires a vacant unit.",
+    planning: [
+      "Which repairs are visible, and what might be concealed?",
+      "Does the scope require design, engineering, or permits?",
+      "Which utilities serve the unit and nearby residents?",
+      "How will newly discovered conditions be priced and approved?",
+    ],
+    faqs: [
+      {
+        question:
+          "What is the difference between an interior update and a gut rehab?",
+        answer:
+          "An interior update keeps most of the existing construction and replaces selected finishes. A gut rehab involves more demolition and may include repairs or changes to systems behind the walls. The condition of the apartment determines the sensible scope.",
       },
       {
-        question: "What's the difference between a gut rehab and a cosmetic renovation for apartments?",
-        answer: 'A gut rehab strips the unit to the studs and replaces all systems — plumbing, electrical, framing, drywall, and finishes. A cosmetic renovation updates surface finishes only (cabinets, counters, flooring, paint) without touching mechanical systems. Gut rehabs are best for assets with deferred maintenance or properties repositioning to a higher rent tier.',
+        question: "Can you quote a gut rehab from photos?",
+        answer:
+          "Photos help start the discussion, but they cannot show every condition behind a wall or under a floor. A reliable scope needs a property review, clear assumptions, and a process for hidden conditions.",
+      },
+      {
+        question: "How long does a gut rehab take?",
+        answer:
+          "The schedule depends on demolition, repairs, permit and inspection needs, materials, and trade availability. A useful schedule is built from those steps for your specific unit rather than a blanket promise.",
       },
     ],
-    internalLinks: [
-      { href: '/services/kitchen-renovation', anchor: 'apartment kitchen renovation' },
-      { href: '/services/bathroom-remodel', anchor: 'bathroom remodel' },
-      { href: '/services/flooring-installation', anchor: 'LVP flooring installation' },
-      { href: '/services/unit-interior-renovation', anchor: 'cosmetic unit renovation' },
-      { href: '/service-areas/houston', anchor: 'Houston multifamily renovation' },
+  },
+  "common-area-amenity-renovation": {
+    title: "Apartment common area & amenity renovation",
+    subheadline:
+      "Shared spaces should work for the residents who use them and the team maintaining them.",
+    whatIsIt:
+      "Common area work can include a clubhouse, leasing office, resident lounge, fitness room, or shared circulation space. The scope needs to account for durability, cleaning, access, and which parts of the property must remain open. A phased plan can help the management team communicate closures and alternate access before construction starts.",
+    includes: [
+      "Clubhouse and resident lounge updates",
+      "Leasing office finishes and layout updates",
+      "Fitness room interior improvements",
+      "Shared corridor flooring and paint",
+      "Lighting and fixture updates",
+      "Finish transitions and final punch items",
+    ],
+    bestFor:
+      "Communities updating worn shared spaces, changing how an amenity is used, or coordinating common area work with a larger renovation.",
+    planning: [
+      "Which spaces need to stay open during work?",
+      "How will residents and staff access nearby areas?",
+      "What furniture or equipment needs to be removed or protected?",
+      "Which finishes can the maintenance team readily repair or replace?",
+    ],
+    faqs: [
+      {
+        question: "Can the leasing office stay open during a renovation?",
+        answer:
+          "That depends on the layout and scope. Some jobs can be divided into work areas; others need temporary relocation. Confirm the access plan, working hours, and utility interruptions before setting a start date.",
+      },
+      {
+        question:
+          "Do amenity renovations have to happen with unit renovations?",
+        answer:
+          "No. They can be scoped separately or coordinated with an interior program. The important part is understanding shared access, material deliveries, and any overlap in trades or schedules.",
+      },
     ],
   },
-  'unit-interior-renovation': {
-    title: 'Unit Interior Renovation',
-    category: 'Unit Renovation Services',
-    subheadline: 'Targeted interior upgrades to modernize apartment units and increase rental value.',
-    metaTitle: 'Apartment Unit Interior Renovation | Houston TX | MRS',
-    metaDescription: 'Professional apartment unit interior renovation in Houston. Kitchen and bathroom upgrades, flooring, painting, and fixture replacement to maximize rental value.',
-    whatIsIt: 'A unit interior renovation focuses on upgrading select finishes and systems within an apartment without full demolition. This approach targets the highest-impact areas — kitchens, bathrooms, flooring, and paint — to deliver a refreshed look and improved functionality.',
-    includes: ['Kitchen cabinet refacing or replacement', 'Countertop upgrades', 'Bathroom vanity and fixture updates', 'New flooring throughout', 'Interior painting', 'Lighting fixture upgrades', 'Hardware and accessory replacement', 'Minor plumbing and electrical updates'],
-    bestFor: 'Properties seeking moderate rent increases through cosmetic and functional upgrades without the cost and timeline of a full gut rehab.',
+  "exterior-curb-appeal": {
+    title: "Apartment exterior improvements in Houston",
+    subheadline:
+      "A better first impression starts with the condition of the building, not just a new paint color.",
+    whatIsIt:
+      "Exterior work can bring together repairs, siding, paint, entrances, fencing, and other improvements visible across the property. Inspect damaged areas and understand water entry before covering them with new finishes. The scope also needs to account for weather, access equipment, parking, and safe routes for residents.",
+    includes: [
+      "Siding and trim repairs or replacement",
+      "Exterior surface preparation and painting",
+      "Entrance and breezeway improvements",
+      "Fence repairs and replacement",
+      "Exterior doors and hardware within the scope",
+      "Coordination of access and work zones",
+    ],
+    bestFor:
+      "Properties with worn exterior finishes, localized deterioration, or a planned refresh of entrances and shared outdoor areas.",
+    planning: [
+      "Is the problem cosmetic, or is water getting behind the finish?",
+      "What needs repair before paint or siding work?",
+      "Where can materials and equipment be staged?",
+      "Which walkways and parking spaces will need temporary closures?",
+    ],
+    faqs: [
+      {
+        question: "Should damaged siding be repaired before painting?",
+        answer:
+          "The condition needs to be assessed first. Painting over deteriorated or wet materials can hide the problem without addressing it. Separate repair work from paint preparation so both are clear in the scope.",
+      },
+      {
+        question: "How does weather affect an exterior schedule?",
+        answer:
+          "Rain, humidity, surface conditions, and the requirements of the selected materials all matter. Exterior schedules should allow for suitable conditions rather than assume every day is workable.",
+      },
+    ],
   },
-  'bathroom-remodel': {
-    title: 'Bathroom Remodel',
-    category: 'Unit Renovation Services',
-    subheadline: 'Modern bathroom renovations designed for durability and tenant appeal in multifamily properties.',
-    metaTitle: 'Apartment Bathroom Remodel | Houston TX | MRS',
-    metaDescription: 'Expert apartment bathroom remodeling in Houston. Tub-to-shower conversions, tile work, vanity replacement, and plumbing upgrades for multifamily properties.',
-    whatIsIt: 'Our bathroom remodel service transforms outdated apartment bathrooms with modern fixtures, durable materials, and efficient layouts. We handle everything from tub-to-shower conversions to complete bathroom overhauls.',
-    includes: ['Tub-to-shower conversions', 'Tile and surround installation', 'Vanity and mirror replacement', 'Toilet replacement', 'Plumbing fixture upgrades', 'Lighting and exhaust fan installation', 'Waterproofing and moisture barriers', 'Accessibility modifications'],
-    bestFor: 'Apartment communities updating bathrooms for improved tenant satisfaction, reduced maintenance calls, and higher rental rates.',
+  "value-add-programs": {
+    title: "Phased apartment renovation programs",
+    subheadline:
+      "Turn a one-off unit scope into a practical plan for the rest of the property.",
+    whatIsIt:
+      "A phased renovation program uses an agreed scope across a sequence of units or buildings. It starts with knowing which apartments will be available, how finishes will be standardized, and how each unit will be inspected and returned to management. A sample unit can help resolve scope and finish decisions before repeating the work.",
+    includes: [
+      "Scope and finish package development",
+      "Unit-by-unit condition differences",
+      "Material ordering and storage planning",
+      "Phasing around unit availability",
+      "Coordination with the property team",
+      "Punch lists and unit handoff planning",
+    ],
+    bestFor:
+      "Apartment owners planning repeat interior upgrades, a recent acquisition, or a renovation that must be staged around occupancy and cash flow.",
+    planning: [
+      "What is the expected vacancy and move-out sequence?",
+      "Can the same finish package work across the floor plans?",
+      "Which items have long lead times?",
+      "Who approves the sample unit and each later handoff?",
+    ],
+    faqs: [
+      {
+        question: "Do all units need to be available at once?",
+        answer:
+          "No. The point of phasing is to plan around availability. The working schedule still needs a realistic release sequence, confirmed material supply, and agreement about how delays in unit access will be handled.",
+      },
+      {
+        question: "Does renovating guarantee a rent increase?",
+        answer:
+          "No. Rent depends on the local market, operations, property condition, and the finished offering. Define the construction scope and budget separately from your leasing assumptions.",
+      },
+    ],
   },
-  'kitchen-renovation': {
-    title: 'Kitchen Renovation',
-    category: 'Unit Renovation Services',
-    subheadline: 'Functional, attractive apartment kitchens built for daily use and long-term durability.',
-    metaTitle: 'Apartment Kitchen Renovation | Houston TX | MRS',
-    metaDescription: 'Apartment kitchen renovation services in Houston. Cabinet replacement, countertops, appliance installation, and layout optimization for multifamily properties.',
-    whatIsIt: 'Our kitchen renovation service upgrades apartment kitchens with modern cabinetry, countertops, appliances, and fixtures. We design efficient layouts that maximize space while using durable, commercial-grade materials suited for rental properties.',
-    includes: ['Cabinet replacement or refacing', 'Countertop installation', 'Appliance installation', 'Plumbing fixture upgrades', 'Backsplash installation', 'Lighting upgrades', 'Flooring replacement', 'Layout optimization'],
-    bestFor: 'Properties targeting kitchen-driven rent premiums or replacing aging kitchen systems to reduce maintenance costs.',
-  },
-  'flooring-installation': {
-    title: 'Flooring Installation',
-    category: 'Unit Renovation Services',
-    subheadline: 'Durable, cost-effective flooring solutions for high-traffic apartment environments.',
-    metaTitle: 'Apartment Flooring Installation | Houston TX | MRS',
-    metaDescription: 'Professional apartment flooring installation in Houston. LVP, vinyl plank, tile, and carpet for multifamily properties. Fast turnarounds for occupied and vacant units.',
-    whatIsIt: 'We install durable flooring systems designed for the demands of multifamily living. Our team handles everything from subfloor preparation to final installation, with material selections optimized for longevity, appearance, and cost-effectiveness.',
-    includes: ['Luxury vinyl plank (LVP) installation', 'Vinyl sheet and tile installation', 'Ceramic and porcelain tile', 'Carpet installation', 'Subfloor repair and leveling', 'Transition strip installation', 'Baseboard and trim work', 'Old flooring removal and disposal'],
-    bestFor: 'Turn units, value-add programs, and properties replacing worn carpet or outdated flooring to improve unit appeal.',
-  },
-  'painting-drywall': {
-    title: 'Painting & Drywall',
-    category: 'Unit Renovation Services',
-    subheadline: 'Professional painting and drywall services that deliver clean, consistent finishes at scale.',
-    metaTitle: 'Apartment Painting & Drywall | Houston TX | MRS',
-    metaDescription: 'Commercial-grade apartment painting and drywall repair in Houston. Interior painting, drywall patching, texture matching, and accent walls for multifamily properties.',
-    whatIsIt: 'Our painting and drywall services cover everything from unit turns to large-scale repaint programs. We deliver clean, uniform finishes using commercial-grade paints and professional drywall repair techniques.',
-    includes: ['Full unit interior painting', 'Drywall repair and patching', 'Texture matching', 'Ceiling painting and repair', 'Accent walls', 'Trim and door painting', 'Exterior touch-up painting', 'Color consultation for unit packages'],
-    bestFor: 'Make-ready turns, renovation programs, and properties refreshing their unit interiors for improved leasing appeal.',
-  },
-  plumbing: {
-    title: 'Plumbing',
-    category: 'Unit Renovation Services',
-    subheadline: 'Reliable plumbing services for apartment renovations and ongoing multifamily maintenance.',
-    metaTitle: 'Apartment Plumbing Services | Houston TX | MRS',
-    metaDescription: 'Apartment plumbing services in Houston. Pipe replacement, fixture installation, water heater upgrades, and re-piping for multifamily renovation projects.',
-    whatIsIt: 'Our plumbing services support both renovation projects and maintenance needs across multifamily properties. From fixture replacements to full re-pipes, we handle all plumbing scopes with licensed professionals.',
-    includes: ['Fixture installation and replacement', 'Pipe repair and replacement', 'Water heater installation', 'Drain cleaning and repair', 'Shut-off valve replacement', 'Toilet and faucet installation', 'Dishwasher and disposal hookups', 'Re-piping for renovation projects'],
-    bestFor: 'Renovation projects requiring plumbing upgrades, aging properties with frequent plumbing issues, and re-piping programs.',
-  },
-  electrical: {
-    title: 'Electrical',
-    category: 'Unit Renovation Services',
-    subheadline: 'Licensed electrical services for apartment renovations and system upgrades.',
-    metaTitle: 'Apartment Electrical Services | Houston TX | MRS',
-    metaDescription: 'Licensed apartment electrical services in Houston. Panel upgrades, rewiring, lighting installation, and code compliance for multifamily renovation projects.',
-    whatIsIt: 'Our electrical services cover the full range of multifamily needs, from in-unit rewiring during renovations to panel upgrades and lighting installations. All work is performed by licensed electricians to ensure code compliance.',
-    includes: ['Panel upgrades', 'Circuit installation and rewiring', 'Lighting fixture installation', 'Outlet and switch replacement', 'GFCI installation', 'Smoke and CO detector installation', 'Ceiling fan installation', 'Code compliance upgrades'],
-    bestFor: 'Renovation projects with electrical scope, properties needing panel upgrades, and communities requiring code compliance updates.',
-  },
-  hvac: {
-    title: 'HVAC',
-    category: 'Unit Renovation Services',
-    subheadline: 'HVAC installation, replacement, and maintenance for multifamily apartment properties.',
-    metaTitle: 'Apartment HVAC Services | Houston TX | MRS',
-    metaDescription: 'Apartment HVAC services in Houston. Unit replacement, ductwork, thermostat installation, and maintenance programs for multifamily properties.',
-    whatIsIt: 'We provide complete HVAC services for multifamily properties including system replacement, ductwork modifications, thermostat upgrades, and preventive maintenance programs. Our team works efficiently to minimize tenant disruption.',
-    includes: ['HVAC system replacement', 'Ductwork installation and repair', 'Thermostat installation', 'Condensate drain maintenance', 'Filter replacement programs', 'Refrigerant line installation', 'Air handler replacement', 'Preventive maintenance programs'],
-    bestFor: 'Properties with aging HVAC systems, renovation projects requiring system upgrades, and communities implementing energy efficiency improvements.',
-  },
-  'window-door-replacement': {
-    title: 'Window & Door Replacement',
-    category: 'Unit Renovation Services',
-    subheadline: 'Energy-efficient window and door replacement for apartment communities.',
-    metaTitle: 'Apartment Window & Door Replacement | Houston TX | MRS',
-    metaDescription: 'Apartment window and door replacement in Houston. Energy-efficient upgrades, patio doors, entry doors, and weatherization for multifamily properties.',
-    whatIsIt: 'Our window and door replacement service upgrades apartment communities with energy-efficient products that improve comfort, reduce utility costs, and enhance curb appeal. We handle large-scale replacement programs with minimal tenant disruption.',
-    includes: ['Single and double-hung window replacement', 'Sliding glass patio doors', 'Entry door replacement', 'Weatherstripping and sealing', 'Frame repair and replacement', 'Hardware upgrades', 'Screen replacement', 'Energy audit consultation'],
-    bestFor: 'Properties seeking energy efficiency improvements, communities with aging windows causing maintenance issues, and value-add programs targeting curb appeal.',
-  },
-  'common-area-renovation': {
-    title: 'Common Area Renovation',
-    category: 'Property-Wide Services',
-    subheadline: 'Transform lobbies, hallways, mail areas, and shared spaces to elevate your community.',
-    metaTitle: 'Apartment Common Area Renovation | Houston TX | MRS',
-    metaDescription: 'Apartment common area renovation in Houston. Lobby updates, hallway renovations, mail room upgrades, and shared space improvements for multifamily properties.',
-    whatIsIt: 'Common area renovation transforms the shared spaces that shape first impressions and daily resident experience. We renovate lobbies, hallways, mail areas, stairwells, and other common spaces with durable, attractive finishes.',
-    includes: ['Lobby and entrance renovation', 'Hallway and corridor updates', 'Mail room and package area upgrades', 'Stairwell and landing improvements', 'Lighting upgrades', 'Flooring replacement', 'Paint and wall treatments', 'Signage and wayfinding'],
-    bestFor: 'Properties wanting to improve first impressions, reduce vacancy, and create a more welcoming community atmosphere.',
-  },
-  'exterior-curb-appeal': {
-    title: 'Exterior & Curb Appeal',
-    category: 'Property-Wide Services',
-    subheadline: 'Exterior upgrades that improve property appearance and protect your investment.',
-    metaTitle: 'Apartment Exterior & Curb Appeal | Houston TX | MRS',
-    metaDescription: 'Apartment exterior renovation and curb appeal improvements in Houston. Siding, paint, fencing, landscaping, and entrance upgrades for multifamily properties.',
-    whatIsIt: 'Our exterior and curb appeal services address the first impression your property makes. From siding and paint to fencing, landscaping, and entrance upgrades, we improve both aesthetics and structural protection.',
-    includes: ['Exterior painting and staining', 'Siding repair and replacement', 'Fence installation and repair', 'Entry monument and signage', 'Landscape bed renovation', 'Exterior lighting upgrades', 'Gutter installation and repair', 'Pressure washing and cleaning'],
-    bestFor: 'Properties needing a fresh look for leasing season, communities with deferred exterior maintenance, and value-add renovation programs.',
-  },
-  'leasing-office-remodel': {
-    title: 'Leasing Office Remodel',
-    category: 'Property-Wide Services',
-    subheadline: 'Create a professional, welcoming leasing environment that converts prospects to residents.',
-    metaTitle: 'Leasing Office Remodel | Houston TX | MRS',
-    metaDescription: 'Apartment leasing office remodel in Houston. Modern design, functional layouts, and professional finishes that improve the leasing experience.',
-    whatIsIt: 'A leasing office remodel transforms your sales environment into a professional, branded space that supports the leasing process. We design and build offices that are functional, attractive, and aligned with your community brand.',
-    includes: ['Space planning and layout design', 'Reception and waiting area renovation', 'Office workstation buildout', 'Flooring and lighting upgrades', 'Accent walls and branding elements', 'Restroom updates', 'Storage and file solutions', 'Technology infrastructure'],
-    bestFor: 'Properties undergoing repositioning, new acquisitions, or communities where the leasing office no longer reflects the property standard.',
-  },
-  'amenity-renovation': {
-    title: 'Amenity Renovation',
-    category: 'Property-Wide Services',
-    subheadline: 'Upgrade fitness centers, pools, clubhouses, and resident amenity spaces.',
-    metaTitle: 'Apartment Amenity Renovation | Houston TX | MRS',
-    metaDescription: 'Apartment amenity renovation in Houston. Fitness center, pool area, clubhouse, and community space upgrades for multifamily properties.',
-    whatIsIt: 'Amenity renovations upgrade the community spaces that drive leasing decisions and resident retention. We renovate fitness centers, pool areas, clubhouses, business centers, and other amenity spaces with durable, attractive finishes.',
-    includes: ['Fitness center renovation', 'Pool deck and furniture area updates', 'Clubhouse and event space remodel', 'Business center upgrades', 'Dog park and pet station improvements', 'Outdoor kitchen and grilling areas', 'Resident lounge renovation', 'Package locker installation'],
-    bestFor: 'Communities competing for tenants with modern amenity expectations, properties adding new amenity offerings, and value-add programs targeting community spaces.',
-  },
-  'parking-lot-concrete': {
-    title: 'Parking Lot & Concrete',
-    category: 'Property-Wide Services',
-    subheadline: 'Parking lot repair, concrete work, and paving solutions for multifamily properties.',
-    metaTitle: 'Apartment Parking Lot & Concrete | Houston TX | MRS',
-    metaDescription: 'Apartment parking lot and concrete services in Houston. Asphalt repair, striping, concrete sidewalks, curbs, and ADA compliance for multifamily properties.',
-    whatIsIt: 'Our parking lot and concrete services address the hardscape infrastructure of your property. From asphalt repair and striping to concrete sidewalks, curbs, and ADA compliance, we keep your property safe, functional, and attractive.',
-    includes: ['Asphalt repair and overlay', 'Parking lot striping and marking', 'Concrete sidewalk installation', 'Curb repair and replacement', 'Speed bump installation', 'ADA ramp and compliance upgrades', 'Dumpster pad construction', 'Drainage improvements'],
-    bestFor: 'Properties with aging parking lots, communities needing ADA compliance updates, and renovation programs addressing site infrastructure.',
-  },
-  'roof-repair': {
-    title: 'Roof Repair',
-    category: 'Property-Wide Services',
-    subheadline: 'Dependable roof repair and replacement services for apartment communities.',
-    metaTitle: 'Apartment Roof Repair | Houston TX | MRS',
-    metaDescription: 'Apartment roof repair and replacement in Houston. Leak repair, shingle replacement, flat roof systems, and emergency roof services for multifamily properties.',
-    whatIsIt: 'Our roof repair services protect your property investment with professional repairs, replacements, and maintenance. We work with all common multifamily roofing systems and deliver timely repairs to prevent water damage and tenant complaints.',
-    includes: ['Leak detection and repair', 'Shingle replacement', 'Flat roof membrane repair', 'Flashing and vent repair', 'Gutter repair and installation', 'Emergency tarping', 'Full roof replacement', 'Roof inspection and assessment'],
-    bestFor: 'Properties with active leaks, aging roof systems, storm damage, or planned capital expenditure roof replacement programs.',
-  },
-  'waterproofing-drainage': {
-    title: 'Waterproofing & Drainage',
-    category: 'Property-Wide Services',
-    subheadline: 'Protect your property from water damage with professional waterproofing and drainage solutions.',
-    metaTitle: 'Apartment Waterproofing & Drainage | Houston TX | MRS',
-    metaDescription: 'Apartment waterproofing and drainage services in Houston. Foundation waterproofing, French drains, grading, and moisture barrier installation for multifamily properties.',
-    whatIsIt: 'Our waterproofing and drainage services address moisture-related issues that threaten your property structure and tenant health. We design and install drainage systems, apply waterproofing treatments, and correct grading issues to keep water away from buildings.',
-    includes: ['Foundation waterproofing', 'French drain installation', 'Surface drainage systems', 'Grading and slope correction', 'Moisture barrier installation', 'Sealant application', 'Gutter and downspout systems', 'Sump pump installation'],
-    bestFor: 'Properties with recurring water intrusion, foundation moisture concerns, standing water issues, or Houston-area drainage challenges.',
-  },
-  'construction-management': {
-    title: 'Construction Management',
-    category: 'Management Services',
-    subheadline: 'Professional construction management for large-scale multifamily renovation programs.',
-    metaTitle: 'Construction Management | Houston TX | MRS',
-    metaDescription: 'Multifamily construction management in Houston. Budget oversight, scheduling, subcontractor coordination, and quality control for apartment renovation programs.',
-    whatIsIt: 'Our construction management service provides professional oversight for complex, multi-phase renovation programs. We manage budgets, schedules, subcontractors, procurement, and quality control so ownership can focus on asset performance.',
-    includes: ['Budget development and tracking', 'Master schedule creation', 'Subcontractor procurement and management', 'Material procurement and logistics', 'Quality control inspections', 'Weekly progress reporting', 'Change order management', 'Owner representation'],
-    bestFor: 'Large-scale renovation programs, properties with multiple renovation phases, and owners who need professional construction oversight without managing day-to-day operations.',
-  },
-  'value-add-programs': {
-    title: 'Value-Add Programs',
-    category: 'Management Services',
-    subheadline: 'Structured renovation programs designed to increase NOI through targeted unit and property upgrades.',
-    metaTitle: 'Value-Add Renovation Programs | Houston TX | MRS',
-    metaDescription: 'Multifamily value-add renovation programs in Houston. Structured unit and property upgrades designed to increase NOI and property value for apartment investors.',
-    whatIsIt: 'Our value-add programs are structured renovation initiatives designed to increase property NOI through targeted upgrades. We work with ownership to define renovation packages, establish per-unit budgets, and execute phased rollouts that minimize vacancy loss.',
-    includes: ['Renovation package development', 'Per-unit budget modeling', 'Phased rollout planning', 'Unit renovation execution', 'Common area upgrades', 'Amenity improvements', 'Exterior and curb appeal work', 'Post-renovation punchlist and turnover'],
-    bestFor: 'Investment groups executing value-add business plans, recently acquired properties targeting rent growth, and operators seeking structured renovation programs.',
-  },
-  'occupied-renovation': {
-    title: 'Occupied Renovation',
-    category: 'Management Services',
-    subheadline: 'Renovation programs designed to work around residents while maintaining quality and schedule.',
-    metaTitle: 'Occupied Apartment Renovation | Houston TX | MRS',
-    metaDescription: 'Occupied apartment renovation in Houston. We renovate units and common areas while residents remain in place, minimizing disruption and maintaining community standards.',
-    whatIsIt: 'Occupied renovation requires specialized planning, communication, and execution to renovate units and common areas while residents remain in place. We manage the complexity of working in an active community with clear protocols and minimal disruption.',
-    includes: ['Resident communication planning', 'Phased renovation scheduling', 'Noise and access management', 'Temporary utility coordination', 'Daily cleanup protocols', 'Security and safety measures', 'Maintenance coordination', 'Post-renovation quality checks'],
-    bestFor: 'Stabilized properties that cannot afford high vacancy during renovation, communities requiring phased upgrades, and operators prioritizing resident retention during renovation.',
-  },
-  'make-ready': {
-    title: 'Make Ready',
-    category: 'Management Services',
-    subheadline: 'Fast, reliable unit turns to get vacant apartments leased and generating revenue.',
-    metaTitle: 'Apartment Make Ready Services | Houston TX | MRS',
-    metaDescription: 'Apartment make ready services in Houston. Fast unit turns including cleaning, painting, repairs, and upgrades to minimize vacancy and maximize revenue.',
-    whatIsIt: 'Our make-ready service handles everything needed to turn a vacated apartment into a move-in ready unit. We offer standard and enhanced make-ready packages to match your property standards and budget requirements.',
-    includes: ['Deep cleaning and sanitization', 'Interior painting', 'Carpet cleaning or replacement', 'Appliance cleaning and testing', 'Fixture and hardware replacement', 'Minor plumbing and electrical repairs', 'HVAC filter and system check', 'Final quality inspection'],
-    bestFor: 'Properties needing fast, consistent unit turns to minimize vacancy days and maintain leasing momentum.',
+  "construction-management": {
+    title: "Multifamily renovation construction management",
+    subheadline:
+      "Bring the scope, budget, schedule, and trade coordination into the same conversation.",
+    whatIsIt:
+      "A larger renovation needs more than a list of tasks. It needs an agreed scope, clear responsibilities, a workable sequence, and a record of decisions. Construction management brings those parts together so ownership and the property team can understand what is planned, what has changed, and what needs attention.",
+    includes: [
+      "Scope review and bid coordination",
+      "Budget and allowance review",
+      "Schedule and trade sequencing",
+      "Material and decision tracking",
+      "Change review and documentation",
+      "Site checks, punch lists, and closeout coordination",
+    ],
+    bestFor:
+      "Renovations involving multiple trades, work areas, or phases, where ownership needs a clear point of coordination.",
+    planning: [
+      "Who has authority to approve scope and cost changes?",
+      "Which contracts and trade responsibilities are already in place?",
+      "How often does ownership need a progress update?",
+      "What documentation is needed at closeout?",
+    ],
+    faqs: [
+      {
+        question:
+          "How is construction management different from the renovation work?",
+        answer:
+          "Renovation work delivers the physical construction. Construction management coordinates scope, budget, schedule, decisions, and handoff. Agree on the exact role and responsibilities in the contract so there are no gaps between parties.",
+      },
+      {
+        question: "Can you review a scope we already have?",
+        answer:
+          "Bring the current scope, drawings, or bids to the conversation. A review can identify missing decisions or unclear responsibilities before discussing the appropriate next step.",
+      },
+    ],
   },
 };
-
 export default serviceDetails;

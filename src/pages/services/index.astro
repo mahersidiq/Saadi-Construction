@@ -1,96 +1,59 @@
 ---
 export const prerender = true;
-import Layout from '@/layouts/Layout.astro';
-import { serviceCategories, allServices } from '@/data/services';
-
-const jsonLd = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Apartment Renovation Services',
-    description: 'Comprehensive apartment renovation services offered by MRS in Houston, TX.',
-    itemListElement: allServices.map((service, i) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: service.name,
-      url: `https://multifamilyrehabspecialists.com/services/${service.slug}`,
-    })),
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://multifamilyrehabspecialists.com' },
-      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://multifamilyrehabspecialists.com/services' },
-    ],
-  },
-];
+import Layout from "@/layouts/Layout.astro";
+import Icon from "@/components/Icon.astro";
+import CTABanner from "@/components/sections/home/CTABanner.astro";
+import { allServices } from "@/data/services";
+import { business, breadcrumbs } from "@/data/business";
+const list = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Apartment renovation services",
+  itemListElement: allServices.map((service, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: service.name,
+    url: `${business.url}/services/${service.slug}`,
+  })),
+};
 ---
 
 <Layout
-  title="Apartment Renovation Services Houston TX | MRS"
-  description="Comprehensive apartment renovation services in Houston. Unit rehabs, kitchen and bathroom remodels, common area renovations, exterior upgrades, and construction management."
-  keywords="apartment renovation services Houston, multifamily renovation, unit rehab, kitchen remodel apartments"
-  canonicalUrl="https://multifamilyrehabspecialists.com/services"
-  jsonLd={jsonLd}
+  title="Apartment Renovation Services in Houston | Multifamily Rehab Specialists"
+  description="Explore apartment interior renovations, full gut rehabs, amenities, exterior improvements, and phased renovation programs in Greater Houston."
+  jsonLd={[list, breadcrumbs([["Services", "/services"]])]}
 >
-  <!-- Hero -->
-  <section class="bg-light-gray border-b-2 border-gold/20 pt-16">
-    <div class=></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24">
-      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl font-black text-charcoal leading-tight mt-4">
-        Apartment Renovation Services
-      </h1>
-      <p class="animate-fade-in-up-delay mt-5 text-lg text-gray-500 max-w-xl">
-        From single-unit make-readies to full property renovation programs, we deliver every scope of multifamily renovation work.
+  <section class="page-hero">
+    <div class="container-main">
+      <p class="eyebrow">Houston apartment renovation services</p><h1>
+        A single unit.<br />Or the bigger picture.<br /><em
+          >Start with the right scope.</em>
+      </h1><p class="lead">
+        Choose the work your property needs, from a focused interior update to a
+        renovation across the community.
       </p>
     </div>
   </section>
-
-  <!-- Service Categories -->
-  <section class="section-padding bg-white">
-    <div class="container-main">
-      {serviceCategories.map((category) => (
-        <div class="mb-16 last:mb-0">
-          <h2 class="animate-on-scroll font-heading text-2xl md:text-3xl font-bold text-charcoal mb-8 pb-3 border-b-2 border-gold/30">
-            {category.name}
-          </h2>
-          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {category.services.map((service) => (
-              <div class="animate-on-scroll">
-                <a href={`/services/${service.slug}`} class="group flex items-center gap-4 rounded-xl bg-light-gray p-6 border border-gray-200 hover:border-gold/50 hover:shadow-lg transition-all duration-300 h-full">
-                  <div class="flex-shrink-0 h-12 w-12 rounded-lg bg-navy/10 flex items-center justify-center group-hover:bg-gold/15 transition-colors">
-                    <svg class="h-6 w-6 text-navy group-hover:text-gold transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="font-heading text-lg font-bold text-charcoal group-hover:text-navy transition-colors">{service.name}</h3>
-                    <span class="text-sm text-gold font-semibold mt-1 inline-flex items-center">
-                      Learn More
-                      <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-                    </span>
-                  </div>
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+  <section class="section-padding">
+    <div class="container-main service-list">
+      {
+        allServices.map((service, i) => (
+          <a href={`/services/${service.slug}`}>
+            <>
+              <span class="eyebrow">
+                0{i + 1} / {service.category}
+              </span>
+              <h2>{service.name}</h2>
+              <p>{service.description}</p>
+              <span class="text-link">
+                What to include in the scope
+                <Icon />
+              </span>
+            </>
+          </a>
+        ))
+      }
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="relative bg-navy overflow-hidden">
-    <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-    <div class="section-padding">
-      <div class="container-main text-center">
-        <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-white">Not Sure Which Service You Need?</h2>
-        <p class="animate-on-scroll mt-4 text-lg text-gray-300 max-w-xl mx-auto">Tell us about your property and we'll recommend the right scope of work.</p>
-        <div class="animate-on-scroll mt-8">
-          <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CTABanner />
 </Layout>

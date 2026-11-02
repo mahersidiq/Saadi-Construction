@@ -1,57 +1,95 @@
 ---
 export const prerender = true;
-import Layout from '@/layouts/Layout.astro';
-import ProjectsFilter from '@/islands/ProjectsFilter.jsx';
-
-const BASE = '/images';
-
-const projects = [
-  { slug: 'example-project-1', apt_name: 'Residences at Almeda', title: 'Garden-Style Community Renovation', location: 'Houston, TX', unit_count: 240, scope_type: 'Gut Rehab', image_url: `${BASE}/saadi-kitchen-dark-stone-backsplash-open-houston-1.png` },
-  { slug: 'example-project-2', apt_name: 'The Mason at Katy', title: 'Mid-Rise Value-Add Program', location: 'Katy, TX', unit_count: 180, scope_type: 'Interior', image_url: `${BASE}/saadi-kitchen-white-open-living-geometric-houston-1.png` },
-  { slug: 'example-project-3', apt_name: 'Parkview Commons', title: 'Suburban Apartment Rehab', location: 'Sugar Land, TX', unit_count: 120, scope_type: 'Interior', image_url: `${BASE}/saadi-bathroom-glass-shower-black-vanity-houston-1.png` },
-  { slug: 'example-project-4', apt_name: 'The Grand at Woodlands', title: 'Clubhouse & Amenity Renovation', location: 'The Woodlands, TX', unit_count: 300, scope_type: 'Common Areas', image_url: `${BASE}/saadi-clubhouse-fireplace-dark-wood-houston-1.png` },
-  { slug: 'example-project-5', apt_name: 'Bayou Crossing', title: 'Exterior & Curb Appeal Overhaul', location: 'Pearland, TX', unit_count: 200, scope_type: 'Exterior', image_url: `${BASE}/saadi-exterior-courtyard-bench-houston-1.png` },
-  { slug: 'example-project-6', apt_name: 'Spring Gate', title: 'Common Area Modernization', location: 'Spring, TX', unit_count: 160, scope_type: 'Common Areas', image_url: `${BASE}/saadi-pool-deck-resort-tiki-bar-houston-1.png` },
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import kitchen from "@/assets/images/saadi-kitchen-renovation-houston-1.jpg";
+import bathroom from "@/assets/images/saadi-bathroom-double-vanity-houston-1.jpg";
+import clubhouse from "@/assets/images/saadi-clubhouse-renovation-houston-1.jpg";
+import framing from "@/assets/images/saadi-multifamily-framing-houston-1.jpg";
+import CTABanner from "@/components/sections/home/CTABanner.astro";
+import Icon from "@/components/Icon.astro";
+import { breadcrumbs } from "@/data/business";
+const scopes = [
+  {
+    image: kitchen,
+    title: "A kitchen that fits the unit.",
+    alt: "Kitchen finish reference with an island and dark lower cabinets",
+    text: "Start with the layout, cabinet condition, appliance sizes, and the flooring transition. Decide what stays before choosing what replaces it.",
+    href: "/services/unit-interior-renovation",
+    link: "Explore interior renovation",
+  },
+  {
+    image: bathroom,
+    title: "A bathroom built for daily use.",
+    alt: "Bathroom finish reference showing vanities, mirrors, and lighting",
+    text: "Look at moisture, ventilation, surfaces, and fixture condition together. New finishes should follow any repairs that need to happen underneath.",
+    href: "/services/unit-interior-renovation",
+    link: "Plan the interior scope",
+  },
+  {
+    image: clubhouse,
+    title: "Shared space with a purpose.",
+    alt: "Common-area reference showing a lounge and open seating",
+    text: "Think through how the room is used, what needs to stay open, and which finishes the maintenance team can look after.",
+    href: "/services/common-area-amenity-renovation",
+    link: "Explore common area work",
+  },
+  {
+    image: framing,
+    title: "The work before the finishes.",
+    alt: "Construction framing reference with exposed timber",
+    text: "A deeper rebuild starts with existing conditions, repair needs, and the right trade sequence. Settle those decisions before committing to the finish package.",
+    href: "/services/full-gut-rehab",
+    link: "Understand full gut rehabs",
+  },
 ];
 ---
 
 <Layout
-  title="Apartment Renovation Projects | MRS | Houston, TX"
-  description="View our portfolio of apartment renovation projects across Houston and surrounding areas. Full gut rehabs, value-add programs, and property-wide renovations."
-  keywords="apartment renovation projects Houston, multifamily renovation portfolio, apartment rehab before after"
-  canonicalUrl="https://multifamilyrehabspecialists.com/projects"
+  title="Renovation Scope Ideas | Multifamily Rehab Specialists"
+  description="Explore apartment kitchen, bathroom, common-area, and full-rehab scope considerations before planning your Houston multifamily renovation."
+  jsonLd={breadcrumbs([["Scope ideas", "/projects"]])}
 >
-  <!-- Hero -->
-  <section class="bg-light-gray border-b-2 border-gold/20 pt-16">
-    <div class=></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-24">
-      <h1 class="animate-fade-in-up font-heading text-4xl md:text-5xl font-black text-charcoal leading-tight mt-4">
-        Apartment Renovation Projects — Houston and Surrounding Areas
-      </h1>
-      <p class="animate-fade-in-up-delay mt-5 text-lg text-gray-500 max-w-xl">
-        Apartment renovation work across Houston and surrounding communities.
+  <section class="page-hero">
+    <div class="container-main">
+      <p class="eyebrow">Spaces &amp; scope</p><h1>
+        Start with the space.<br /><em>Then work out the details.</em>
+      </h1><p class="lead">
+        Use these visual references to think through your renovation. They
+        illustrate types of work and finish choices, rather than named project
+        case studies.
       </p>
     </div>
   </section>
-
-  <!-- Filter + Grid -->
-  <section class="section-padding bg-white">
-    <div class="container-main">
-      <ProjectsFilter client:load projects={projects} />
+  <section class="section-padding">
+    <div class="container-main scope-gallery">
+      {
+        scopes.map((scope) => (
+          <figure>
+            <>
+              <Image
+                src={scope.image}
+                alt={scope.alt}
+                widths={[480, 800, 1100]}
+                sizes="(max-width: 767px) 90vw, 45vw"
+                format="webp"
+                loading="lazy"
+              />
+              <figcaption>
+                <>
+                  <h2>{scope.title}</h2>
+                  <p>{scope.text}</p>
+                  <a class="text-link" href={scope.href}>
+                    {scope.link}
+                    <Icon />
+                  </a>
+                </>
+              </figcaption>
+            </>
+          </figure>
+        ))
+      }
     </div>
   </section>
-
-  <!-- CTA -->
-  <section class="relative bg-navy overflow-hidden">
-    <div class="absolute top-0 left-0 right-0 h-1 bg-gold"></div>
-    <div class="section-padding">
-      <div class="container-main text-center">
-        <h2 class="animate-on-scroll font-heading text-3xl md:text-4xl font-bold text-white">Planning a Similar Renovation?</h2>
-        <p class="animate-on-scroll mt-4 text-lg text-gray-300 max-w-xl mx-auto">Tell us about your property and we'll provide a detailed scope and estimate.</p>
-        <div class="animate-on-scroll mt-8">
-          <a href="/contact" class="btn-primary text-lg px-8 py-4">Request a Bid</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CTABanner />
 </Layout>

@@ -1,0 +1,50 @@
+---
+const {
+  items = [],
+  title = "Good questions. Straight answers.",
+  eyebrow = "Before the work starts",
+} = Astro.props;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+---
+
+{
+  items.length > 0 && (
+    <section class="section-padding faq-section">
+      <>
+        <div class="container-main faq-grid">
+          <>
+            <div>
+              <>
+                <p class="eyebrow">{eyebrow}</p>
+                <h2>{title}</h2>
+              </>
+            </div>
+            <div class="faq-list">
+              {items.map((item) => (
+                <details>
+                  <summary>
+                    {item.question}
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </>
+        </div>
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(schema).replace(/</g, "\\u003c")}
+        />
+      </>
+    </section>
+  )
+}

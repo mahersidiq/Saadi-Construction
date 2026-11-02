@@ -1,19 +1,32 @@
 ---
+// Preserve old example links without presenting invented projects as real work.
 export const prerender = false;
+import Layout from "@/layouts/Layout.astro";
+const oldExamples = Array.from(
+  { length: 6 },
+  (_, i) => `example-project-${i + 1}`,
+);
+if (oldExamples.includes(Astro.params.slug || ""))
+  return Astro.redirect("/projects", 301);
+Astro.response.status = 404;
 ---
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project Coming Soon | MRS</title>
-  <script>setTimeout(() => location.href = '/projects', 4000)</script>
-</head>
-<body style="margin:0;background:#1b3a5c;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif;color:#fff;text-align:center;padding:2rem">
-  <div>
-    <p style="color:#c9952a;font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem">Project Details</p>
-    <h1 style="font-size:2.5rem;font-weight:800;margin:0 0 1.5rem">Coming Soon</h1>
-    <p style="color:#9ca3af;font-size:1.1rem;max-width:480px">We're adding full project details shortly. Redirecting you back to all projects…</p>
-    <a href="/projects" style="display:inline-block;margin-top:2rem;padding:.9rem 2rem;background:#c9952a;color:#fff;text-decoration:none;border-radius:8px;font-weight:600">View All Projects</a>
-  </div>
-</body>
-</html>
+
+<Layout
+  title="Page Not Found | Multifamily Rehab Specialists"
+  description="This project page is not available. Explore renovation services or call to discuss your Houston apartment property."
+  noindex
+>
+  <section class="page-hero">
+    <div class="container-main">
+      <p class="eyebrow">404 · Page not found</p><h1>
+        Let’s find the right place.
+      </h1><p class="lead">
+        This project page isn’t available. Explore our services or talk with us
+        about the work you have in mind.
+      </p><div class="hero-actions">
+        <a class="btn-primary" href="/services">Explore renovation services</a
+        ><a class="text-link" href="/contact">Contact us →</a>
+      </div>
+    </div>
+  </section>
+</Layout>
